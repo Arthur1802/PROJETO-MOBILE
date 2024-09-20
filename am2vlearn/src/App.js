@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import './frontend/styles/App.css'
-import Login from './frontend/pages/LogIn'
-import Home from './frontend/pages/Home'
-import Welcome from './frontend/pages/Welcome'
+import './styles/App.css'
+import lg_logo from './assets/lg_logo_light'
+import Login from './pages/LogIn'
+import Home from './pages/Home'
+import Welcome from './pages/Welcome'
 
 const App = () => {
-  const [isLogged, setIsLogged] = useState(false)
+  // const [isLogged, setIsLogged] = useState(false)
 
   return (
     <div>
-      {/* <BotaoTema/> */}
+      <img src = {lg_logo} alt = "Logo"></img>
       {/* {isLogged ? <Home/> : <Welcome setIsLogged = {setIsLogged, theme}/>} */}
       <Login />
     </div>
