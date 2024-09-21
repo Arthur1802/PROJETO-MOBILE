@@ -1,62 +1,93 @@
 import React, { useState } from 'react'
 import '../styles/Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { byPrefixAndName } from '@awesome.me/kit-5fe1b6438c/icons'
+import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import sm_logo from '../assets/sm_logo_light.svg'
 import google_icon from '../assets/google_icon.svg'
 
 const LogIn = () => {
-    const [values, setValues] = useState({
-        credencial: '',
-        senha: ''
-    })
+    // const [values, setValues] = useState({
+    //     email: '',
+    //     senha: ''
+    // })
 
     const [mostrarSenha, setMostrarSenha] = useState(false)
 
-    const handleInput = (e) => {
-        setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const handleSenha = () => {
+        setMostrarSenha(!mostrarSenha)
     }
+
+    // const handleInput = (e) => {
+    //     setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    // }
 
     return (
         <div>
-            <div className = "login-panel">
+            <div className = "auth-panel">
                 <div className = "arrow-cont">
-                    <a className = "backBtn"><i className = "fa-solid fa-arrow-left"></i></a> {/* Botão para voltar para página inicial */}
+                    <a className = "backBtn" href = "/">
+                        {/* <i className = "fa-solid fa-arrow-left"></i> */}
+                        <FontAwesomeIcon
+                            icon = {faArrowLeft}
+                        />
+                    </a> {/* Botão para voltar para página inicial */}
                 </div>
                 <div className = "img-cont">
                     <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
                 </div>
                 <div className = "form">
-                    <label for = "cred_inp">CONTA:</label>
-                    <input
-                        type = "text"
-                        name = "credencial"
-                        id = "cred_inp"
-                        placeholder = "Insira aqui seu e-mail ou seu nome"
-                        onChange = {handleInput}
-                    />
-                    <div className = "senha_cont">
-                        <label for = "senha_inp">SENHA:</label>
+                    <div className = "input-label-cont">
+                        {/* <label htmlFor = "email-inp">EMAIL:</label> */}
+                        <input
+                            autoFocus
+                            type = "email"
+                            name = "credencial"
+                            id = "email-inp"
+                            placeholder = "Insira aqui seu e-mail"
+                            // onChange = {handleInput}
+                        />
+                    </div>
+                    <div className = "input-label-cont">
+                        {/* <label htmlFor = "senha_inp">SENHA:</label> */}
                         <input
                             type = {mostrarSenha ? "text" : "password"}
                             name = "senha"
                             id = "senha_inp"
                             placeholder = "Insira aqui sua senha"
-                            onChange = {handleInput}
+                            // onChange = {handleInput}
                         />
-                        <i className = {mostrarSenha ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} onClick = {() => setMostrarSenha(!mostrarSenha)}></i>
+                        {/* <i
+                            className = {`eye-icon fa-solid ${mostrarSenha ? "fa-eye" : "fa-eye-slash"}`}
+                            onClick = {() => handleSenha()}
+                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
+                            role = "button"
+                        ></i> */}
+                        <FontAwesomeIcon
+                            // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
+                            icon = {mostrarSenha ? faEye : faEyeSlash}
+                            className = "eye-icon"
+                            onClick = {() => handleSenha()}
+                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
+                            role = "button"
+                        />
                     </div>
-                    <button id = "btnLogin">ENTRAR</button>
+                    <div className = "btn-cont">
+                        <button id = "btnLogin">ENTRAR</button>
+                        <button id = "btnLimpar">LIMPAR</button>
+                    </div>
 
                     <div className = "separador"> {/* -------------- OU -------------- */}
-                        <span></span>
-                        <p>OU</p>
-                        <span></span>
+                        <span></span> <p>OU</p> <span></span>
                     </div>
                     
-                    <button className = "btnGoogle">
-                        <img src = {google_icon} alt = ""></img>
-                        GOOGLE
-                    </button>
-                    <button className = "btnCriarConta">CRIAR CONTA</button>
+                    <div className = "btn-cont">
+                        <button className = "btnGoogle">
+                            <img className = "" src = {google_icon} alt = ""></img>
+                            GOOGLE
+                        </button>
+                        <button className = "btnCriarConta">CRIAR CONTA</button>
+                    </div>
                 </div>
             </div>
         </div>
