@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Welcome.css'
+import '../styles/pages/Welcome.css'
 import lg_logo from '../assets/lg_logo_light.svg'
 
 const Welcome = () => {

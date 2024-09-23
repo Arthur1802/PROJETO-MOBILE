@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../styles/AlternaTema.css';
+import '../styles/components/AlternaTema.css';
 
 const AlternaTema = ({ handleChange, isChecked }) => {
     // Function to update the label content based on window width
