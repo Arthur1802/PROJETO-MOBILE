@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD
 import '../styles/Signin.css'
+=======
+import '../styles/SignIn.css'
+>>>>>>> c436e038567bec2c0c9f5259bb48a4ce7f541be1
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { byPrefixAndName } from '@awesome.me/kit-5fe1b6438c/icons'
 import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +17,7 @@ const SignIn = () => {
     // })
 
     const [mostrarSenha, setMostrarSenha] = useState(false)
+<<<<<<< HEAD
     const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false)
 
     const handleSenha = (isConfirm) => {
@@ -23,6 +28,11 @@ const SignIn = () => {
         else {
             setMostrarSenha(!mostrarSenha)
         }
+=======
+
+    const handleSenha = () => {
+        setMostrarSenha(!mostrarSenha)
+>>>>>>> c436e038567bec2c0c9f5259bb48a4ce7f541be1
     }
 
     // const handleInput = (e) => {
@@ -85,7 +95,11 @@ const SignIn = () => {
                             // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
                             icon = {mostrarSenha ? faEye : faEyeSlash}
                             className = "eye-icon"
+<<<<<<< HEAD
                             onClick = {() => handleSenha(false)}
+=======
+                            onClick = {() => handleSenha()}
+>>>>>>> c436e038567bec2c0c9f5259bb48a4ce7f541be1
                             aria-label = {mostrarSenha ? "Hide password" : "Show password"}
                             role = "button"
                         />
@@ -93,7 +107,11 @@ const SignIn = () => {
                     <div className = "input-label-cont">
                         {/* <label htmlFor = "confirmacao_inp">CONFIRMAR SENHA:</label> */}
                         <input
+<<<<<<< HEAD
                             type = {mostrarConfirmarSenha ? "text" : "password"}
+=======
+                            type = {isConfirm ? "text" : "password"}
+>>>>>>> c436e038567bec2c0c9f5259bb48a4ce7f541be1
                             name = "confirmacao"
                             id = "confirmacao_inp"
                             placeholder = "Confirme sua senha"
@@ -107,10 +125,17 @@ const SignIn = () => {
                         ></i> */}
                         <FontAwesomeIcon
                             // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
+<<<<<<< HEAD
                             icon = {mostrarConfirmarSenha ? faEye : faEyeSlash}
                             className = "eye-icon"
                             onClick = {() => handleSenha(true)}
                             aria-label = {mostrarConfirmarSenha ? "Hide password" : "Show password"}
+=======
+                            icon = {isConfirm ? faEye : faEyeSlash}
+                            className = "eye-icon"
+                            onClick = {() => handleSenha()}
+                            aria-label = {isConfirm ? "Hide password" : "Show password"}
+>>>>>>> c436e038567bec2c0c9f5259bb48a4ce7f541be1
                             role = "button"
                         />
                     </div>
