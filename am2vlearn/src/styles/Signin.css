@@ -1,0 +1,123 @@
+div.auth-panel {
+    width: 80%;
+    height: 80%;
+    margin: 5% auto;
+}
+
+div.arrow-cont {
+    margin: 5px auto;
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.arrow-cont a {
+    font-size: 1.2em;
+    color: #000;
+    cursor: pointer;
+}
+
+div.img-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.form {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.input-label-cont {
+    margin: 10px 0;
+    width: 25%;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--cor-fundo-input);
+}
+
+/* div.input-label-cont label {
+    width: 20%;
+    padding: 2px 5px;
+    font-size: 15px;
+    background: var(--laranja);
+    color: black;
+    margin-right: 5px;
+    border-radius: 5px 50px 50px 5px;
+} */
+
+div.input-label-cont input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 1px 2px;
+    color: var(--cor-placeholder);
+}
+
+div.input-label-cont input[type = "password"] {
+    width: 80%;
+}
+
+div.input-label-cont input::placeholder,
+div.input-label-cont .eye-icon {
+    color: var(--cor-placeholder);
+}
+
+div.input-label-cont .eye-icon {
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+div.separador {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.separador span {
+    height: 2px;
+    width: 40%;
+    background: #000;
+    border-radius: 50px;
+}
+
+div.btn-cont {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.btn-cont button {
+    padding: 5px 10px;
+    border: none;
+    background: var(--azul-claro);
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+div.btn-cont img.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+button.btnGoogle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
