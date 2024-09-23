@@ -10,7 +10,7 @@ const Welcome = () => {
             </div>
             <div className = "btn-cont">
                 <button id = "btnLogin">ENTRAR</button>
-                <button className = "btnCriarConta">CRIAR CONTA</button>
+                <button id = "btnCriarConta">CRIAR CONTA</button>
             </div>
         </div>
     )
