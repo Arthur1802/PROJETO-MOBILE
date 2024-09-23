@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './styles/App.css'
-import Login from './pages/LogIn'
 import Welcome from './pages/Welcome'
 
 const App = () => {
@@ -9,7 +8,7 @@ const App = () => {
   return (
     <div>
       {/* {isLogged ? <Home/> : <Welcome setIsLogged = {setIsLogged, theme}/>} */}
-      <Login />
+      <Welcome />
     </div>
   )
 }
