@@ -1,9 +1,10 @@
 import React from 'react'
+import '../styles/Welcome.css'
 import lg_logo from '../assets/lg_logo_light.svg'
 
 const Welcome = () => {
     return (
-        <div>
+        <div className = "welcome-panel">
             <div className = "img-cont">
                 <img className = "welcome-logo" src = {lg_logo} alt = "Logo"></img>
             </div>

@@ -1,0 +1,29 @@
+div.div.auth-panel {
+    width: 80%;
+    height: 80%;
+    margin: 25% auto;
+}
+
+div.img-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.btn-cont {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.btn-cont button {
+    padding: 5px 10px;
+    border: none;
+    background: var(--azul-claro);
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+}
