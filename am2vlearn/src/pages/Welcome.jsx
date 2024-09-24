@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/pages/Welcome.css'
 import lg_logo from '../assets/lg_logo_light.svg'
+import { Link } from 'react-router-dom'
 
 const Welcome = () => {
     return (
@@ -9,8 +10,8 @@ const Welcome = () => {
                 <img className = "welcome-logo" src = {lg_logo} alt = "Logo"></img>
             </div>
             <div className = "btn-cont">
-                <button id = "btnLogin">ENTRAR</button>
-                <button id = "btnCriarConta">CRIAR CONTA</button>
+                <Link className = "btnsWelcome" id = "btnLogin" to = "/login">ENTRAR</Link>
+                <Link className = "btnsWelcome" id = "btnCriarConta" to = "/signin">CRIAR CONTA</Link>
             </div>
         </div>
     )

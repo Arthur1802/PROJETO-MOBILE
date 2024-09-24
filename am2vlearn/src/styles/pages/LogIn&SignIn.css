@@ -1,7 +1,7 @@
 div.auth-panel {
     width: 80%;
     height: 80%;
-    margin: 5% auto;
+    margin: 20px auto;
 }
 
 div.arrow-cont {
@@ -18,13 +18,6 @@ div.arrow-cont a {
     cursor: pointer;
 }
 
-div.img-cont {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 div.form {
     margin: 20px auto;
     display: flex;
@@ -35,8 +28,7 @@ div.form {
 
 div.input-label-cont {
     margin: 10px 0;
-    width: 25%;
-    padding: 5px;
+    width: 30%;
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
@@ -68,6 +60,14 @@ div.input-label-cont input[type = "password"] {
     width: 80%;
 }
 
+.input-label-cont label,
+.senha_inp label {
+    background-color: var(--laranja);
+    padding: 20px;
+    width: 25%;
+    margin-right: 15px;
+}
+
 div.input-label-cont input::placeholder,
 div.input-label-cont .eye-icon {
     color: var(--cor-placeholder);
@@ -92,7 +92,7 @@ div.separador span {
     border-radius: 50px;
 }
 
-div.btn-cont {
+div.btn-cont-auth {
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -100,13 +100,15 @@ div.btn-cont {
     gap: 10px;
 }
 
-div.btn-cont button {
+div.btn-cont-auth .btns {
     padding: 5px 10px;
     border: none;
     background: var(--azul-claro);
     color: black;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }
 
 div.btn-cont img.google-icon {

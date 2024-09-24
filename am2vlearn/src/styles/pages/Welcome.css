@@ -20,7 +20,7 @@ div.btn-cont {
     gap: 10px;
 }
 
-div.btn-cont button {
+div.btn-cont .btnsWelcome {
     width: 50%;
     padding: 5px 10px;
     border: none;
@@ -28,12 +28,14 @@ div.btn-cont button {
     color: black;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }
 
-button#btnLogin {
+#btnLogin {
     background: var(--azul-claro);
 }
 
-button#btnCriarConta {
+#btnCriarConta {
     background: var(--laranja);
 }
