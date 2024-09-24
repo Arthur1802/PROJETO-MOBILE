@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import '../styles/pages/LogIn&SignIn.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { byPrefixAndName } from '@awesome.me/kit-5fe1b6438c/icons'
-import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import sm_logo from '../assets/sm_logo_light.svg'
-import google_icon from '../assets/google_icon.svg'
+// import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import sm_logo from '../assets/logo/sm_logo_light.svg'
+import google_icon from '../assets/icons/google-icon.svg'
+import eye_icon from '../assets/icons/eye-icon.svg'
+import eye_slash_icon from '../assets/icons/eye-slash-icon.svg'
+import arrow_left from '../assets/icons/arrow-left.svg'
 import { Link } from 'react-router-dom'
 
 const LogIn = () => {
@@ -29,9 +32,14 @@ const LogIn = () => {
                 <div className = "arrow-cont">
                     <Link className = "backBtn" to = "/welcome">
                         {/* <i className = "fa-solid fa-arrow-left"></i> */}
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             icon = {faArrowLeft}
-                        />
+                        /> */}
+                        <img
+                            className = "icons"
+                            src = {arrow_left}
+                            alt = ""
+                        ></img>
                     </Link> {/* Botão para voltar para página inicial */}
                 </div>
                 <div className = "img-cont">
@@ -64,30 +72,40 @@ const LogIn = () => {
                             aria-label = {mostrarSenha ? "Hide password" : "Show password"}
                             role = "button"
                         ></i> */}
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
                             icon = {mostrarSenha ? faEye : faEyeSlash}
                             className = "eye-icon"
                             onClick = {() => handleSenha()}
                             aria-label = {mostrarSenha ? "Hide password" : "Show password"}
                             role = "button"
-                        />
+                        /> */}
+                        <img 
+                            src = {mostrarSenha ? eye_icon : eye_slash_icon}
+                            alt = ""
+                            className = "icons"
+                            onClick = {() => handleSenha()}
+                        ></img>
                     </div>
                     <div className = "btn-cont-auth">
-                        <Link className = "btns" id = "btnLogin" to = "/login">ENTRAR</Link>
-                        <button className = "btns" id = "btnLimpar">LIMPAR</button>
+                        <Link className = "btns azul-claro" id = "btnLogin" to = "/login">ENTRAR</Link>
+                        <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 
                     <div className = "separador"> {/* -------------- OU -------------- */}
-                        <span></span> <p>OU</p> <span></span>
+                        <span>OU</span>
                     </div>
                     
                     <div className = "btn-cont-auth">
-                        <button className = "btns" id = "btnGoogle">
-                            <img className = "" src = {google_icon} alt = ""></img>
+                        <button className = "btns btn-alternative" id = "btnGoogle">
+                            <img
+                                className = "icons google-icon"
+                                src = {google_icon}
+                                alt = ""
+                            ></img>
                             GOOGLE
                         </button>
-                        <Link className = "btns" id = "btnCriarConta" to = "/signin">CRIAR CONTA</Link>
+                        <Link className = "btns btn-alternative" id = "btnCriarConta" to = "/signin">CRIAR CONTA</Link>
                     </div>
                 </div>
             </div>
