@@ -54,7 +54,7 @@ const SignIn = () => {
                 </div>
                 <div className = "form">
                     <div className = "input-label-cont">
-                        {/* <label htmlFor = "nome-inp">NOME:</label> */}
+                        <label htmlFor = "nome-inp">NOME:</label>
                         <input
                             autoFocus
                             type = "text"
@@ -65,7 +65,7 @@ const SignIn = () => {
                         />
                     </div>
                     <div className = "input-label-cont">
-                        {/* <label htmlFor = "email-inp">EMAIL:</label> */}
+                        <label htmlFor = "email-inp">EMAIL:</label>
                         <input
                             autoFocus
                             type = "email"
@@ -76,7 +76,7 @@ const SignIn = () => {
                         />
                     </div>
                     <div className = "input-label-cont">
-                        {/* <label htmlFor = "senha_inp">SENHA:</label> */}
+                        <label htmlFor = "senha_inp">SENHA:</label>
                         <input
                             type = {mostrarSenha ? "text" : "password"}
                             name = "senha"
@@ -108,7 +108,7 @@ const SignIn = () => {
                         ></img>
                     </div>
                     <div className = "input-label-cont">
-                        {/* <label htmlFor = "confirmacao_inp">CONFIRMAR SENHA:</label> */}
+                        <label htmlFor = "confirmacao_inp">CONFIRMAR SENHA:</label>
                         <input
                             type = {mostrarConfirmarSenha ? "text" : "password"}
                             name = "confirmacao"

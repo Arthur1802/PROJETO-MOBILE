@@ -1,11 +1,12 @@
 import React from 'react' // Adicionar o { useState }
 import './styles/App.css'
-import Welcome from './pages/Welcome'
 import useLocalStorage from 'use-local-storage-state'
+import { isAuthenticated } from './utils/auth.js';
+import { Navigate, Outlet } from 'react-router-dom';
 import AlternaTema from './components/AlternaTema'
 
 const App = () => {
-    // const [isLogged, setIsLogged] = useState(false)
+    const isLoggedIn = isAuthenticated()
 
     const preferencia = window.matchMedia('(prefers-color-scheme: dark)').matches // Adicionar o tema preferido
     const [tema, setTema] = useLocalStorage('tema', preferencia) // Adicionar o useLocalStorage (npm install use-local-storage)
@@ -17,8 +18,11 @@ const App = () => {
                 isChecked = {tema}
                 hendleChange = {() => setTema(!tema)}
             />
-            {/* {isLogged ? <Home/> : <Welcome setIsLogged = {setIsLogged, theme}/>} */}
-            <Welcome />
+            {!isLoggedIn ? (
+                <Navigate to = "/welcome" replace />
+            ) : (
+                <Outlet />
+            )}
         </div>
     )
 }

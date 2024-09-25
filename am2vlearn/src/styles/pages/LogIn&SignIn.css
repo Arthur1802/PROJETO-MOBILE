@@ -7,6 +7,7 @@ div.auth-panel {
 img.icons {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 div.form {
