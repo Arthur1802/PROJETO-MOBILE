@@ -43,7 +43,8 @@ const router = createBrowserRouter([
         path: 'subjectmenu',
         element: <ProtectedRoute element = {<SubjectMenu />} />,
       }
-    ]}
+    ]
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
