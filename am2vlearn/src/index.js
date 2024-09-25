@@ -7,11 +7,7 @@ import LogIn from './pages/LogIn'
 import SignIn from './pages/SignIn'
 import Welcome from './pages/Welcome'
 import Home from './pages/Home'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import SubjectMenu from './pages/SubjectMenu';
 
 const router = createBrowserRouter([
