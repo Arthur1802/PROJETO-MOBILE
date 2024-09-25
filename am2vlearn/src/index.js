@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.css';
-import App from './App';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
+import App from './App';
 import LogIn from './pages/LogIn'
 import SignIn from './pages/SignIn'
 import Welcome from './pages/Welcome'
 import Home from './pages/Home'
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import SubjectMenu from './pages/SubjectMenu';
+import './styles/index.css';
 
 const router = createBrowserRouter([
   {
