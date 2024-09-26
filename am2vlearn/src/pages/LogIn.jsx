@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import '../styles/pages/LogIn&SignIn.css'
+import { Link } from 'react-router-dom'
+import { Login } from '../utils/auth.js'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { byPrefixAndName } from '@awesome.me/kit-5fe1b6438c/icons'
 // import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -8,33 +9,35 @@ import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../assets/icons/eye-slash-icon.svg'
 import arrow_left from '../assets/icons/arrow-left.svg'
-import { Link } from 'react-router-dom'
+import '../styles/pages/LogIn&SignIn.css'
 
 const LogIn = () => {
-    // const [values, setValues] = useState({
-    //     email: '',
-    //     senha: ''
-    // })
+    const {values, setValues} = useState({
+        email: '',
+        senha: ''
+    })
+
+    const [errors, setErrors] = useState({})
 
     const [mostrarSenha, setMostrarSenha] = useState(false)
 
     const handleSenha = () => {
-        setMostrarSenha(!mostrarSenha)
+        setMostrarSenha(!mostrarSenha)                     
     }
 
-    // const handleInput = (e) => {
-    //     setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    // }
+    const handleInput = (e) => {
+        setValues(prev => ({...prev, [e.target.name]: e.target.value}))
+    }
+
+    const authenticate = (email, senha) => {
+        setErrors(Login(values))
+    }
 
     return (
         <div>
             <div className = "auth-panel">
                 <div className = "arrow-cont">
                     <Link className = "backBtn" to = "/welcome">
-                        {/* <i className = "fa-solid fa-arrow-left"></i> */}
-                        {/* <FontAwesomeIcon
-                            icon = {faArrowLeft}
-                        /> */}
                         <img
                             className = "icons"
                             src = {arrow_left}
@@ -47,39 +50,26 @@ const LogIn = () => {
                 </div>
                 <div className = "form">
                     <div className = "input-label-cont">
-                        <label htmlFor = "email-inp">EMAIL:</label>
+                        <label htmlFor = "inpEmail">EMAIL:</label>
                         <input
                             autoFocus
                             type = "email"
                             name = "credencial"
-                            id = "email-inp"
+                            id = "inpEmail"
                             placeholder = "Insira aqui seu e-mail"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
                     </div>
+                    {errors.email && <span>{errors.email}</span>}
                     <div className = "input-label-cont">
-                        <label htmlFor = "senha_inp">SENHA:</label>
+                        <label htmlFor = "inpSenha">SENHA:</label>
                         <input
                             type = {mostrarSenha ? "text" : "password"}
                             name = "senha"
-                            id = "senha_inp"
+                            id = "inpSenha"
                             placeholder = "Insira aqui sua senha"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
-                        {/* <i
-                            className = {`eye-icon fa-solid ${mostrarSenha ? "fa-eye" : "fa-eye-slash"}`}
-                            onClick = {() => handleSenha()}
-                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        ></i> */}
-                        {/* <FontAwesomeIcon
-                            // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
-                            icon = {mostrarSenha ? faEye : faEyeSlash}
-                            className = "eye-icon"
-                            onClick = {() => handleSenha()}
-                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        /> */}
                         <img 
                             src = {mostrarSenha ? eye_icon : eye_slash_icon}
                             alt = ""
@@ -87,8 +77,9 @@ const LogIn = () => {
                             onClick = {() => handleSenha()}
                         ></img>
                     </div>
+                    {errors.senha && <span>{errors.senha}</span>}
                     <div className = "btn-cont-auth">
-                        <Link className = "btns azul-claro" id = "btnLogin" to = "/login">ENTRAR</Link>
+                        <Link className = "btns azul-claro" id = "btnLogin" to = "/login" onClick = {authenticate(email, senha)}>ENTRAR</Link>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 
@@ -105,7 +96,7 @@ const LogIn = () => {
                             ></img>
                             GOOGLE
                         </button>
-                        <Link className = "btns btn-alternative" id = "btnCriarConta" to = "/signin">CRIAR CONTA</Link>
+                        <Link className = "btns btn-alternative" to = "/signin">CRIAR CONTA</Link>
                     </div>
                 </div>
             </div>

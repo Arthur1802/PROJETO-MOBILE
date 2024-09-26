@@ -1,8 +1,12 @@
 import React from 'react' // Adicionar o { useState }
-import './styles/App.css'
+
+import './styles/App.css' 
+
 import useLocalStorage from 'use-local-storage-state'
+
 import { isAuthenticated } from './utils/auth.js';
 import { Navigate, Outlet } from 'react-router-dom';
+
 import AlternaTema from './components/AlternaTema'
 
 const App = () => {

@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
-import '../styles/pages/LogIn&SignIn.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { byPrefixAndName } from '@awesome.me/kit-5fe1b6438c/icons'
-// import { faEye, faEyeSlash, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom'
+import { Signin } from '../utils/auth.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../assets/icons/eye-slash-icon.svg'
 import arrow_left from '../assets/icons/arrow-left.svg'
-import { Link } from 'react-router-dom'
+import '../styles/pages/LogIn&SignIn.css'
 
 const SignIn = () => {
-    // const [values, setValues] = useState({
-    //     email: '',
-    //     senha: ''
-    // })
+    const [values, setValues] = useState({
+        nome: '',
+        email: '',
+        senha: '',
+        confirmacao: ''
+    })
+
+    const [errors, setErrors] = useState({})
 
     const [mostrarSenha, setMostrarSenha] = useState(false)
     const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false)
@@ -29,75 +31,64 @@ const SignIn = () => {
         }
     }
 
-    // const handleInput = (e) => {
-    //     setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    // }
+    const handleInput = (e) => {
+        setValues(prev => ({...prev, [e.target.name]: e.target.value}))
+    }
+
+    const authenticate = (email, senha, confirmacao) => {
+        setErrors(Signin(values))
+    }
 
     return (
         <div>
             <div className = "auth-panel">
                 <div className = "arrow-cont">
                     <Link className = "backBtn" to = "/welcome">
-                        {/* <i className = "fa-solid fa-arrow-left"></i> */}
-                        {/* <FontAwesomeIcon
-                            icon = {faArrowLeft}
-                        /> */}
                         <img
                             className = "icons"
                             src = {arrow_left}
                             alt = ""
                         ></img>
                     </Link> {/* Botão para voltar para página inicial */}
+                    
                 </div>
                 <div className = "img-cont">
                     <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
                 </div>
                 <div className = "form">
                     <div className = "input-label-cont">
-                        <label htmlFor = "nome-inp">NOME:</label>
+                        <label htmlFor = "inpNome">NOME:</label>
                         <input
                             autoFocus
                             type = "text"
                             name = "nome"
-                            id = "nome-inp"
+                            id = "inpNome"
                             placeholder = "Insira aqui seu nome"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
                     </div>
+                    {errors.nome && <span>{errors.nome}</span>}
                     <div className = "input-label-cont">
-                        <label htmlFor = "email-inp">EMAIL:</label>
+                        <label htmlFor = "inpEmail">EMAIL:</label>
                         <input
                             autoFocus
                             type = "email"
                             name = "email"
-                            id = "email-inp"
+                            id = "inpEmail"
                             placeholder = "Insira aqui seu e-mail"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
                     </div>
+                    {errors.email && <span>{errors.email}</span>}
                     <div className = "input-label-cont">
-                        <label htmlFor = "senha_inp">SENHA:</label>
+                        <label htmlFor = "inpSenha">SENHA:</label>
                         <input
                             type = {mostrarSenha ? "text" : "password"}
                             name = "senha"
-                            id = "senha_inp"
+                            id = "inpSenha"
                             placeholder = "Insira aqui sua senha"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
-                        {/* <i
-                            className = {`eye-icon fa-solid ${mostrarSenha ? "fa-eye" : "fa-eye-slash"}`}
-                            onClick = {() => handleSenha()}
-                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        ></i> */}
-                        {/* <FontAwesomeIcon
-                            // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
-                            icon = {mostrarSenha ? faEye : faEyeSlash}
-                            className = "eye-icon"
-                            onClick = {() => handleSenha(false)}
-                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        /> */}
                         <img
                             src = {mostrarSenha ? eye_icon : eye_slash_icon}
                             className = "icons"
@@ -107,29 +98,16 @@ const SignIn = () => {
                             alt = ""
                         ></img>
                     </div>
+                    {errors.senha && <span>{errors.senha}</span>}
                     <div className = "input-label-cont">
-                        <label htmlFor = "confirmacao_inp">CONFIRMAR SENHA:</label>
+                        <label htmlFor = "inpConfirmacao">CONFIRMAR SENHA:</label>
                         <input
                             type = {mostrarConfirmarSenha ? "text" : "password"}
                             name = "confirmacao"
-                            id = "confirmacao_inp"
+                            id = "inpConfirmacao"
                             placeholder = "Confirme sua senha"
-                            // onChange = {handleInput}
+                            onChange = {handleInput}
                         />
-                        {/* <i
-                            className = {`eye-icon fa-solid ${mostrarSenha ? "fa-eye" : "fa-eye-slash"}`}
-                            onClick = {() => handleSenha()}
-                            aria-label = {mostrarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        ></i> */}
-                        {/* <FontAwesomeIcon
-                            // icon  = {byPrefixAndName.fas[`${mostrarSenha ? "eye" : "eye-slash"}`]}
-                            icon = {mostrarConfirmarSenha ? faEye : faEyeSlash}
-                            className = "eye-icon"
-                            onClick = {() => handleSenha(true)}
-                            aria-label = {mostrarConfirmarSenha ? "Hide password" : "Show password"}
-                            role = "button"
-                        /> */}
                         <img
                             src = {mostrarConfirmarSenha ? eye_icon : eye_slash_icon}
                             className = "icons"
@@ -139,8 +117,9 @@ const SignIn = () => {
                             alt = ""
                         ></img>
                     </div>
+                    {errors.confirmacao && <span>{errors.confirmacao}</span>}
                     <div className = "btn-cont-auth">
-                        <Link className = "btns azul-claro" id = "btnLogin" to = "/signin">CRIAR CONTA</Link>
+                        <button className = "btns azul-claro" id = "btnCriarConta" onClick = {authenticate(email, senha, confirmacao)}>CRIAR CONTA</button>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 
@@ -157,7 +136,7 @@ const SignIn = () => {
                             ></img>
                             GOOGLE
                         </button>
-                        <Link className = "btns btn-alternative" id = "btnCriarConta" to = "/login">ENTRAR</Link>
+                        <Link className = "btns btn-alternative" to = "/login">ENTRAR</Link>
                     </div>
                 </div>
             </div>
