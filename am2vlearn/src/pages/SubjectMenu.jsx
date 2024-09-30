@@ -1,10 +1,16 @@
 import React from 'react'
 
+
+
 const SubjectMenu = () => {
     return (
-        <div>
+        <>
             <h1>Escolha a Matéria</h1>
-        </div>
+            <div>
+                <button><img src="/am2vlearn/src/assets/icons/html_dark.svg" alt="" /></button>
+            </div>
+        
+        </>
     )
 }
 

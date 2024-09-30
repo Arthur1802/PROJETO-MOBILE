@@ -4,6 +4,7 @@ import lg_logo from '../assets/logo/lg_logo_light.svg'
 import { Link } from 'react-router-dom'
 
 const Welcome = () => {
+    console.log("ESTOU AQUI NA TELA WELCOME")
     return (
         <div className = "welcome-panel">
             <div className = "img-cont">

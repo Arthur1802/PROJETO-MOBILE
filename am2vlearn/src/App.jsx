@@ -6,7 +6,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 // import AlternaTema from './components/AlternaTema'
 
 const App = () => {
-    const isLoggedIn = isAuthenticated()
+    const isLoggedIn = false
 
     // const preferencia = window.matchMedia('(prefers-color-scheme: escuro)').matches // Adicionar o tema preferido
     // const [tema, setTema] = useLocalStorage('tema', preferencia) // Adicionar o useLocalStorage (npm install use-local-storage)
@@ -19,11 +19,12 @@ const App = () => {
                 isChecked = {tema}
                 hendleChange = {() => setTema(!tema)}
             /> */}
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
                 <Outlet />
             ) : (
-                <Navigate to = "/welcome" replace />    
-            )}
+                <Navigate to = "/welcome" replace />
+            )} */}
+            <Navigate to = "/welcome" replace />
         </div>
     )
 }
