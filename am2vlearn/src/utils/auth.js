@@ -1,5 +1,5 @@
 import app from './firebase.js'
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, browserSessionPersistence } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, browserSessionPersistence, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js'
 import { getDatabase } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js'
 
 //----------------------------------------------------------------------//
@@ -165,6 +165,13 @@ export const GoogleAuthentication = () => {
 
 //----------------------------------------------------------------------//
 
-export const isAuthenticated = (result) => {
-    return result
+export const isAuthenticated = () => {
+    const auth = getAuth(app)
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            return true
+        } else {
+            return false
+        }
+    })
 }

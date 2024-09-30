@@ -29,7 +29,7 @@ const LogIn = () => {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const authenticate = (email, senha) => {
+    const authenticate = () => {
         setErrors(Login(values))
     }
 
@@ -79,7 +79,7 @@ const LogIn = () => {
                     </div>
                     {errors.senha && <span>{errors.senha}</span>}
                     <div className = "btn-cont-auth">
-                        <Link className = "btns azul-claro" id = "btnLogin" to = "/login" onClick = {authenticate(email, senha)}>ENTRAR</Link>
+                        <Link className = "btns azul-claro" id = "btnLogin" to = "/login" onClick = {authenticate()}>ENTRAR</Link>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 
