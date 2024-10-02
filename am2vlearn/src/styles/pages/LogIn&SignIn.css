@@ -1,16 +1,16 @@
-div.auth-panel {
+.auth-panel {
     width: 80%;
     height: 80%;
     margin: 20px auto;
 }
 
-img.icons {
+.icons {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
 
-div.form {
+.form {
     margin: 20px auto;
     display: flex;
     flex-direction: column;
@@ -18,27 +18,39 @@ div.form {
     align-items: center;
 }
 
-div.input-label-cont {
+.input-label-cont {
     margin: 10px 0;
     width: 30%;
     border-radius: 5px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     background: var(--cor-fundo-input);
 }
 
-/* div.input-label-cont label {
-    width: 20%;
-    padding: 2px 5px;
+.input-label-cont label {
+    width: 100px;
+    height: 50px;
     font-size: 15px;
     background: var(--laranja);
     color: black;
     margin-right: 5px;
-    border-radius: 5px 50px 50px 5px;
-} */
+    border-radius: 5px 20px 20px 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
 
-div.input-label-cont input {
+.input-cont {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5%;
+}
+
+.input-label-cont input {
     width: 100%;
     padding: 5px;
     border: none;
@@ -48,32 +60,34 @@ div.input-label-cont input {
     color: var(--cor-placeholder);
 }
 
-div.input-label-cont input[type = "password"] {
+.input-label-cont input[type = "password"] {
     width: 80%;
 }
 
-.input-label-cont label,
+/* .input-label-cont label,
 .senha_inp label {
     background-color: var(--laranja);
     padding: 20px;
     width: 25%;
     margin-right: 15px;
-}
+} */
 
-div.input-label-cont input::placeholder {
+.input-label-cont input::placeholder {
     color: var(--cor-placeholder);
 }
 
-div.input-label-cont img.icons {
-    color: var(--cor-placeholder);
+.input-label-cont img.icons {
+    fill: var(--cor-placeholder);
 }
 
-div.input-label-cont .eye-icon {
+.input-label-cont .eye-icon {
+    width: 20px;
+    aspect-ratio: 1;
     margin: 0 auto;
     cursor: pointer;
 }
 
-div.separador {
+.separador {
     margin: 20px auto;
     display: flex;
     flex-direction: row;
@@ -82,7 +96,7 @@ div.separador {
     width: 320px;
 }
 
-div.separador span {
+.separador span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,18 +105,18 @@ div.separador span {
     flex: .2 0 auto;
 }
 
-div.separador span::before, div.separador span::after {
+.separador span::before, .separador span::after {
     content: "";
     background: #000;
     border: 1px solid #000;
     height: 1.5px;
-    width: 100%;
+    width: 140%;
     flex: 1 0 auto;
     border-radius: 50px;
     margin: 0 10px;
 }
 
-div.btn-cont-auth {
+.btn-cont-auth {
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -110,7 +124,7 @@ div.btn-cont-auth {
     gap: 10px;
 }
 
-div.btn-cont-auth .btns {
+.btn-cont-auth .btns {
     padding: 5px 10px;
     border: none;
     color: black;
@@ -119,15 +133,16 @@ div.btn-cont-auth .btns {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-div.btn-cont-auth img.google-icon {
+.btn-cont-auth .google-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
 
-button.btnGoogle {
+.btnGoogle {
     display: flex;
     flex-direction: row;
     justify-content: center;

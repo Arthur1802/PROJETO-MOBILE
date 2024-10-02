@@ -10,6 +10,10 @@
   text-transform: capitalize;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --azul-escuro: #0194BE;
   --azul-claro: #0FC3E8;

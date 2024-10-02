@@ -119,7 +119,7 @@ const SignIn = () => {
                     </div>
                     {errors.confirmacao && <span>{errors.confirmacao}</span>}
                     <div className = "btn-cont-auth">
-                        <button className = "btns azul-claro" id = "btnCriarConta" onClick = {authenticate()}>CRIAR CONTA</button>
+                        <button className = "btns azul-claro" id = "btnCriarConta" onClick = {authenticate}>CRIAR CONTA</button>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 

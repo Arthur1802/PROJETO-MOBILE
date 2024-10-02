@@ -1,12 +1,13 @@
 import React from 'react'
 import './styles/App.css' 
 // import useLocalStorage from 'use-local-storage-state'
-import { isAuthenticated } from './utils/auth.js';
-import { Navigate, Outlet } from 'react-router-dom';
+// import { isAuthenticated } from './utils/auth.js';
+// import { Navigate, Outlet } from 'react-router-dom';
 // import AlternaTema from './components/AlternaTema'
+import DownloadContent from './pages/DownloadContent'
 
 const App = () => {
-    const isLoggedIn = false
+    // const isLoggedIn = false
 
     // const preferencia = window.matchMedia('(prefers-color-scheme: escuro)').matches // Adicionar o tema preferido
     // const [tema, setTema] = useLocalStorage('tema', preferencia) // Adicionar o useLocalStorage (npm install use-local-storage)
@@ -24,7 +25,7 @@ const App = () => {
             ) : (
                 <Navigate to = "/welcome" replace />
             )} */}
-            <Navigate to = "/welcome" replace />
+            <DownloadContent />
         </div>
     )
 }

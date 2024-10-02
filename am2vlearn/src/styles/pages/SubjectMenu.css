@@ -1,0 +1,28 @@
+.SubjectMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    gap: 50px;
+}
+
+.SubjectMenu h1 {
+    font-size: 2.5rem;
+}
+
+.menu-btn {
+    background: var(--cor-fundo-input);
+    width: 25%;
+    height: 80px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    gap: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
