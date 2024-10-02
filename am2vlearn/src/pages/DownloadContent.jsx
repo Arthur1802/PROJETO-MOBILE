@@ -1,40 +1,43 @@
 import React from 'react'
 import download_icon from '../assets/icons/download.svg'
+import play_icon from '../assets/icons/play_icon.svg'
+import '../styles/pages/DownloadContent.css'
 
-const DownloadContent = ({ option }) => {
-    let imgSrc
-    let tema = 'dark'
+const DownloadContent = ({ option, tema }) => {
+    option = 'html'
+    tema = 'light'
 
-    switch (option) {
-        case 'html': 
-            imgSrc = require(`../assets/icons/html-${tema}.png`)
-            break
-        case 'css':
-            imgSrc = require(`../assets/icons/css-${tema}.png`)
-            break
-        case 'js':
-            imgSrc = require(`../assets/icons/js-${tema}.png`)
-            break
-        case 'all':
-            imgSrc = require(`../assets/icons/grouped_logos_${tema}.png`)
-            break
-        default:
-            imgSrc = ''
-    }
+    let imgSrc = require(`../assets/icons/${option}_${tema}.svg`)
+
+    let logo = require(`../assets/logo/sm_logo_${tema}.svg`)
 
     return (
-        <div>
+        <div className = "DownloadContent">
+            {/* <BackBtn /> */}
             <img
+                src = {logo}
+                alt = "Logo"
+            />
+
+            <img
+                className = "content-img"
                 src = {imgSrc}
                 alt = "Content"
             />
-            <button>
+            
+            <button className = 'download-content-btns download-content-btn poppins-semibold'>
                 BAIXAR MATERIAL DE APOIO
-            </button>
-            <button>
                 <img
                     src = {download_icon}
-                    alt = "Download Content"
+                    alt = ""
+                />
+            </button>
+            
+            <button className = 'download-content-btns start-btn poppins-semibold'>
+                COMEÇAR
+                <img
+                    src = {play_icon}
+                    alt = ""
                 />
             </button>
         </div>
