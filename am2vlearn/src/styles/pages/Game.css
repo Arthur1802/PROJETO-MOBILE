@@ -1,0 +1,40 @@
+.game-display {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  background-color: #FF651E;
+  padding: 20px;
+  width: 40%;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.game-question {
+  color: #FFF;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+.game-example {
+  background-color: rgb(30, 30, 30);
+  padding: 4px;
+  border-radius: 15px;
+}
+
+.game-example pre {
+  color: white;
+  background-color: rgb(30, 30, 30);
+  padding: 20px;
+}
