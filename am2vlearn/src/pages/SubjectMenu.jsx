@@ -3,7 +3,7 @@ import '../styles/pages/SubjectMenu.css'
 import html_logo from '../assets/icons/html_dark.svg'
 import css_logo from '../assets/icons/css_dark.svg'
 import js_logo from '../assets/icons/js_dark.svg'
-import grouped_logos from '../assets/icons/grouped_logo_light.svg'
+import grouped_logos from '../assets/icons/grouped_logos_light.svg'
 
 const SubjectMenu = () => {
     return (

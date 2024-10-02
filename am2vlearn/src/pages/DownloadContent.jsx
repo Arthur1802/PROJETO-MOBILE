@@ -1,4 +1,5 @@
 import React from 'react'
+import download_icon from '../assets/icons/download.svg'
 
 const DownloadContent = ({ option }) => {
     let imgSrc
@@ -17,6 +18,8 @@ const DownloadContent = ({ option }) => {
         case 'all':
             imgSrc = require(`../assets/icons/grouped_logos_${tema}.png`)
             break
+        default:
+            imgSrc = ''
     }
 
     return (
@@ -27,12 +30,11 @@ const DownloadContent = ({ option }) => {
             />
             <button>
                 BAIXAR MATERIAL DE APOIO
-                <img src = {download_icon} alt = "" />
             </button>
             <button>
                 <img
                     src = {download_icon}
-                    alt = ""
+                    alt = "Download Content"
                 />
             </button>
         </div>
