@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <link rel = "stylesheet" href = "style.css">
+        <title>AM2V Learn - Questões</title>
+    </head>
+    <body>
+        <div class = "game-display">
+            <select id = "seletor_modulo">
+                <option value = "">ESCOLHA O MÓDULO</option>
+                <option value = "html">HTML</option>
+                <option value = "css">CSS</option>
+                <option value = "js">JAVASCRIPT</option>
+                <option value = "grouped_logos">HTML, CSS E JAVASCRIPT</option>
+            </select>
+            <img class = "logo" src = "" alt = ""/>
+            <div class = "game-board" id = "game-board">
+                <input type = "text" id = "pergunta" placeholder = "Escreva a pergunta aqui">
+                <div class = "game-example">
+                    <textarea id = "codigo" placeholder = "Escreva o código aqui"></textarea>
+                </div>
+                <div class = "btns">
+                    <input type = "text" id = "alternativa1" placeholder = "Alternativa 1">
+                    <input type = "text" id = "alternativa2" placeholder = "Alternativa 2">
+                    <input type = "text" id = "alternativa3" placeholder = "Alternativa 3">
+                    <input type = "text" id = "alternativa4" placeholder = "Alternativa 4">
+                </div>
+                <input type = "text" id = "resposta" placeholder = "Resposta">
+            </div>
+        </div>
+        <button id = "btn_salvar">SALVAR</button>
+        <button id = "btn_limpar">LIMPAR</button>
+        <script src = "script.js"></script>
+    </body>
+</html>
