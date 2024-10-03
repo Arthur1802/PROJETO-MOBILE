@@ -18,11 +18,17 @@
   --azul-escuro: #0194BE;
   --azul-claro: #0FC3E8;
   --laranja: #F07E13;
+  --html-cor: #ff651e;
+  --css-cor: #004ce8;
+  --js-cor: #ffdf00;
 
   --cor-fundo: #F5F5F5;
   --cor-texto-primaria: #232323;
   --cor-placeholder: #F8F8F8;
   --cor-fundo-input: #B9B9B9;
+
+  --code-display-bg-color: #fff;
+  --code-display-color: #232323;
 }
 
 [data-theme = 'dark'] {
@@ -30,6 +36,9 @@
   --cor-texto-primaria: #F5F5F5;
   --cor-placeholder: #3A3A3A;
   --cor-fundo-input: rgba(0, 0, 0, 0.3);
+
+  --code-display-bg-color: #1e1e1e;
+  --code-display-color: #f5f5f5;
 }
 
 .poppins-thin {

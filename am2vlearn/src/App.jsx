@@ -4,7 +4,7 @@ import './styles/App.css'
 // import { isAuthenticated } from './utils/auth.js';
 // import { Navigate, Outlet } from 'react-router-dom';
 // import AlternaTema from './components/AlternaTema'
-import DownloadContent from './pages/DownloadContent'
+import Game from './pages/Game'
 
 const App = () => {
     // const isLoggedIn = false
@@ -25,7 +25,7 @@ const App = () => {
             ) : (
                 <Navigate to = "/welcome" replace />
             )} */}
-            <DownloadContent />
+            <Game />
         </div>
     )
 }
