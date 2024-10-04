@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn'
 import Welcome from './pages/Welcome'
 import Home from './pages/Home'
 import SubjectMenu from './pages/SubjectMenu';
+import GerenciadorDeQuestoes from './pages/GerenciadorDeQuestoes';
 import './styles/index.css';
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: 'subjectmenu',
         element: <ProtectedRoute element = {<SubjectMenu />} />,
+      },
+      {
+        path: 'gerenciadorDeQuestoes',
+        element: <ProtectedRoute element = {<GerenciadorDeQuestoes />} />,
       }
     ]
   }
