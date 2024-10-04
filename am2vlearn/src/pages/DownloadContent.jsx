@@ -4,9 +4,10 @@ import download_icon from '../assets/icons/download.svg'
 import play_icon from '../assets/icons/play_icon.svg'
 import '../styles/pages/DownloadContent.css'
 
-const DownloadContent = ({ tema }) => {
-    const { subject } = useLocation().state || {}
-    tema = 'light'
+const DownloadContent = () => {
+    const location = useLocation()
+    const { subject } = location.state || {} // Caso o state não exista, retorna undefined
+    const tema = 'light'
 
     let imgSrc = require(`../assets/icons/${subject}_${tema}.svg`)
 

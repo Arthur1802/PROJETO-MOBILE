@@ -1,41 +1,22 @@
 import React from 'react'
 import './styles/App.css' 
-// import useLocalStorage from 'use-local-storage-state'
 // import { isAuthenticated } from './utils/auth.js';
 // import { Navigate, Outlet } from 'react-router-dom';
-// import AlternaTema from './components/AlternaTema'
-// import GerenciadorDeQuestoes from './pages/GerenciadorDeQuestoes'
-// import SubjectMenu from './pages/SubjectMenu'
-// import DownloadContent from './pages/DownloadContent'
-import Menu from './pages/Menu'
+import SubjectMenu from './pages/SubjectMenu'
 
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
     // const isLoggedIn = false
 
-    // const preferencia = window.matchMedia('(prefers-color-scheme: escuro)').matches // Adicionar o tema preferido
-    // const [tema, setTema] = useLocalStorage('tema', preferencia) // Adicionar o useLocalStorage (npm install use-local-storage)
-
-
     return (
-        // <div data-theme = {tema ? 'escuro' : 'claro'}>
-        <div>
-            {/* <AlternaTema
-                isChecked = {tema}
-                hendleChange = {() => setTema(!tema)}
-            /> */}
+        <div className = "App">
             {/* {isLoggedIn ? (
                 <Outlet />
             ) : (
                 <Navigate to = "/welcome" replace />
             )} */}
-            {/* <GerenciadorDeQuestoes /> */}
-
-            <Menu />
-            {/* <SubjectMenu /> */}
-            {/* <DownloadContent /> */}
-
+            <SubjectMenu />
         </div>
     )
 }

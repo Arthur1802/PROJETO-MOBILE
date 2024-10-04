@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Modal from '../components/Modal'
-import hljs from 'highlight.js/lib/core';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/default.css';
 import '../styles/pages/GerenciadorDeQuestoes.css'
 
 
-const GerenciadorDeQuestoes = ({ tema }) => {
-    tema = 'light'
+const GerenciadorDeQuestoes = () => {
+    const tema = 'light'
     
     const [pergunta, setPergunta] = useState('')
     const [codigo, setCodigo] = useState('')
@@ -73,18 +74,6 @@ const GerenciadorDeQuestoes = ({ tema }) => {
 
     const formatarCodigo = async (codigo) => {
         try {
-            let language
-
-            if (modulo === 'html') {
-                language = await import('highlight.js/lib/languages/xml')
-            }
-
-            else {
-                language = await import(`highlight.js/lib/languages/${modulo}`)
-            }
-            
-            hljs.registerLanguage(modulo, language.default)
-            
             const codeBlock = document.getElementById('displayCodigo');
             codeBlock.innerText = codigo;
 

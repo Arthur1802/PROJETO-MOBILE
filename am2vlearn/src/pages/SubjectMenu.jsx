@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/pages/SubjectMenu.css'
 
-const SubjectMenu = ({ handleSubject, tema }) => {
+const SubjectMenu = () => {
+    const tema = 'light'
+    const navigate = useNavigate()
+    const [subject, setSubject] = useState('')
 
-    tema = 'light'
+    const handleSubject = (subject) => {
+        setSubject(subject)
+
+    }
+
+    if (subject !== undefined)
+        navigate(`/downloadcontent`, { state: { subject } })
+
 
     let logo = require(`../assets/logo/sm_logo_${tema}.svg`)
 

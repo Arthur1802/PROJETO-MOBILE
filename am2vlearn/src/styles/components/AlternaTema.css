@@ -1,7 +1,7 @@
 .toggle-container {
     display: flex;
     justify-content: end;
-    margin: min(1%, 10px) 20px 0 0;
+    padding: min(1%, 10px) 20px 0 0;
 }
 
 .toggle {
@@ -21,7 +21,7 @@
     width: 2em;
     border-radius: 1em;
     margin-right: 0.5em;
-    background: var(--theme-toggle-bg-color);
+    background: var(--cor-fundo-alterna-tema);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -30,7 +30,7 @@
     height: 1em;
     width: 1em;
     border-radius: 1em;
-    background: var(--theme-toggle-color);
+    background: var(--cor-alterna-tema);
     transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
     position: absolute;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -38,12 +38,16 @@
 
 .toggle:checked + label::after {
     transform: translateX(100%);
-    background: var(--theme-toggle-color);
+    background: var(--cor-alterna-tema);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+label {
+    color: var(--cor-texto-primaria);
+}
+
 #toggleSunIcon, #toggleMoonIcon {
-    fill: var(--text-color);
+    fill: var(--cor-texto-primaria);
     transition: fill 0.3s ease-in-out;
     width: 1.2em;
     height: 1.2em;

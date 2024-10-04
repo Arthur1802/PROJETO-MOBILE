@@ -1,3 +1,9 @@
+.App {
+    background: var(--cor-fundo);
+    width: 100vw;
+    height: 100vh;
+}
+
 div.img-cont {
     margin: 0 auto;
     margin-bottom: 10%;
