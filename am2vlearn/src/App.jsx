@@ -4,7 +4,12 @@ import './styles/App.css'
 // import { isAuthenticated } from './utils/auth.js';
 // import { Navigate, Outlet } from 'react-router-dom';
 // import AlternaTema from './components/AlternaTema'
-import Game from './pages/Game'
+// import GerenciadorDeQuestoes from './pages/GerenciadorDeQuestoes'
+// import SubjectMenu from './pages/SubjectMenu'
+// import DownloadContent from './pages/DownloadContent'
+import Menu from './pages/Menu'
+
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
     // const isLoggedIn = false
@@ -25,7 +30,12 @@ const App = () => {
             ) : (
                 <Navigate to = "/welcome" replace />
             )} */}
-            <Game />
+            {/* <GerenciadorDeQuestoes /> */}
+
+            <Menu />
+            {/* <SubjectMenu /> */}
+            {/* <DownloadContent /> */}
+
         </div>
     )
 }

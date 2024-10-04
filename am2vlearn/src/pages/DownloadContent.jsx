@@ -1,15 +1,18 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import download_icon from '../assets/icons/download.svg'
 import play_icon from '../assets/icons/play_icon.svg'
 import '../styles/pages/DownloadContent.css'
 
-const DownloadContent = ({ option, tema }) => {
-    option = 'html'
+const DownloadContent = ({ tema }) => {
+    const { subject } = useLocation().state || {}
     tema = 'light'
 
-    let imgSrc = require(`../assets/icons/${option}_${tema}.svg`)
+    let imgSrc = require(`../assets/icons/${subject}_${tema}.svg`)
 
     let logo = require(`../assets/logo/sm_logo_${tema}.svg`)
+
+    console.log('Página para baixar conteúdo')
 
     return (
         <div className = "DownloadContent">

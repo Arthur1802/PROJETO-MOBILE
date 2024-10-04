@@ -1,7 +1,8 @@
 import React from 'react'
 import '../styles/pages/SubjectMenu.css'
 
-const SubjectMenu = ({ tema }) => {
+const SubjectMenu = ({ handleSubject, tema }) => {
+
     tema = 'light'
 
     let logo = require(`../assets/logo/sm_logo_${tema}.svg`)
@@ -21,10 +22,53 @@ const SubjectMenu = ({ tema }) => {
 
             <h1>ESCOLHA A MATÉRIA</h1>
             
-            <button className = "menu-btn poppins-semibold"><img src = {html_logo} alt = "HTML" />HTML</button>
-            <button className = "menu-btn poppins-semibold"><img src = {css_logo} alt = "CSS" />CSS</button>
-            <button className = "menu-btn poppins-semibold"><img src = {js_logo} alt = "JS" />JS</button>
-            <button className = "menu-btn poppins-semibold"><img src = {grouped_logos} alt = "TODOS" />HTML, CSS E JS</button>
+            <button 
+                className = "menu-btn poppins-semibold" 
+                onClick = {(e) => handleSubject(e.target.value)} 
+                value = 'html'
+            >
+                <img 
+                    src = {html_logo} 
+                    alt = "HTML" 
+                />
+                HTML
+            </button>
+
+            <button 
+                className = "menu-btn poppins-semibold" 
+                onClick = {(e) => handleSubject(e.target.value)} 
+                value = 'css'
+            >
+                <img
+                    src = {css_logo} 
+                    alt = "CSS" 
+                />
+                CSS
+            </button>
+
+            <button 
+                className = "menu-btn poppins-semibold" 
+                onClick = {(e) => handleSubject(e.target.value)} 
+                value = 'js'
+            >
+                <img
+                    src = {js_logo} 
+                    alt = "JS" 
+                />
+                JS
+            </button>
+
+            <button
+                className = "menu-btn poppins-semibold" 
+                onClick = {(e) => handleSubject(e.target.value)} 
+                value = 'grouped_logos'
+            >
+                <img
+                    src = {grouped_logos}
+                    alt = "TODOS" 
+                />
+                HTML, CSS E JS
+            </button>
         </div>
     )
 }
