@@ -3,12 +3,29 @@ document.getElementById('seletor_modulo').addEventListener('change', () => {
     
     const logo = document.getElementsByClassName('logo')[0]
     
-    logo.src = `../am2vlearn/src/assets/icons/${option}_light.svg`
-    logo.alt = option
+    if (option !== '') {    
+        logo.src = `../am2vlearn/src/assets/icons/${option}_light.svg`
+        logo.alt = option
+    }
+
+    else {
+        logo.src = '../am2vlearn/src/assets/logo/sm_logo_light.svg'
+        logo.alt = 'Empty'
+    }
     
     const gameBoard = document.getElementById('game-board')
     
-    gameBoard.style.backgroundColor = `var(--${option}-cor)`
+    if (option !== '') {
+        gameBoard.style.backgroundColor = `var(--${option}-cor)`
+    } 
+
+    else if (option === 'grouped_logos') {
+        gameBoard.style.backgroundColor = '#03bb85'
+    }
+    
+    else {
+        gameBoard.style.backgroundColor = 'grey'
+    }
 })
 
 document.getElementById('btn_salvar').addEventListener('click', () => {
@@ -50,3 +67,12 @@ function adicionarQuestaoAoJson(novaQuestao) {
 
     console.log(`Nova questão adicionada: ${novaQuestao.questao}`)
 }
+
+document.getElementById('btn_limpar').addEventListener('click', () => {
+    document.getElementById('pergunta').textContent = ''
+    document.getElementById('codigo').textContent = ''
+    document.getElementById('resposta').textContent = ''
+    document.querySelectorAll('alternativas').textContent = ''
+
+    console.log('Campos limpos')
+})
