@@ -33,9 +33,9 @@
 }
 
 .game-example {
-  background-color: var(--code-display-bg-color);  padding: 4px;
+  background-color: var(--code-display-bg-color);  
+  padding: 4px;
   border-radius: 15px;
-
 }
 
 .game-example pre {

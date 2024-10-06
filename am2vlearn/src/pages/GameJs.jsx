@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import '../styles/pages/Game.css'
+import '../styles/pages/GameJs.css'
 // import Answers from './Answers'
 
 const Game = ({ option, questao }) => {
   const tema = 'light'
-  option = 'html'
+  option = 'js'
   
   let html = require(`../assets/icons/${option}_${tema}.svg`)
 

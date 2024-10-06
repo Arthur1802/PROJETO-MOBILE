@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from '../components/Modal'
-import hljs from 'highlight.js';
-import 'highlight.js/styles/default.css';
+// import hljs from 'highlight.js';
+// import 'highlight.js/styles/default.css';
 import '../styles/pages/GerenciadorDeQuestoes.css'
 
 
@@ -72,18 +72,18 @@ const GerenciadorDeQuestoes = () => {
         console.log(`Nova questão adicionada: ${novaQuestao.questao}`)
     }
 
-    const formatarCodigo = async (codigo) => {
-        try {
-            const codeBlock = document.getElementById('displayCodigo');
-            codeBlock.innerText = codigo;
+    // const formatarCodigo = async (codigo) => {
+    //     try {
+    //         const codeBlock = document.getElementById('displayCodigo');
+    //         codeBlock.innerText = codigo;
 
-            hljs.highlightElement(codeBlock);
-        }
+    //         hljs.highlightElement(codeBlock);
+    //     }
         
-        catch (error) {
-            console.error(`Erro ao carregar a linguagem ${modulo}:`, error);
-        }
-    };    
+    //     catch (error) {
+    //         console.error(`Erro ao carregar a linguagem ${modulo}:`, error);
+    //     }
+    // };    
 
     return (
         <div className = "GerenciadorDeQuestoes">
@@ -145,7 +145,7 @@ const GerenciadorDeQuestoes = () => {
             </div>
             <Modal
                 id = "editor-codigo"
-                formatarCodigo = {formatarCodigo}
+                // formatarCodigo = {formatarCodigo}
             />
         </div>
     );

@@ -1,11 +1,12 @@
-import React from 'react'
-import '../styles/pages/Game.css'
+import React, { useEffect } from 'react'
+import '../styles/pages/GameAll.css'
 // import Answers from './Answers'
 
-const Game = ({ questao }) => {
+const Game = ({ option, questao }) => {
+  option = 'grouped_logos'
   const tema = 'light'
   
-  let html = require(`../assets/icons/grouped_logos_${tema}.svg`)
+  let html = require(`../assets/icons/${option}_${tema}.svg`)
 
   const respostas = [
     {id: 1, resposta: "<p>"},
@@ -16,8 +17,10 @@ const Game = ({ questao }) => {
   
   let gameQuestion = `<>Lorem, ipsum dolor sit amet.</>` //questao
 
-  const gameBoard = document.getElementById('game-board')
-  gameBoard.style.backgroundColor = `var(--grouped-logos-cor)`
+  useEffect(() => {
+    const gameBoard = document.getElementById('game-board')
+    gameBoard.style.backgroundColor = `var(--${option}-cor)`
+  }, [option])
 
 
   return (
@@ -25,7 +28,7 @@ const Game = ({ questao }) => {
         <img 
           className = "logo"
           src = {html}
-          alt = "Todos"
+          alt = {option}
         />
         <div className = 'game-board' id = "game-board">
             <p className = 'game-question'>
