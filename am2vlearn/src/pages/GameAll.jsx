@@ -1,21 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/pages/GameAll.css'
 // import Answers from './Answers'
+import questoesAll from '../database/dataAll.json'
+import correct from '../assets/audio/correct.wav'
+import wrong from '../assets/audio/wrong.wav'
 
 const Game = ({ option, questao }) => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+
   option = 'grouped_logos'
   const tema = 'light'
   
   let html = require(`../assets/icons/${option}_${tema}.svg`)
 
-  const respostas = [
-    {id: 1, resposta: "<p>"},
-    {id: 2, resposta: "<para>"},
-    {id: 3, resposta: "<paragraph>"},
-    {id: 4, resposta: "<div>"},
-  ]
-  
-  let gameQuestion = `<>Lorem, ipsum dolor sit amet.</>` //questao
+  const questoes = questoesAll[currentQuestion];
+
+  const handleAnswer = (selectedAnswer) => {
+    const isCorrect = selectedAnswer.isCorrect;
+    if (isCorrect) {
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }]);
+      setCurrentQuestion(currentQuestion + 1);
+      new Audio(correct).play();
+    } else {
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }]);
+      setCurrentQuestion(currentQuestion + 1);
+      new Audio(wrong).play();
+    }
+  } 
 
   useEffect(() => {
     const gameBoard = document.getElementById('game-board')
@@ -24,30 +36,44 @@ const Game = ({ option, questao }) => {
 
 
   return (
-    <div className = 'game-display'>
-        <img 
-          className = "logo"
-          src = {html}
-          alt = {option}
-        />
-        <div className = 'game-board' id = "game-board">
-            <p className = 'game-question'>
-              1. Qual tag é usada para definir um parágrafo em HTML?
+    <div>
+      {currentQuestion < questoesAll.length ? (
+        <div className='game-display'>
+          <img 
+            className="logo"
+            src={html}
+            alt={option}
+          />
+          <div className='game-board' id="game-board">
+            <p className='game-question'>
+              {questoes.pergunta}
             </p>
 
-            <div className = 'game-example'>
+            <div className='game-example'>
               <pre>
                 <code>
-                  {gameQuestion}
+                  {questoes.exemplo}
                 </code>
               </pre>
             </div>
-            {respostas.map((resposta) => (
+            {questoes.respostas.map((resposta) => (
               // <Answers key = {resposta.id} resposta = {resposta.resposta}/>
-              <button key = {resposta} className = 'game-answer-btns poppins-semibold'>{resposta.resposta}</button>
+              <button 
+                key={resposta.id} 
+                className='game-answer-btns poppins-semibold'
+                onClick={() => handleAnswer(resposta)}
+              >
+                {resposta.resposta}
+              </button>
             ))}
-
+          </div>
         </div>
+      ) : (
+        <div className='end-game'>
+          <h1>Parabéns, você concluiu o quiz!</h1>
+          <h2>Seu score foi de {userAnswers.filter((answer) => answer.correct).length} de {questoesAll.length}</h2>
+        </div>
+      )}
     </div>
   )
 }
