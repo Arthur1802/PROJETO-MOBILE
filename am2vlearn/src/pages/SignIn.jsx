@@ -27,7 +27,15 @@ const SignIn = () => {
         }
 
         else {
-            
+            if (!values.nome || !values.email || !values.senha) {
+                setErrors({ 
+                    nome: !values.nome ? 'Nome é obrigatório' : '', 
+                    email: !values.email ? 'Email é obrigatório' : '', 
+                    senha: !values.senha ? 'Senha é obrigatória' : '' 
+                })
+                
+                return
+            }
 
             setMostrarSenha(!mostrarSenha)
         }
