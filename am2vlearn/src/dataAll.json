@@ -1,0 +1,152 @@
+[
+  {
+    "pergunta": "Como você altera a cor de fundo de um elemento em CSS?",
+    "exemplo": "______: blue; ",
+    "respostas": [
+      { "id": 1, "resposta": "background: color;", "isCorrect": false },
+      { "id": 2, "resposta": "color: background;", "isCorrect": false },
+      { "id": 3, "resposta": "background-color: color;", "isCorrect": true },
+      { "id": 4, "resposta": "bg-color: color;", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Qual método JavaScript é usado para selecionar um elemento pelo seu ID?",
+    "exemplo": "document._____('meuElemento');",
+    "respostas": [
+      { "id": 1, "resposta": "document.getElementById()", "isCorrect": true },
+      { "id": 2, "resposta": "document.querySelector()", "isCorrect": false },
+      { "id": 3, "resposta": "document.selectById()", "isCorrect": false },
+      { "id": 4, "resposta": "document.getId()", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você adiciona um evento de clique a um botão usando JavaScript?",
+    "exemplo": "document.getElementById('botao')._____ = function()};",
+    "respostas": [
+      { "id": 1, "resposta": "button.onclick = function() {}", "isCorrect": true },
+      { "id": 2, "resposta": "addEventListener(button, 'click', function() {})", "isCorrect": false },
+      { "id": 3, "resposta": "button.addEvent('click', function() {})", "isCorrect": false },
+      { "id": 4, "resposta": "button.click(function() {})", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você pode criar uma lista não ordenada em HTML?",
+    "exemplo": "<__><li>Item 1</li></__>",
+    "respostas": [
+      { "id": 1, "resposta": "<ol>", "isCorrect": false },
+      { "id": 2, "resposta": "<ul>", "isCorrect": true },
+      { "id": 3, "resposta": "<list>", "isCorrect": false },
+      { "id": 4, "resposta": "<items>", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você aplica estilos a um elemento com uma classe chamada 'ativo' em CSS?",
+    "exemplo": "____ { color: red; }",
+    "respostas": [
+      { "id": 1, "resposta": "#ativo {}", "isCorrect": false },
+      { "id": 2, "resposta": ".ativo {}", "isCorrect": true },
+      { "id": 3, "resposta": "ativo {}", "isCorrect": false },
+      { "id": 4, "resposta": "*ativo {}", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Qual comando em JavaScript é usado para exibir uma mensagem no console?",
+    "exemplo": "_____.___('Mensagem no console');",
+    "respostas": [
+      { "id": 1, "resposta": "console.alert()", "isCorrect": false },
+      { "id": 2, "resposta": "console.log()", "isCorrect": true },
+      { "id": 3, "resposta": "log.console()", "isCorrect": false },
+      { "id": 4, "resposta": "console.write()", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você define uma imagem em HTML?",
+    "exemplo": "<___ ='_____' >",
+    "respostas": [
+      { "id": 1, "resposta": "<img src='url'>", "isCorrect": true },
+      { "id": 2, "resposta": "<image src='url'>", "isCorrect": false },
+      { "id": 3, "resposta": "<picture src='url'>", "isCorrect": false },
+      { "id": 4, "resposta": "<img href='url'>", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "O que a propriedade 'display: flex;' faz em CSS?",
+    "exemplo": "div { display: flex; }",
+    "respostas": [
+      { "id": 1, "resposta": "Cria uma lista vertical", "isCorrect": false },
+      { "id": 2, "resposta": "Alinha elementos em um layout flexível", "isCorrect": true },
+      { "id": 3, "resposta": "Alinha texto em um parágrafo", "isCorrect": false },
+      { "id": 4, "resposta": "Define uma borda em um elemento", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Qual é o operador para concatenar strings em JavaScript?",
+    "exemplo": "let texto = 'Olá' _ ' Mundo!';",
+    "respostas": [
+      { "id": 1, "resposta": "+", "isCorrect": true },
+      { "id": 2, "resposta": "&", "isCorrect": false },
+      { "id": 3, "resposta": ".", "isCorrect": false },
+      { "id": 4, "resposta": "*", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você define uma variável constante em JavaScript?",
+    "exemplo": "____ nome = 'João';",
+    "respostas": [
+      { "id": 1, "resposta": "const nome;", "isCorrect": true },
+      { "id": 2, "resposta": "let nome;", "isCorrect": false },
+      { "id": 3, "resposta": "var nome;", "isCorrect": false },
+      { "id": 4, "resposta": "constant nome;", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Qual tag HTML é usada para inserir um script JavaScript?",
+    "exemplo": "<____ src='app.js'></____>",
+    "respostas": [
+      { "id": 1, "resposta": "<script>", "isCorrect": true },
+      { "id": 2, "resposta": "<js>", "isCorrect": false },
+      { "id": 3, "resposta": "<code>", "isCorrect": false },
+      { "id": 4, "resposta": "<style>", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você pode aplicar uma sombra a um texto em CSS?",
+    "exemplo": "h1 { _____: _____; }",
+    "respostas": [
+      { "id": 1, "resposta": "text-shadow: 2px 2px 5px black;", "isCorrect": true },
+      { "id": 2, "resposta": "shadow: text;", "isCorrect": false },
+      { "id": 3, "resposta": "font-shadow: 2px 2px;", "isCorrect": false },
+      { "id": 4, "resposta": "text-effect: shadow;", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "O que faz a função Math.random() em JavaScript?",
+    "exemplo": "let num = Math.random();",
+    "respostas": [
+      { "id": 1, "resposta": "Retorna um número inteiro", "isCorrect": false },
+      { "id": 2, "resposta": "Retorna um número aleatório entre 0 e 1", "isCorrect": true },
+      { "id": 3, "resposta": "Retorna um número aleatório entre dois valores especificados", "isCorrect": false },
+      { "id": 4, "resposta": "Gera um número fixo", "isCorrect": false }
+    ]
+  },
+  {
+    "pergunta": "Como você cria um botão em HTML?",
+    "exemplo": "<_____>Enviar</____>",
+    "respostas": [
+      { "id": 1, "resposta": "<button>", "isCorrect": true },
+      { "id": 2, "resposta": "<input type='button'>", "isCorrect": false },
+      { "id": 3, "resposta": "<btn>", "isCorrect": false },
+      { "id": 4, "resposta": "Ambas a) e b)", "isCorrect": true }
+    ]
+  },
+  {
+    "pergunta": "Qual é a propriedade CSS usada para alterar a opacidade de um elemento?",
+    "exemplo": "div { _____: 0.5; }",
+    "respostas": [
+      { "id": 1, "resposta": "visibility", "isCorrect": false },
+      { "id": 2, "resposta": "opacity", "isCorrect": true },
+      { "id": 3, "resposta": "display", "isCorrect": false },
+      { "id": 4, "resposta": "transparency", "isCorrect": false }
+    ]
+  }
+]
