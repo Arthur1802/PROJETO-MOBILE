@@ -28,6 +28,11 @@ const LogIn = () => {
     }
 
     const authenticate = () => {
+        if (!values.email || !values.senha) {
+            setErrors({ email: !values.email ? 'Email é obrigatório' : '', senha: !values.senha ? 'Senha é obrigatória' : '' });
+            return;
+        }
+        
         setErrors(Login(values))
     }
 

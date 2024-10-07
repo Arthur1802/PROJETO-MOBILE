@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Signin } from '../utils/auth.js'
+import { Signin } from '../utils/authentiation.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
@@ -27,6 +27,8 @@ const SignIn = () => {
         }
 
         else {
+            
+
             setMostrarSenha(!mostrarSenha)
         }
     }
