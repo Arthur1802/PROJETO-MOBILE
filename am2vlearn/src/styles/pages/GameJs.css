@@ -33,14 +33,14 @@
 }
 
 .game-example {
-  background-color: var(--code-display-bg-color);  padding: 4px;
+  background-color: var(--code-display-color);  padding: 4px;
   border-radius: 15px;
 
 }
 
 .game-example pre {
-  color: var(--code-display-color);
-  background-color: var(--code-display-bg-color);
+  color: var(--code-display-bg-color);
+  background-color: var(--code-display-color);
   padding: 20px;
 }
 
@@ -54,4 +54,13 @@
   border-radius: 10px;
   border: none;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.end-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+  background: var(--cor-fundo);
 }
