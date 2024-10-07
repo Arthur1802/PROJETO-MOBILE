@@ -1,3 +1,6 @@
+html {
+    background: var(--cor-fundo);
+}
 .App {
     background: var(--cor-fundo);
     width: 100vw;
