@@ -5,7 +5,7 @@ import questoesHtml from '../database/dataHtml.json'
 import correct from '../assets/audio/correct.wav'
 import wrong from '../assets/audio/wrong.wav'
 
-const Game = (option) => {
+const GameHtml = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
@@ -78,4 +78,4 @@ const Game = (option) => {
   )
 }
 
-export default Game
+export default GameHtml
