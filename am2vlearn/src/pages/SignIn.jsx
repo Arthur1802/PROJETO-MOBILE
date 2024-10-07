@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Signin } from '../utils/authentiation.js'
+// import { Signin } from '../utils/authentiation.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
@@ -45,9 +45,9 @@ const SignIn = () => {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const authenticate = () => {
-        setErrors(Signin(values))
-    }
+    // const authenticate = () => {
+    //     setErrors(Signin(values))
+    // }
 
     return (
         <div>
@@ -129,7 +129,7 @@ const SignIn = () => {
                     </div>
                     {errors.confirmacao && <span>{errors.confirmacao}</span>}
                     <div className = "btn-cont-auth">
-                        <button className = "btns azul-claro" id = "btnCriarConta" onClick = {authenticate}>CRIAR CONTA</button>
+                        <button className = "btns azul-claro" id = "btnCriarConta">CRIAR CONTA</button>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 

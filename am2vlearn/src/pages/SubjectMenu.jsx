@@ -5,11 +5,13 @@ import '../styles/pages/SubjectMenu.css'
 const SubjectMenu = () => {
     const tema = 'light'
     const navigate = useNavigate()
+    
     const [subject, setSubject] = useState('')
+    console.log(`Subject: ${subject}`)
 
     const handleSubject = (subject) => {
         setSubject(subject)
-
+        console.log(`Subject: ${subject}`)
     }
 
     if (subject !== undefined)

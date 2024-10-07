@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import arrow_left from '../assets/icons/arrow-left.svg'
 import '../styles/pages/GameAll.css'
 // import Answers from './Answers'
 import questoesAll from '../database/dataAll.json'
@@ -39,6 +41,13 @@ const GameAll = ({ option, questao }) => {
     <div>
       {currentQuestion < questoesAll.length ? (
         <div className='game-display'>
+          <Link className = "backBtn" to = "/">
+            <img
+                className = "icons"
+                src = {arrow_left}
+                alt = ""
+            ></img>
+          </Link>
           <img 
             className="logo"
             src={html}
