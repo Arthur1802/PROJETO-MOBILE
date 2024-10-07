@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/components/Modal.css'
 
-const Modal = ({ id, formatarCodigo }) => {
+const EditorDeCodigo = ({ id, formatarCodigo }) => {
     const [codigo, setCodigo] = useState('')
 
     return (
@@ -29,4 +29,4 @@ const Modal = ({ id, formatarCodigo }) => {
     )
 }
 
-export default Modal
+export default EditorDeCodigo

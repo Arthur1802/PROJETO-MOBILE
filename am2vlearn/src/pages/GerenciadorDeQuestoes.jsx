@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Modal from '../components/Modal'
+import EditorDeCodigo from '../components/EditorDeCodigo'
 // import hljs from 'highlight.js';
 // import 'highlight.js/styles/default.css';
 import '../styles/pages/GerenciadorDeQuestoes.css'
@@ -143,7 +143,7 @@ const GerenciadorDeQuestoes = () => {
                 <button id = "btn_salvar" onClick = {handleSalvar}>SALVAR</button>
                 <button id = "btn_limpar" onClick = {handleClear}>LIMPAR</button>
             </div>
-            <Modal
+            <EditorDeCodigo
                 id = "editor-codigo"
                 // formatarCodigo = {formatarCodigo}
             />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Login } from '../utils/auth.js'
+// import { Login } from '../utils/auth.js'
+import { Login } from '../utils/authentication.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
