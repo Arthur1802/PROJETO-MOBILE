@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 // import { Login } from '../utils/auth.js'
 import { Login } from '../utils/authentication.js'
+import axios from 'axios'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
@@ -27,13 +28,29 @@ const LogIn = () => {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const authenticate = () => {
+    const authenticate = async () => {
         if (!values.email || !values.senha) {
-            setErrors({ email: !values.email ? 'Email é obrigatório' : '', senha: !values.senha ? 'Senha é obrigatória' : '' });
-            return;
+            setErrors({ email: !values.email ? 'Email é obrigatório' : '', senha: !values.senha ? 'Senha é obrigatória' : '' })
+            return
         }
         
-        setErrors(Login(values))
+        else {
+            try {
+                const res = await axios.get('http://localhost:3001/validate')
+                if (res.data.data.find(user => user.email === values.email)) {
+                    console.log('Email encontrado')
+                }
+            }
+
+            catch (err) {
+                console.error('Erro ao realizar login:', err)
+                setErrors({ general: 'Erro no sistema, tente novamente mais tarde' })
+            }
+
+            return;
+        }
+
+        // setErrors(Login(values))
     }
 
     return (
