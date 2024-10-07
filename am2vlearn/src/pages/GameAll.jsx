@@ -5,7 +5,7 @@ import questoesAll from '../database/dataAll.json'
 import correct from '../assets/audio/correct.wav'
 import wrong from '../assets/audio/wrong.wav'
 
-const Game = ({ option, questao }) => {
+const GameAll = ({ option, questao }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
@@ -78,4 +78,4 @@ const Game = ({ option, questao }) => {
   )
 }
 
-export default Game
+export default GameAll
