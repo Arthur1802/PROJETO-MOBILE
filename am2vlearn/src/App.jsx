@@ -1,22 +1,20 @@
 import React from 'react'
 import './styles/App.css' 
 // import { isAuthenticated } from './utils/auth.js';
-// import { Navigate, Outlet } from 'react-router-dom';
-import GameAll from './pages/GameAll.jsx'
-
+import { isAuthenticated } from './utils/authentication.js';
+import { Navigate, Outlet } from 'react-router-dom';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
-    // const isLoggedIn = false
+    const isLoggedIn = isAuthenticated()
 
     return (
         <div className = "App">
-            {/* {isLoggedIn ? (
+            {isLoggedIn === true ? (
                 <Outlet />
             ) : (
                 <Navigate to = "/welcome" replace />
-            )} */}
-            <GameAll />
+            )}
         </div>
     )
 }
