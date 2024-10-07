@@ -33,14 +33,14 @@
 }
 
 .game-example {
-  background-color: var(--code-display-bg-color);  padding: 4px;
+  background-color: var(--code-display-color);  padding: 4px;
   border-radius: 15px;
 
 }
 
 .game-example pre {
-  color: var(--code-display-color);
-  background-color: var(--code-display-bg-color);
+  color: var(--code-display-bg-color);
+  background-color: var(--code-display-color);
   padding: 20px;
 }
 
