@@ -63,6 +63,10 @@ export const Signin = async (nome, email, senha) => {
     }
 }
 
+export const Proceed = () => {
+    userAuthenticated = true
+}
+
 export const isAuthenticated = () => {
     return userAuthenticated
 }

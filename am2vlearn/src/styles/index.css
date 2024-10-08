@@ -69,15 +69,3 @@
 .shadow-effect {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
-.backBtn {
-  width: 45%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.backBtn img {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
