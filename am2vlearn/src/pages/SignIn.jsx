@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { Signin } from '../utils/authentiation.js'
+import { Signin } from '../utils/authentication.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
@@ -25,18 +25,8 @@ const SignIn = () => {
         if (isConfirm) {
             setMostrarConfirmarSenha(!mostrarConfirmarSenha)
         }
-
+        
         else {
-            if (!values.nome || !values.email || !values.senha) {
-                setErrors({ 
-                    nome: !values.nome ? 'Nome é obrigatório' : '', 
-                    email: !values.email ? 'Email é obrigatório' : '', 
-                    senha: !values.senha ? 'Senha é obrigatória' : '' 
-                })
-                
-                return
-            }
-
             setMostrarSenha(!mostrarSenha)
         }
     }
@@ -45,15 +35,19 @@ const SignIn = () => {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    // const authenticate = () => {
-    //     setErrors(Signin(values))
-    // }
+    const authenticate = () => {
+        setErrors(Signin(values))
+    }
+
+    if (!errors) {
+        alert('Conta criada com sucesso!')
+    }
 
     return (
         <div>
             <div className = "auth-panel">
                 <div className = "arrow-cont">
-                    <Link className = "backBtn" to = "/welcome">
+                    <Link className = "backBtn" to = "/">
                         <img
                             className = "icons"
                             src = {arrow_left}
@@ -129,7 +123,7 @@ const SignIn = () => {
                     </div>
                     {errors.confirmacao && <span>{errors.confirmacao}</span>}
                     <div className = "btn-cont-auth">
-                        <button className = "btns azul-claro" id = "btnCriarConta">CRIAR CONTA</button>
+                        <button className = "btns azul-claro" id = "btnCriarConta" onClick = {authenticate}>CRIAR CONTA</button>
                         <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                     </div>
 

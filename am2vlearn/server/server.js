@@ -40,4 +40,27 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/signin', (req, res) => {
+    const { nome, email, senha } = req.body
+
+    db.run('SELECT * FROM usuario WHERE email = ?', [email], (err, row) => {
+        if (row) {
+            res.send({error: 'Email já cadastrado'})
+        }
+
+        else {
+            db.run('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)', [nome, email, senha], (err) => {
+                if (err) {
+                    console.log(err)
+                    res.send({validation: false})
+                }
+                
+                else {
+                    res.send({validation: true})
+                }
+            })
+        }
+    })
+})
+
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

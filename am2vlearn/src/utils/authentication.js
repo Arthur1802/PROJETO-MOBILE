@@ -1,73 +1,64 @@
-import { getEmailUsuario, getSenhaUsuario } from '../database/db_consulta.js'
-import { setUsuario } from '../database/db_insercao.js'
+import axios from 'axios'
 
 let errors = {}
 let userAuthenticated = false
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export const Login = async (email, senha) => {
-    errors = {} // Resetar erros a cada tentativa
-    try {
-        if (!emailRegex.test(email)) {
-            errors.email = 'Email inválido'
-            return errors
+    if (emailRegex.test(email)) {
+        if (senha.length >= 8) {
+            try {
+                const res = await axios.post('http://localhost:3001/login', email, senha)
+                userAuthenticated = res.data.validation
+            }
+
+            catch (err) {
+                console.log(err)
+                errors.login = "Erro ao fazer login"
+                return errors
+            }
         }
 
-        const emailEncontrado = await getEmailUsuario(email)
-        if (email !== emailEncontrado) {
-            errors.email = 'Email não encontrado'
-            return errors
+        else {
+            errors.senha = "Senha deve ter no mínimo 8 caracteres";
+            return errors;
         }
-
-        if (senha.length < 8) {
-            errors.senha = 'Senha deve ter pelo menos 8 caracteres'
-            return errors
-        }
-
-        const senhaCorreta = await getSenhaUsuario(email)
-        if (senha !== senhaCorreta) {
-            errors.senha = 'Senha incorreta'
-            return errors
-        }
-
-        userAuthenticated = true
-        return errors
-    } catch (err) {
-        console.error('Erro ao realizar login:', err)
-        errors.general = 'Erro no sistema, tente novamente mais tarde'
+    }
+    
+    else {
+        errors.email = "Email inválido"
         return errors
     }
 }
 
-export const SignIn = async (nome, email, senha) => {
-    errors = {} // Resetar erros a cada tentativa
-    try {
-        if (!emailRegex.test(email)) {
-            errors.email = 'Email inválido'
-            return errors
+export const Signin = async (nome, email, senha) => {
+    if (emailRegex.test(email)) {
+        if (senha.length >= 8) {
+            try {
+                const res = await axios.post('http://localhost:3001/signin', nome, email, senha)
+                if (res.data.error) {
+                    errors.email = res.data.error
+                    return errors
+                }
+
+                userAuthenticated = res.data.validation
+            }
+
+            catch (err) {
+                console.log(err)
+                errors.signin = "Erro ao fazer login"
+                return errors
+            }
         }
 
-        const emailEncontrado = await getEmailUsuario(email)
-        if (emailEncontrado) {
-            errors.email = 'Email já está em uso'
-            return errors
+        else {
+            errors.senha = "Senha deve ter no mínimo 8 caracteres";
+            return errors;
         }
-
-        if (senha.length < 8) {
-            errors.senha = 'Senha deve ter pelo menos 8 caracteres'
-            return errors
-        }
-
-        const usuarioCriado = await setUsuario(nome, email, senha)
-        if (!usuarioCriado) {
-            errors.signin = 'Erro ao criar conta'
-            return errors
-        }
-
-        return errors
-    } catch (err) {
-        console.error('Erro ao criar conta:', err)
-        errors.general = 'Erro no sistema, tente novamente mais tarde'
+    }
+    
+    else {
+        errors.email = "Email inválido"
         return errors
     }
 }

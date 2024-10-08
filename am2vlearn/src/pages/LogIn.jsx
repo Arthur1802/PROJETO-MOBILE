@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 // import { Login } from '../utils/auth.js'
-// import { Login } from '../utils/authentication.js'
-import axios from 'axios'
+import { Login } from '../utils/authentication.js'
 import sm_logo from '../assets/logo/sm_logo_light.svg'
 import google_icon from '../assets/icons/google-icon.svg'
 import eye_icon from '../assets/icons/eye-icon.svg'
@@ -35,28 +34,18 @@ const LogIn = () => {
         }
         
         else {
-            try {
-                const res = await axios.get('http://localhost:3001/validate')
-                if (res.data.data.find(user => user.email === values.email)) {
-                    console.log('Email encontrado')
-                }
-            }
-
-            catch (err) {
-                console.error('Erro ao realizar login:', err)
-                setErrors({ general: 'Erro no sistema, tente novamente mais tarde' })
-            }
-
-            return;
+            setErrors(Login(values.email, values.senha))
         }
+    }
 
-        // setErrors(Login(values))
+    if (!errors) {
+        alert('Login efetuado com sucesso!')
     }
 
     return (
         <div className = "auth-panel">
             <div className = "arrow-cont">
-                <Link className = "backBtn" to = "/welcome">
+                <Link className = "backBtn" to = "/">
                     <img
                         className = "icons"
                         src = {arrow_left}
@@ -100,7 +89,7 @@ const LogIn = () => {
                 </div>
                 {errors.senha && <span>{errors.senha}</span>}
                 <div className = "btn-cont-auth">
-                    <Link className = "btns azul-claro" id = "btnLogin" to = "/login" onClick = {authenticate}>ENTRAR</Link>
+                    <button className = "btns azul-claro" id = "btnLogin" onClick = {authenticate}>ENTRAR</button>
                     <button className = "btns laranja" id = "btnLimpar">LIMPAR</button>
                 </div>
 
