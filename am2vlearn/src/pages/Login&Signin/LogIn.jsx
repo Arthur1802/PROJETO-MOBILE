@@ -59,7 +59,7 @@ const LogIn = () => {
 
     return (
         <div className = "auth-panel">
-            <BackBtn />
+            <BackBtn link = {'/'}/>
             <div className = "img-cont">
                 <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
             </div>

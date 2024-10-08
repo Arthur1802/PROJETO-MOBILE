@@ -1,10 +1,18 @@
 import React from 'react'
 import back_icon from '../../assets/icons/arrow-left.svg'
 import './BackBtn.css'
+import { useNavigate } from 'react-router-dom'
 
-const BackBtn = () => {
+const BackBtn = ({ link }) => {
+    const navigate = useNavigate()
+
     const handleBack = () => {
-        window.history.back()
+        if (link !== '') {
+            navigate(link)        
+        } 
+        else {
+            window.history.back()
+        }
     }
 
     return (
