@@ -5,11 +5,11 @@
   justify-content: center;
   height: 100%;
   width: 25%;
-  margin: 5% auto;
+  margin: 0 auto;
 }
 
 .DownloadContent .content-img {
-  margin: 25% auto;
+  margin: 10% auto;
   width: 100px;
   height: 100px;
 }
@@ -34,6 +34,11 @@
 
 .DownloadContent .download-content-btn {
   background: var(lightgrey);
+}
+
+.DownloadContent .download-content-btn {
+  text-decoration: none;
+  color: var(--primary-text-color);
 }
 
 .DownloadContent .start-btn {

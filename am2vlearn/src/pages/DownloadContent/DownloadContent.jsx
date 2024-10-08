@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import download_icon from '../assets/icons/download.svg'
-import arrow_left from '../assets/icons/arrow-left.svg'
-import play_icon from '../assets/icons/play_icon.svg'
-import '../styles/pages/DownloadContent.css'
+import { useNavigate, useLocation } from 'react-router-dom'
+import download_icon from '../../assets/icons/download.svg'
+import play_icon from '../../assets/icons/play_icon.svg'
+import './DownloadContent.css'
+import BackBtn from '../../components/BackBtn/BackBtn'
 
 const DownloadContent = () => {
     const navigate = useNavigate()
@@ -11,21 +11,15 @@ const DownloadContent = () => {
     const { subject } = location.state || {} // Caso o state não exista, retorna undefined
     const tema = 'light'
 
-    let imgSrc = require(`../assets/icons/${subject}_${tema}.svg`)
+    let imgSrc = require(`../../assets/icons/${subject}_${tema}.svg`)
 
-    let logo = require(`../assets/logo/sm_logo_${tema}.svg`)
+    let logo = require(`../../assets/logo/sm_logo_${tema}.svg`)
 
     console.log('Página para baixar conteúdo')
 
     return (
         <div className = "DownloadContent">
-            <Link className = "backBtn" to = "/">
-                <img
-                    className = "icons"
-                    src = {arrow_left}
-                    alt = ""
-                ></img>
-            </Link>
+            <BackBtn />
             <img
                 src = {logo}
                 alt = "Logo"
@@ -37,13 +31,13 @@ const DownloadContent = () => {
                 alt = "Content"
             />
             
-            <button className = 'download-content-btns download-content-btn poppins-semibold'>
-                <a href = "https://drive.google.com/file/d/1w3lQSJ6WEXFPlsKCpXSb5YgeUJuPa73K/view?usp=sharing">BAIXAR MATERIAL DE APOIO</a>
+            <a href = {`/content/${subject}.pdf`} download className = 'download-content-btns download-content-btn poppins-semibold'>
+                BAIXAR MATERIAL DE APOIO
                 <img
                     src = {download_icon}
                     alt = ""
                 />
-            </button>
+            </a>
             
             <button className = 'download-content-btns start-btn poppins-semibold'>
                 COMEÇAR

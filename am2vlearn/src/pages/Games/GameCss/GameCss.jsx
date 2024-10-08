@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import arrow_left from '../assets/icons/arrow-left.svg'
-import '../styles/pages/GameJs.css'
+import arrow_left from '../../../assets/icons/arrow-left.svg'
+import './GameCss.css'
 // import Answers from './Answers'
-import questoesJs from '../database/dataJs.json'
-import correct from '../assets/audio/correct.wav'
-import wrong from '../assets/audio/wrong.wav'
+import questoesCss from '../../../database/dataCss.json'
+import correct from '../../../assets/audio/correct.wav'
+import wrong from '../../../assets/audio/wrong.wav'
 
-const GameJs = (option) => {
+const GameCss = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  option = 'js'
+  option = 'css'
   const tema = 'light'
   
-  let html = require(`../assets/icons/${option}_${tema}.svg`)
+  let html = require(`../../../assets/icons/${option}_${tema}.svg`)
 
-  const questoes = questoesJs[currentQuestion];
+  const questoes = questoesCss[currentQuestion];
 
   const handleAnswer = (selectedAnswer) => {
     const isCorrect = selectedAnswer.isCorrect;
@@ -39,7 +39,7 @@ const GameJs = (option) => {
 
   return (
     <div>
-      {currentQuestion < questoesJs.length ? (
+      {currentQuestion < questoesCss.length ? (
         <div className='game-display'>
           <Link className = "backBtn" to = "/">
             <img
@@ -80,11 +80,11 @@ const GameJs = (option) => {
       ) : (
         <div className='end-game'>
           <h1>Parabéns, você concluiu o quiz!</h1>
-          <h2>Seu score foi de {userAnswers.filter((answer) => answer.correct).length} de {questoesJs.length}</h2>
+          <h2>Seu score foi de {userAnswers.filter((answer) => answer.correct).length} de {questoesCss.length}</h2>
         </div>
       )}
     </div>
   )
 }
 
-export default GameJs
+export default GameCss

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import arrow_left from '../assets/icons/arrow-left.svg'
-import '../styles/pages/GameAll.css'
+import arrow_left from '../../../assets/icons/arrow-left.svg'
+import './GameAll.css'
 // import Answers from './Answers'
-import questoesAll from '../database/dataAll.json'
-import correct from '../assets/audio/correct.wav'
-import wrong from '../assets/audio/wrong.wav'
+import questoesAll from '../../../database/dataAll.json'
+import correct from '../../../assets/audio/correct.wav'
+import wrong from '../../../assets/audio/wrong.wav'
 
 const GameAll = ({ option, questao }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -14,7 +14,7 @@ const GameAll = ({ option, questao }) => {
   option = 'grouped_logos'
   const tema = 'light'
   
-  let html = require(`../assets/icons/${option}_${tema}.svg`)
+  let html = require(`../../../assets/icons/${option}_${tema}.svg`)
 
   const questoes = questoesAll[currentQuestion];
 

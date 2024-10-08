@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
-import Welcome from "./pages/Welcome"
+import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
-import SubjectMenu from "./pages/SubjectMenu.jsx"
-import DownloadContent from "./pages/DownloadContent.jsx"
+import SubjectMenu from "./pages/SubjectMenu/SubjectMenu.jsx"
+import DownloadContent from "./pages/DownloadContent/DownloadContent.jsx"
 import SignIn from "./pages/Login&Signin/SignIn.jsx"
-import GameHtml from './pages/GameHtml.jsx'
-import GameCss from './pages/GameCss.jsx'
-import GameJs from './pages/GameJs.jsx'
-import GameAll from './pages/GameAll.jsx'
+import GameHtml from './pages/Games/GameHtml/GameHtml.jsx'
+import GameCss from './pages/Games/GameCss/GameCss.jsx'
+import GameJs from './pages/Games/GameJs/GameJs.jsx'
+import GameAll from './pages/Games/GameAll/GameAll.jsx'
 
 export default function AppRoutes(){
     return(

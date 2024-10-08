@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import arrow_left from '../assets/icons/arrow-left.svg'
-import '../styles/pages/GameHtml.css'
+import arrow_left from '../../../assets/icons/arrow-left.svg'
+import './GameJs.css'
 // import Answers from './Answers'
-import questoesHtml from '../database/dataHtml.json'
-import correct from '../assets/audio/correct.wav'
-import wrong from '../assets/audio/wrong.wav'
+import questoesJs from '../../../database/dataJs.json'
+import correct from '../../../assets/audio/correct.wav'
+import wrong from '../../../assets/audio/wrong.wav'
 
-const GameHtml = (option) => {
+const GameJs = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  option = 'html'
+  option = 'js'
   const tema = 'light'
   
-  let html = require(`../assets/icons/${option}_${tema}.svg`)
+  let html = require(`../../../assets/icons/${option}_${tema}.svg`)
 
-  const questoes = questoesHtml[currentQuestion];
+  const questoes = questoesJs[currentQuestion];
 
   const handleAnswer = (selectedAnswer) => {
     const isCorrect = selectedAnswer.isCorrect;
@@ -39,14 +39,14 @@ const GameHtml = (option) => {
 
   return (
     <div>
-      {currentQuestion < questoesHtml.length ? (
+      {currentQuestion < questoesJs.length ? (
         <div className='game-display'>
           <Link className = "backBtn" to = "/">
-              <img
-                  className = "icons"
-                  src = {arrow_left}
-                  alt = ""
-              ></img>
+            <img
+                className = "icons"
+                src = {arrow_left}
+                alt = ""
+            ></img>
           </Link>
           <img 
             className="logo"
@@ -80,11 +80,11 @@ const GameHtml = (option) => {
       ) : (
         <div className='end-game'>
           <h1>Parabéns, você concluiu o quiz!</h1>
-          <h2>Seu score foi de {userAnswers.filter((answer) => answer.correct).length} de {questoesHtml.length}</h2>
+          <h2>Seu score foi de {userAnswers.filter((answer) => answer.correct).length} de {questoesJs.length}</h2>
         </div>
       )}
     </div>
   )
 }
 
-export default GameHtml
+export default GameJs

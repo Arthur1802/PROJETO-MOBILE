@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/pages/Welcome.css'
-import lg_logo from '../assets/logo/lg_logo_light.svg'
+import './Welcome.css'
+import lg_logo from '../../assets/logo/lg_logo_light.svg'
 import { Link } from 'react-router-dom'
 
 const Welcome = () => {
