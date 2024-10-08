@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import arrow_left from '../../../assets/icons/arrow-left.svg'
 import './GameHtml.css'
 // import Answers from './Answers'
 import questoesHtml from '../../../database/dataHtml.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
+import BackBtn from '../../../components/BackBtn/BackBtn'
 
 const GameHtml = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -41,13 +40,7 @@ const GameHtml = (option) => {
     <div>
       {currentQuestion < questoesHtml.length ? (
         <div className='game-display'>
-          <Link className = "backBtn" to = "/">
-              <img
-                  className = "icons"
-                  src = {arrow_left}
-                  alt = ""
-              ></img>
-          </Link>
+          <BackBtn />
           <img 
             className="logo"
             src={html}
