@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { isAuthenticated, Proceed, Signin } from '../../utils/authentication.js'
+import { Link, Navigate } from 'react-router-dom'
+import { Signin, SignInWtihGoogle } from '../../utils/auth.js'
+import { useAuth } from '../../utils/contexts/authContext'
 import sm_logo from '../../assets/logo/sm_logo_light.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'
@@ -10,7 +11,7 @@ import BackBtn from '../../components/BackBtn/BackBtn.jsx'
 import ErrorModal from '../../components/ErrorModal/ErrorModal.jsx'
 
 const SignIn = () => {
-    const navigate = useNavigate()
+    const { userLoggedIn } = useAuth()
 
     const [values, setValues] = useState({
         nome: '',
@@ -18,6 +19,8 @@ const SignIn = () => {
         senha: '',
         confirmacao: ''
     })
+
+    const [isSigningIn, setIsSigningIn] = useState(false)
 
     const [errors, setErrors] = useState({})
 
@@ -38,34 +41,47 @@ const SignIn = () => {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const authenticate = () => {
-        setErrors(Signin(values))
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if (!isSigningIn) {
+            setIsSigningIn(true)
+            await setErrors(Signin(values.nome, values.email, values.senha))
+        }
+    }
+
+    const SignInWitGoogle = (e) => {
+        e.preventDefault()
+        if (!isSigningIn) {
+            setIsSigningIn(true)
+            setErrors(SignInWtihGoogle())
+        }
     }
 
     if (!errors) {
         alert('Conta criada com sucesso!')
     }
 
-    const handleProceed = async () => {
-        Proceed()
-        if (isAuthenticated) {
-            alert('Login efetuado com sucesso!')
-            navigate('/subjectmenu')
-        }
+    // const handleProceed = async () => {
+    //     Proceed()
+    //     if (isAuthenticated) {
+    //         alert('Login efetuado com sucesso!')
+    //         navigate('/subjectmenu')
+    //     }
 
-        else {
-            alert('Erro ao efetuar login!')
-        }
-    }
+    //     else {
+    //         alert('Erro ao efetuar login!')
+    //     }
+    // }
 
     return (
-        <div>
-            <div className = "auth-panel">
+        <>
+        {userLoggedIn && (<Navigate to = "/subjectmenu" />)}
+            <div className = "auth-panel" data-aos = "fade-up">
                 <BackBtn link = {'/'}/>
                 <div className = "img-cont">
                     <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
                 </div>
-                <div className = "form">
+                <form className = "form" onSubmit = {onSubmit}>
                     <div className = "input-label-cont">
                         <input
                             autoFocus
@@ -133,7 +149,7 @@ const SignIn = () => {
                     </div>
                     {errors.confirmacao && <span className = "errors">{errors.confirmacao}</span>}
                     <div className = "btn-cont-auth">
-                        <button className = "btns laranja" id = "btnCriarConta" onClick = {authenticate}>CRIAR CONTA</button>
+                        <button className = "btns laranja" id = "btnCriarConta" type = "submit">CRIAR CONTA</button>
                     </div>
 
                     <div className = "separador"> {/* -------------- OU -------------- */}
@@ -141,20 +157,24 @@ const SignIn = () => {
                     </div>
                     
                     <div className = "btn-cont-auth">
-                        <button className = "btns btn-alternative" id = "btnGoogle" onClick = {handleProceed}>
-                            <img
-                                className = "icons google-icon"
-                                src = {google_icon}
-                                alt = ""
-                            ></img>
-                            GOOGLE
+                        <button className = "btns btn-alternative" id = "btnGoogle" onClick = {SignInWitGoogle}>
+                            {isSigningIn ? (
+                            <>
+                                <img className = "icons google-icon" src = {google_icon} alt = "" />
+                                GOOGLE
+                            </>
+                            ) : (
+                            <>
+                                CRIANDO CONTA...
+                            </>
+                            )}
                         </button>
                         <Link className = "btns azul-claro" to = "/login">ENTRAR</Link>
                     </div>
-                </div>
+                </form>
             </div>
             {errors.signin && <ErrorModal message = {errors.signin} />}
-        </div>
+        </>
     )
 }
 

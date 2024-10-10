@@ -1,8 +1,9 @@
 import { Navigate } from 'react-router-dom';
-import { isAuthenticated } from '../utils/authentication.js';
+import { useAuth } from '../utils/contexts/authContext';
 
 const ProtectedRoute = ({ element }) => {
-    if (!isAuthenticated()) {
+    const { userLoggedin } = useAuth();
+    if (!userLoggedin) {
         alert('Você precisa estar logado para acessar esta página!')
         return <Navigate to = "/" replace />;
     }

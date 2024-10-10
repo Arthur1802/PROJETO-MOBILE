@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import logo from '../assets/logo/sm_logo_light.svg'
 import { Link } from 'react-router-dom'
+import { LogOut } from '../../utils/auth'
+import { useAuth } from '../../utils/contexts/authContext'
+import logo from '../assets/logo/sm_logo_light.svg'
 // import Menu from '../components/Menu'
 
 const Home = () => {
+    const { userLoggedIn } = useAuth()
+    
     const [mostrarSenha, setMostrarSenha] = useState(false)
 
+    const handleLogOut = () => {
+        LogOut()
+    }
+
     return (
-        <div className = "Home">
+        <div className = "Home" data-aos = "fade-up">
             <nav className = "nav-top">
                 <img src = {logo} alt = "Logo" className = "logo" />
                 <button><i className = "fa-solid fa-user"></i></button>
@@ -88,7 +96,7 @@ const Home = () => {
 
             <section className = "settings">
                 <button data-bs-toggle = "modal" data-bs-target = "#idiomas">Idioma</button>
-                <button>LOGOUT</button>
+                {userLoggedIn && (<button onClick = {handleLogOut}>LOGOUT</button>)}
                 <Link to = "/termosecondicoes">Termos e condições</Link>
             </section>
 
