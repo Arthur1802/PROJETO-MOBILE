@@ -1,0 +1,133 @@
+.GerenciadorDeQuestoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.GerenciadorDeQuestoes .logo {
+    width: 100px;
+    height: 100px;
+}
+
+.GerenciadorDeQuestoes #seletor_modulo {
+    width: 20%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.GerenciadorDeQuestoes .quadro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.25s ease;
+}
+
+#pergunta {
+    width: 80%; 
+}
+
+#pergunta, #resposta {
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+    outline: none;
+}
+
+#resposta {
+    width: 50%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container-codigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: #1e1e1e;
+}
+
+.container-codigo textarea {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: #1e1e1e;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    overflow: auto;
+    border: none;
+    resize: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    outline: none;
+    text-transform: lowercase;
+}
+
+.container-codigo textarea::placeholder {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.btns {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btns input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+#resposta {
+    margin: 10px 0px;
+}
+
+.action_btns {
+    display: flex;
+    gap: 10px;
+}
+
+#btn_salvar {
+    background-color: green;
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: none;
+    color: white;
+}
+
+#btn_limpar {
+    background-color: red;
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: none;
+    color: white;
+}

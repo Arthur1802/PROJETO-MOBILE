@@ -1,0 +1,203 @@
+[
+    {
+        "pergunta": "Qual tag é usada para definir um parágrafo em HTML?",
+        "exemplo": "<_>Este é um parágrafo</_>",
+        "respostas": [
+          { "id": 1, "resposta": "<p>", "isCorrect": true },
+          { "id": 2, "resposta": "<para>", "isCorrect": false },
+          { "id": 3, "resposta": "<paragraph>", "isCorrect": false },
+          { "id": 4, "resposta": "<div>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual é a tag correta para criar um link?",
+        "exemplo": "<_ href='https://exemplo.com'>Clique aqui</_>",
+        "respostas": [
+          { "id": 1, "resposta": "<a>", "isCorrect": true },
+          { "id": 2, "resposta": "<link>", "isCorrect": false },
+          { "id": 3, "resposta": "<href>", "isCorrect": false },
+          { "id": 4, "resposta": "<url>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "O que a tag <h1> representa?",
+        "exemplo": "<h1>Cabeçalho principal</h1>",
+        "respostas": [
+          { "id": 1, "resposta": "Cabeçalho de nível 1", "isCorrect": true },
+          { "id": 2, "resposta": "Cabeçalho de nível 2", "isCorrect": false },
+          { "id": 3, "resposta": "Cabeçalho de nível 3", "isCorrect": false },
+          { "id": 4, "resposta": "Cabeçalho de nível 4", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Como você insere uma imagem em HTML?",
+        "exemplo": "<_____ src='imagem.jpg' alt='Descrição da imagem'>",
+        "respostas": [
+          { "id": 1, "resposta": "<img src='url'>", "isCorrect": true },
+          { "id": 2, "resposta": "<image src='url'>", "isCorrect": false },
+          { "id": 3, "resposta": "<picture src='url'>", "isCorrect": false },
+          { "id": 4, "resposta": "<src img='url'>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual atributo é usado para especificar o destino de um link?",
+        "exemplo": "<a ____='https://exemplo.com' target='_blank'>Abrir em nova aba</a>",
+        "respostas": [
+          { "id": 1, "resposta": "target", "isCorrect": true },
+          { "id": 2, "resposta": "href", "isCorrect": false },
+          { "id": 3, "resposta": "src", "isCorrect": false },
+          { "id": 4, "resposta": "link", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual é a tag para criar uma lista ordenada?",
+        "exemplo": "<___><li>Item 1</li><li>Item 2</li></___>",
+        "respostas": [
+          { "id": 1, "resposta": "<ol>", "isCorrect": true },
+          { "id": 2, "resposta": "<ul>", "isCorrect": false },
+          { "id": 3, "resposta": "<li>", "isCorrect": false },
+          { "id": 4, "resposta": "<list>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Como você define uma tabela em HTML?",
+        "exemplo": "<_____><tr><td>Conteúdo</td></tr></_____>",
+        "respostas": [
+          { "id": 1, "resposta": "<table>", "isCorrect": true },
+          { "id": 2, "resposta": "<tbl>", "isCorrect": false },
+          { "id": 3, "resposta": "<tab>", "isCorrect": false },
+          { "id": 4, "resposta": "<t>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual tag é usada para criar uma célula em uma tabela?",
+        "exemplo": "<tr><__>Conteúdo da célula</__></tr>",
+        "respostas": [
+          { "id": 1, "resposta": "<cell>", "isCorrect": false },
+          { "id": 2, "resposta": "<td>", "isCorrect": true },
+          { "id": 3, "resposta": "<tr>", "isCorrect": false },
+          { "id": 4, "resposta": "<th>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "O que a tag <strong> faz?",
+        "exemplo": "<strong>Texto em negrito</strong>",
+        "respostas": [
+          { "id": 1, "resposta": "Deixa o texto em itálico", "isCorrect": false },
+          { "id": 2, "resposta": "Deixa o texto em negrito", "isCorrect": true },
+          { "id": 3, "resposta": "Cria um link", "isCorrect": false },
+          { "id": 4, "resposta": "Adiciona uma imagem", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual atributo é usado para adicionar um título a uma página HTML?",
+        "exemplo": "<_____>Meu Título</_____>",
+        "respostas": [
+          { "id": 1, "resposta": "title", "isCorrect": true },
+          { "id": 2, "resposta": "header", "isCorrect": false },
+          { "id": 3, "resposta": "h1", "isCorrect": false },
+          { "id": 4, "resposta": "meta", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Como você insere um comentário em HTML?",
+        "exemplo": "___ Este é um comentário ___",
+        "respostas": [
+          { "id": 1, "resposta": "<!-- comentário -->", "isCorrect": true },
+          { "id": 2, "resposta": "// comentário", "isCorrect": false },
+          { "id": 3, "resposta": "/* comentário */", "isCorrect": false },
+          { "id": 4, "resposta": "# comentário", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual tag é usada para criar um campo de entrada de texto?",
+        "exemplo": "<___________ placeholder='Digite algo'>",
+        "respostas": [
+          { "id": 1, "resposta": "<input type='text'>", "isCorrect": true },
+          { "id": 2, "resposta": "<text>", "isCorrect": false },
+          { "id": 3, "resposta": "<inputtext>", "isCorrect": false },
+          { "id": 4, "resposta": "<field>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual é a tag para um botão?",
+        "exemplo": "<______>Clique aqui</______>",
+        "respostas": [
+          { "id": 1, "resposta": "<button>", "isCorrect": true },
+          { "id": 2, "resposta": "<btn>", "isCorrect": false },
+          { "id": 3, "resposta": "<input type='button'>", "isCorrect": true },
+          { "id": 4, "resposta": "Ambas a) e c)", "isCorrect": true }
+        ]
+      },
+      {
+        "pergunta": "O que significa a sigla HTML?",
+        "exemplo": "HTML significa Hypertext Markup Language.",
+        "respostas": [
+          { "id": 1, "resposta": "Hypertext Markup Language", "isCorrect": true },
+          { "id": 2, "resposta": "High-level Text Markup Language", "isCorrect": false },
+          { "id": 3, "resposta": "Hyperlink and Text Markup Language", "isCorrect": false },
+          { "id": 4, "resposta": "Hypertext Multi Language", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual é a tag usada para criar uma âncora?",
+        "exemplo": "<___ href='#seção'>Ir para a seção</___>",
+        "respostas": [
+          { "id": 1, "resposta": "<anchor>", "isCorrect": false },
+          { "id": 2, "resposta": "<a>", "isCorrect": true },
+          { "id": 3, "resposta": "<link>", "isCorrect": false },
+          { "id": 4, "resposta": "<href>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Como você pode adicionar um vídeo em HTML?",
+        "exemplo": "<______ src='video.mp4' controls></_____>",
+        "respostas": [
+          { "id": 1, "resposta": "<video src='url'>", "isCorrect": true },
+          { "id": 2, "resposta": "<media src='url'>", "isCorrect": false },
+          { "id": 3, "resposta": "<mov src='url'>", "isCorrect": false },
+          { "id": 4, "resposta": "<embed src='url'>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual atributo do <img> define a descrição alternativa da imagem?",
+        "exemplo": "<img src='imagem.jpg' _____='Descrição da imagem'>",
+        "respostas": [
+          { "id": 1, "resposta": "title", "isCorrect": false },
+          { "id": 2, "resposta": "alt", "isCorrect": true },
+          { "id": 3, "resposta": "desc", "isCorrect": false },
+          { "id": 4, "resposta": "label", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Como você define um estilo em um elemento HTML?",
+        "exemplo": "_______ <p __________'>Texto azul</p> ______",
+        "respostas": [
+          { "id": 1, "resposta": "<style>", "isCorrect": false },
+          { "id": 2, "resposta": "style atributo", "isCorrect": false },
+          { "id": 3, "resposta": "<css>", "isCorrect": false },
+          { "id": 4, "resposta": "Ambas a) e b)", "isCorrect": true }
+        ]
+      },
+      {
+        "pergunta": "Qual tag é usada para criar um rodapé em um documento HTML?",
+        "exemplo": "<_______>Conteúdo do rodapé</_______>",
+        "respostas": [
+          { "id": 1, "resposta": "<footer>", "isCorrect": true },
+          { "id": 2, "resposta": "<bottom>", "isCorrect": false },
+          { "id": 3, "resposta": "<end>", "isCorrect": false },
+          { "id": 4, "resposta": "<foot>", "isCorrect": false }
+        ]
+      },
+      {
+        "pergunta": "Qual tag HTML define um conjunto de opções em um formulário?",
+        "exemplo": "<_______><option>Opção 1</option></_______>",
+        "respostas": [
+          { "id": 1, "resposta": "<select>", "isCorrect": true },
+          { "id": 2, "resposta": "<option>", "isCorrect": false },
+          { "id": 3, "resposta": "<form>", "isCorrect": false },
+          { "id": 4, "resposta": "<input>", "isCorrect": false }
+        ]
+      }
+]
+    

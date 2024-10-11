@@ -1,0 +1,47 @@
+html {
+    background: var(--cor-fundo);
+}
+.App {
+    background: var(--cor-fundo);
+    width: 100vw;
+    height: 100vh;
+}
+
+div.img-cont {
+    margin: 0 auto;
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.azul-claro {
+    background-color: var(--azul-claro);
+}
+
+.laranja {
+    background-color: var(--laranja);
+}
+
+.azul-escuro {
+    background-color: var(--azul-escuro);
+}
+
+.btn-alternative {
+    background: var(--cor-fundo-input);
+}
+
+div.arrow-cont {
+    margin: 5px auto;
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.arrow-cont a {
+    font-size: 1.2em;
+    color: #000;
+    cursor: pointer;
+}

@@ -1,0 +1,32 @@
+div.welcome-panel {
+    width: 80%;
+    height: 80%;
+    margin: 5% auto;
+}
+
+div.img-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.btn-cont {
+    margin: 15% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.btn-cont .btnsWelcome {
+    width: 50%;
+    padding: 5px 10px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
