@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
 import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
@@ -9,6 +9,7 @@ import GameHtml from './pages/Games/GameHtml/GameHtml.jsx'
 import GameCss from './pages/Games/GameCss/GameCss.jsx'
 import GameJs from './pages/Games/GameJs/GameJs.jsx'
 import GameAll from './pages/Games/GameAll/GameAll.jsx'
+import { useEffect } from "react"
 
 export default function AppRoutes(){
     return(
