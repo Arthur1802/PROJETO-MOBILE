@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SubjectMenu.css'
 import BackBtn from '../../components/BackBtn/BackBtn'
@@ -19,12 +19,12 @@ const SubjectMenu = () => {
         navigate(`/downloadcontent`, { state: { subject } })
 
 
-    let logo = require(`../../assets/logo/sm_logo_${tema}.svg`)
+    let logo = `src/assets/logo/sm_logo_${tema}.svg`
 
-    let html_logo = require(`../../assets/icons/html_${tema}.svg`)
-    let css_logo = require(`../../assets/icons/css_${tema}.svg`)
-    let js_logo = require(`../../assets/icons/js_${tema}.svg`)
-    let grouped_logos = require(`../../assets/icons/grouped_logos_${tema}.svg`)
+    let html_logo = `src/assets/icons/html_${tema}.svg`
+    let css_logo = `src/assets/icons/css_${tema}.svg`
+    let js_logo = `src/assets/icons/js_${tema}.svg`
+    let grouped_logos = `src/assets/icons/grouped_logos_${tema}.svg`
 
     return (
         <div className = "SubjectMenu">

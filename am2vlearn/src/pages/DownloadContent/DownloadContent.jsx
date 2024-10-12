@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import download_icon from '../../assets/icons/download.svg'
 import play_icon from '../../assets/icons/play_icon.svg'
@@ -8,12 +7,12 @@ import BackBtn from '../../components/BackBtn/BackBtn'
 const DownloadContent = () => {
     const navigate = useNavigate()
     const location = useLocation()
-    const { subject } = location.state || {} // Caso o state não exista, retorna undefined
+    const { subject } = location.state || {}
     const tema = 'light'
 
-    let imgSrc = require(`../../assets/icons/${subject}_${tema}.svg`)
+    let imgSrc = `src/assets/icons/${subject}_${tema}.svg`
 
-    let logo = require(`../../assets/logo/sm_logo_${tema}.svg`)
+    let logo = `src/assets/logo/sm_logo_${tema}.svg`
 
     console.log('Página para baixar conteúdo')
 
@@ -23,6 +22,7 @@ const DownloadContent = () => {
             <img
                 src = {logo}
                 alt = "Logo"
+                className = "logo"
             />
 
             <img

@@ -1,7 +1,7 @@
 import { AuthProvider } from './utils/contexts/authContext'
 import AppRoutes from './AppRoutes'
-import './styles/App.css'
 import { useEffect } from 'react'
+import './styles/App.css'
 
 const App = () => {
     useEffect(() => {

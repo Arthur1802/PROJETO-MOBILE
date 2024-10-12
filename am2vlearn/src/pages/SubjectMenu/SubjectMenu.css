@@ -3,14 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 50vw;
-    gap: 50px;
+    height: 100%;
+    width: 100%;
+    gap: 25px;
     margin: 0 auto;
 }
 
 .SubjectMenu h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-wrap: nowrap;
 }
 

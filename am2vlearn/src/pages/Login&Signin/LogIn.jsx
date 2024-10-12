@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { Login, LoginWithGoogle } from '../../utils/auth.js'
 import { useAuth } from '../../utils/contexts/authContext'
@@ -8,7 +8,6 @@ import eye_icon from '../../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../../assets/icons/eye-slash-icon.svg'
 import './LogIn&SignIn.css'
 import BackBtn from '../../components/BackBtn/BackBtn.jsx'
-import ErrorModal from '../../components/ErrorModal/ErrorModal.jsx'
 
 const LogIn = () => {
     const { userLoggedIn } = useAuth()
@@ -73,7 +72,7 @@ const LogIn = () => {
     // }
 
     return (
-        <>
+        <div>
             {userLoggedIn && (<Navigate to = "/subjectmenu" />)}
             <div className = "auth-panel" data-aos = "fade-up">
                 <BackBtn link = {'/'}/>
@@ -130,9 +129,8 @@ const LogIn = () => {
                         <Link className = "btns laranja" to = "/signin">CRIAR CONTA</Link>
                     </div>
                 </form>
-                {errors && <ErrorModal message = {errors.login} />}
             </div>
-        </>
+        </div>
     )
 }
 

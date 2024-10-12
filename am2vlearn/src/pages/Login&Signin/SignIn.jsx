@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { Signin, SignInWtihGoogle } from '../../utils/auth.js'
 import { useAuth } from '../../utils/contexts/authContext'
@@ -8,7 +8,6 @@ import eye_icon from '../../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../../assets/icons/eye-slash-icon.svg'
 import './LogIn&SignIn.css'
 import BackBtn from '../../components/BackBtn/BackBtn.jsx'
-import ErrorModal from '../../components/ErrorModal/ErrorModal.jsx'
 
 const SignIn = () => {
     const { userLoggedIn } = useAuth()
@@ -173,7 +172,6 @@ const SignIn = () => {
                     </div>
                 </form>
             </div>
-            {errors.signin && <ErrorModal message = {errors.signin} />}
         </>
     )
 }

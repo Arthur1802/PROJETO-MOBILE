@@ -9,9 +9,11 @@ div.img-cont {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 25% 0 45% 0;
 }
 
 div.btn-cont {
+    width: 100%;
     margin: 15% auto;
     display: flex;
     flex-direction: column;
@@ -21,7 +23,7 @@ div.btn-cont {
 }
 
 div.btn-cont .btnsWelcome {
-    width: 50%;
+    width: 100%;
     padding: 5px 10px;
     border: none;
     color: black;

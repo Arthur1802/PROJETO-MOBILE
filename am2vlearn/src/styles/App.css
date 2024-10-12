@@ -1,19 +1,81 @@
-html {
-    background: var(--cor-fundo);
-}
-.App {
-    background: var(--cor-fundo);
-    width: 100vw;
-    height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family = Poppins:wght@300;400;500;600;700;800;900&display = swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-div.img-cont {
-    margin: 0 auto;
-    margin-bottom: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: var(--cor-fundo);
+}
+
+:root {
+  --azul-escuro: #0194BE;
+  --azul-claro: #0FC3E8;
+  --laranja: #F07E13;
+  --html-cor: #ff651e;
+  --css-cor: #004ce8;
+  --js-cor: #ffdf00;
+  --grouped_logos-cor: rgb(30, 183, 119);
+
+  --cor-fundo: #F5F5F5;
+  --cor-texto-primaria: #232323;
+  --cor-placeholder: #F8F8F8;
+  --cor-fundo-input: #B9B9B9;
+
+  --cor-fundo-alterna-tema: lightgrey;
+  --cor-alterna-tema: #f4f4f4;
+
+  --code-display-bg-color: #fff;
+  --code-display-color: #232323;
+}
+
+.poppins-thin {
+  font-weight: 100;
+}
+
+.poppins-light {
+  font-weight: 300;
+}
+
+.poppins-regular {
+  font-weight: 400;
+}
+
+.poppins-medium {
+  font-weight: 500;
+}
+
+.poppins-semibold {
+  font-weight: 600;
+}
+
+.poppins-bold {
+  font-weight: 700;
+}
+
+.poppins-extrabold {
+  font-weight: 800;
+}
+
+.poppins-black {
+  font-weight: 900;
+}
+
+.shadow-effect {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+html {
+    background: var(--cor-fundo);
 }
 
 .azul-claro {
@@ -32,16 +94,12 @@ div.img-cont {
     background: var(--cor-fundo-input);
 }
 
-div.arrow-cont {
-    margin: 5px auto;
-    width: 30%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-div.arrow-cont a {
-    font-size: 1.2em;
-    color: #000;
-    cursor: pointer;
+.App {
+    background: transparent;
+    width: 500px;
+    height: 700px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 1% auto;
+    padding: 20px 0;
 }
