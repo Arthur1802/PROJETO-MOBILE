@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { LogOut } from '../../utils/auth'
+import { LogOut } from '../../utils/authentication/auth'
 import { useAuth } from '../../utils/contexts/authContext'
 import logo from '../assets/logo/sm_logo_light.svg'
-// import Menu from '../components/Menu'
 
 const Home = () => {
     const { userLoggedIn } = useAuth()
     
     const [mostrarSenha, setMostrarSenha] = useState(false)
+
+    const [selectedSection, setSelectedSection] = useState('home')
 
     const handleLogOut = () => {
         LogOut()

@@ -4,6 +4,7 @@ import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
 import SubjectMenu from "./pages/SubjectMenu/SubjectMenu.jsx"
 import DownloadContent from "./pages/DownloadContent/DownloadContent.jsx"
+import Main from "./pages/Main/Main.jsx"
 import SignIn from "./pages/Login&Signin/SignIn.jsx"
 import GameHtml from './pages/Games/GameHtml/GameHtml.jsx'
 import GameCss from './pages/Games/GameCss/GameCss.jsx'
@@ -17,6 +18,7 @@ export default function AppRoutes(){
                 <Route path = "/" element = {<Welcome />}/>
                 <Route path = "/login" element = {<LogIn />}/>
                 <Route path = "/signin" element = {<SignIn />}/>
+                <Route path = "/main" element = {<Main />}/>
                 <Route path = "/subjectmenu" element = {<ProtectedRoute><SubjectMenu /></ProtectedRoute>}/>
                 <Route path = "/downloadcontent" element = {<ProtectedRoute><DownloadContent /></ProtectedRoute>}/>
                 <Route path = "/gamehtml" element = {<ProtectedRoute><GameHtml /></ProtectedRoute>}/>
