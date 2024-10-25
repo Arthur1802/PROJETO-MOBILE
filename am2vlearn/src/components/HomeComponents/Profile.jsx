@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { getNome, getSobrenome, getEmail, getSenha } from '../../model/Usuario'
+/*ERA ESSE IMPORT */ import { getNome, getSobrenome, getEmail, getSenha } from '../../model/Usuario'
+// import { getNome, getSobrenome, getEmail, getSenha } from '../../model/Usuario'
 
 const Profile = () => {
     const [mostrarSenha, setMostrarSenha] = useState(false)
