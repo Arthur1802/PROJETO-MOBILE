@@ -1,4 +1,3 @@
-import { AuthProvider } from './utils/contexts/authContext'
 import AppRoutes from './AppRoutes'
 import { useEffect } from 'react'
 import './styles/App.css'
@@ -9,11 +8,9 @@ const App = () => {
     }, [])
 
     return (
-        <AuthProvider>
-            <div className = "App" data-aos = "fade-up">
-                <AppRoutes />
-            </div>
-        </AuthProvider>
+        <div className = "App" data-aos = "fade-up">
+            <AppRoutes />
+        </div>
     )
 }
 

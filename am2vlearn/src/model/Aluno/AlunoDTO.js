@@ -4,44 +4,44 @@
 // atributos do objeto.
 export default class AlunoDTO {
 
-    #matricula;
-    #cpf;
-    #nome;
-    #email;
-    #telefone;
-    #curso;
+    #matricula
+    #cpf
+    #nome
+    #email
+    #telefone
+    #curso
 
     constructor(aluno) {
-        this.#matricula = aluno.getMatricula();
-        this.#cpf = aluno.getCpf();
-        this.#nome = aluno.getNome();
-        this.#email = aluno.getEmail();
-        this.#telefone = aluno.getTelefone();
-        this.#curso = aluno.getCurso();
+        this.#matricula = aluno.getMatricula()
+        this.#cpf = aluno.getCpf()
+        this.#nome = aluno.getNome()
+        this.#email = aluno.getEmail()
+        this.#telefone = aluno.getTelefone()
+        this.#curso = aluno.getCurso()
     }
 
     getMatricula() {
-        return this.#matricula;
+        return this.#matricula
     }
 
     getCpf() {
-        return this.#cpf;
+        return this.#cpf
     }
 
     getNome() {
-        return this.#nome;
+        return this.#nome
     }
 
     getEmail() {
-        return this.#email;
+        return this.#email
     }
 
     getTelefone() {
-        return this.#telefone;
+        return this.#telefone
     }
 
     async getCurso() {
-        return await this.#curso;
+        return await this.#curso
     }
 
     toJSON() {

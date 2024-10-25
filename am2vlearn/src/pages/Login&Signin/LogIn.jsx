@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Login, LoginWithGoogle } from '../../utils/auth.js'
-import { useAuth } from '../../utils/contexts/authContext'
 import sm_logo from '../../assets/logo/sm_logo_light.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../../assets/icons/eye-slash-icon.svg'
 import './LogIn&SignIn.css'
 import BackBtn from '../../components/BackBtn/BackBtn.jsx'
+import { ToastContainer, toast, Slide } from 'react-toastify'
 
 const LogIn = () => {
-    const { userLoggedIn } = useAuth()
+    const navigate = useNavigate()
 
     const [values, setValues] = useState({
         email: '',
         senha: ''
     })
 
-    const [isSigningIn, setIsSigningIn] = useState(false)
+    const [isLoggingIn, setIsLoggingIn] = useState(false)
 
-    const [errors, setErrors] = useState({})
+    const [notifications, setNotifications] = useState({})
 
     const [mostrarSenha, setMostrarSenha] = useState(false)
 
@@ -33,103 +33,138 @@ const LogIn = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+
         if (!values.email || !values.senha) {
-            if (!isSigningIn) {
-                setIsSigningIn(true)
-                await setErrors(LogIn(values.email, values.senha))
-            }
-            setErrors({ email: !values.email ? 'Email é obrigatório' : '', senha: !values.senha ? 'Senha é obrigatória' : '' })
+            setNotifications({
+                errors: {
+                    email: !values.email ? 'Email é obrigatório' : '',
+                    senha: !values.senha ? 'Senha é obrigatória' : '' 
+                }
+            })
+
             return
         }
         
-        else {
-            setErrors(Login(values.email, values.senha))
-        }
+        const result = await Login(values.email, values.senha)
+        setNotifications(result)
     }
 
-    const authenticateGoogle = (e) => {
+    const LogInWithGoogle = async (e) => {
         e.preventDefault()
-        if (!isSigningIn) {
-            setIsSigningIn(true)
-            setErrors(LoginWithGoogle())
+
+        if (!isLoggingIn) {
+            setIsLoggingIn(true)
+            const result = await LoginWithGoogle()
+            setNotifications(result)
         }
     }
 
-    if (!errors) {
-        alert('Login efetuado com sucesso!')
+    useEffect(() => {
+        if (notifications.errors) {
+            const errorMessages = []
+    
+            if (notifications.errors.email) errorMessages.push(notifications.errors.email)
+            if (notifications.errors.senha) errorMessages.push(notifications.errors.senha)
+            if (notifications.errors.login) errorMessages.push(notifications.errors.login)
+            if (notifications.errors.loginWithGoogle) errorMessages.push(notifications.errors.loginWithGoogle)
+    
+            if (errorMessages.length > 0) {
+                notify(`Erro ao efetuar login!\n${errorMessages.join('\n')}`, 'error')
+            }
+        } else if (notifications.success) {
+            notify('Login efetuado com sucesso!', 'success')
+            setIsLoggingIn(false)
+            setTimeout(() => {
+                navigate('/home')
+            }, 5000)
+        }
+    }, [notifications, navigate])    
+
+    const notify = (message, type) => {
+        toast[type](message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Slide
+        })
     }
-
-    // const handleProceed = async () => {
-    //     Proceed()
-    //     if (isAuthenticated) {
-    //         alert('Login efetuado com sucesso!')
-    //         navigate('/subjectmenu')
-    //     }
-
-    //     else {
-    //         alert('Erro ao efetuar login!')
-    //     }
-    // }
 
     return (
-        <div>
-            {userLoggedIn && (<Navigate to = "/subjectmenu" />)}
-            <div className = "auth-panel" data-aos = "fade-up">
-                <BackBtn link = {'/'}/>
-                <div className = "img-cont">
-                    <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
+        <div className = "auth-panel" data-aos = "fade-up">
+            <BackBtn link = {'/'}/>
+            <div className = "img-cont">
+                <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
+            </div>
+            <form className = "form" onSubmit = {onSubmit}>
+                <div className = "input-label-cont">
+                    <input
+                        autoFocus
+                        type = "email"
+                        name = "email"
+                        placeholder = "Insira aqui seu e-mail"
+                        onChange = {handleInput}
+                    />
                 </div>
-                <form className = "form" onSubmit = {onSubmit}>
-                    <div className = "input-label-cont">
-                        <input
-                            autoFocus
-                            type = "email"
-                            name = "credencial"
-                            placeholder = "Insira aqui seu e-mail"
+                <div className = "input-label-cont">
+                    <div className = "input-cont">
+                    <input
+                            type = {mostrarSenha ? "text" : "password"}
+                            name = "senha"
+                            placeholder = "Insira aqui sua senha"
                             onChange = {handleInput}
                         />
-                    </div>
-                    {errors.email && <span className = "errors">{errors.email}</span>}
-                    <div className = "input-label-cont">
-                        <div className = "input-cont">
-                        <input
-                                type = {mostrarSenha ? "text" : "password"}
-                                name = "senha"
-                                placeholder = "Insira aqui sua senha"
-                                onChange = {handleInput}
-                            />
-                            <div className = "eye-cont">
-                                <img 
-                                    src = {mostrarSenha ? eye_icon : eye_slash_icon}
-                                    alt = ""
-                                    className = "icons eye-icon"
-                                    onClick = {() => handleSenha()}
-                                ></img>
-                            </div>
+                        <div className = "eye-cont">
+                            <img 
+                                src = {mostrarSenha ? eye_icon : eye_slash_icon}
+                                alt = ""
+                                className = "icons eye-icon"
+                                onClick = {() => handleSenha()}
+                            ></img>
                         </div>
                     </div>
-                    {errors.senha && <span className = "errors">{errors.senha}</span>}
-                    <div className = "btn-cont-auth">
-                        <button className = "btns azul-claro" id = "btnLogin" type = "sumit">ENTRAR</button>
-                    </div>
+                </div>
+                <div className = "btn-cont-auth">
+                    <button className = "btns azul-claro" id = "btnLogin" type = "sumit">ENTRAR</button>
+                </div>
 
-                    <div className = "separador">
-                        <span>OU</span>
-                    </div>
-                    
-                    <div className = "btn-cont-auth">
-                        <button className = "btns btn-alternative" id = "btnGoogle" onClick = {authenticateGoogle}>
-                            <img
-                                className = "icons google-icon"
-                                src = {google_icon}
-                                alt = ""
-                            ></img>
+                <div className = "separador">
+                    <span>OU</span>
+                </div>
+                
+                <div className = "btn-cont-auth">
+                    <button className = "btns btn-alternative" id = "btnGoogle" onClick = {LogInWithGoogle}>
+                        {isLoggingIn ? (
+                        <>
+                            <img className = "icons google-icon" src = {google_icon} alt = ""></img>
                             GOOGLE
-                        </button>
-                        <Link className = "btns laranja" to = "/signin">CRIAR CONTA</Link>
-                    </div>
-                </form>
-            </div>
+                        </>
+                        ) : (
+                        <>
+                            FAZENDO LOGIN...
+                        </>
+                        )}
+                    </button>
+                    <Link className = "btns laranja" to = "/signin">CRIAR CONTA</Link>
+                </div>
+            </form>
+
+            <ToastContainer
+                position = "top-center"
+                autoClose = {5000}
+                hideProgressBar
+                newestOnTop = {false}
+                closeOnClick = {false}
+                rtl = {false}
+                pauseOnFocusLoss = {false}
+                draggable
+                pauseOnHover
+                theme = "dark"
+                transition: Slide
+            />
         </div>
     )
 }
