@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { capitalize } from '../../utils/functions'
-import Usuario from '../../model/Usuario'
+import Usuario from '../../model/Usuario/Usuario'
 
 const Home = () => {
     const navigate = useNavigate()

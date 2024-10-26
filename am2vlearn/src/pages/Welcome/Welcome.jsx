@@ -1,11 +1,11 @@
-import './Welcome.css'
-import { useAuth } from '../../utils/contexts/authContext/index'
 import { Link, Navigate } from 'react-router-dom'
 import lg_logo from '../../assets/logo/lg_logo_light.svg'
+import { isLoggedIn } from '../../utils/authentication/auth'
+import './Welcome.css'
 
 const Welcome = () => {
-    const { userLoggedIn } = useAuth()
-    
+    const userLoggedIn = isLoggedIn()
+
     return (
         <div>
             {userLoggedIn && (<Navigate to = "/home" replace = {true}/>)}

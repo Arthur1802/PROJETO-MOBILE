@@ -1,20 +1,19 @@
-import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../utils/contexts/authContext';
-import PropTypes from 'prop-types';
+import { toast } from 'react-toastify'
+import { Navigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { isLoggedIn } from '../utils/authentication/auth'
 
 const ProtectedRoute = ({ children }) => {
-    const { userLoggedin } = useAuth();
-    if (!userLoggedin) {
+    if (!isLoggedIn) {
         toast.error('Você precisa estar logado para acessar esta página!')
-        return <Navigate to = "/" replace />;
+        return <Navigate to = "/" replace />
     }
 
-    return children;
+    return children
 }
 
 ProtectedRoute.propTypes = {
     children: PropTypes.node.isRequired,
 }
 
-export default ProtectedRoute;
+export default ProtectedRoute

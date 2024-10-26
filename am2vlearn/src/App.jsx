@@ -1,6 +1,7 @@
 import AppRoutes from './AppRoutes'
 import { useEffect } from 'react'
 import './styles/App.css'
+// import { AuthProvider } from './utils/contexts/auhContext'
 
 const App = () => {
     useEffect(() => {

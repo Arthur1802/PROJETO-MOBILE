@@ -1,10 +1,16 @@
 export default class Usuario {
     #uid
+    #nome
+    #sobrenome
     #email
+    #senha
     #funcao
 
-    constructor(email, uid, funcao) {
+    constructor(nome, sobrenome, email, senha, uid, funcao) {
+        this.setNome(nome)
+        this.setSobrenome(sobrenome)
         this.setEmail(email)
+        this.setSenha(senha)
         this.setUid(uid)
         if (funcao === undefined || funcao === null) {
             this.setFuncao('INABILITADO')
@@ -14,8 +20,20 @@ export default class Usuario {
         }
     }
 
+    getNome() {
+        return this.#nome
+    }
+
+    getSobrenome() {
+        return this.#sobrenome
+    }
+
     getEmail() {
         return this.#email
+    }
+
+    getSenha() {
+        return this.#senha
     }
 
     getUid() {

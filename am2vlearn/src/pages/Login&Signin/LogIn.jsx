@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Login, LoginWithGoogle } from '../../utils/auth.js'
+import { Login, LoginWithGoogle } from '../../utils/authentication/auth.js'
 import sm_logo from '../../assets/logo/sm_logo_light.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'

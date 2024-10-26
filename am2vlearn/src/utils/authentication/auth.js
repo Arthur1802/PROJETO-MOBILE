@@ -1,5 +1,5 @@
 // auth.js
-import { auth } from '../firebase'
+import { auth } from './firebase'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { getDatabase, ref, query, get, set } from 'firebase/database'
 import { redirect } from 'react-router-dom'
@@ -9,6 +9,8 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const getGoogleProvider = () => new GoogleAuthProvider()
 
 const db = getDatabase()
+
+let userLoggedIn = false
 
 export const Login = async (email, senha) => {
     if (!emailRegex.test(email)) {
@@ -32,6 +34,7 @@ export const Login = async (email, senha) => {
         const usuario = dataSnapshot.val()
 
         if (dataSnapshot.exists() && usuario === 'ALUNO') {
+            userLoggedIn = true
             return {success: {login: "Login efetuado com sucesso!"}}
         } else {
             return {errors: {login: "Usuário não registrado. Crie uma conta e tente novamente."}}
@@ -49,6 +52,7 @@ export const LoginWithGoogle = async () => {
 
         const snapshot = await get(ref(db, `usuarios/${user.uid}`))
         if (snapshot.exists()) {
+            userLoggedIn = true
             return
         } else {
             return {errors: {loginWithGoogle: "Usuário não registrado. Crie uma conta e tente novamente."}}
@@ -127,4 +131,8 @@ export const LogOut = async () => {
     } catch (err) {
         console.error(err)
     }
+}
+
+export const isLoggedIn = () => {
+    return userLoggedIn
 }
