@@ -1,13 +1,17 @@
 export default class UsuarioDTO {
-
     constructor(usr) {
         this.email = usr.getEmail()
+        this.nome = usr.getNome()
         this.uid = usr.getUid()
         this.funcao = usr.getFuncao()
     }
 
     getEmail() {
         return this.email
+    }
+
+    getNome() {
+        return this.nome
     }
 
     getUid() {
@@ -20,6 +24,7 @@ export default class UsuarioDTO {
 
     toString() {
         let texto = "Email: " + this.email + "\n"
+        texto += "Nome: " + this.nome + "\n"
         texto += "UID: " + this.uid + "\n"
         texto += "Função: " + this.funcao + "\n"
 
