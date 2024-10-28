@@ -5,6 +5,7 @@ import questoesAll from '../../../questoes/dataAll.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
 import BackBtn from '../../../components/BackBtn/BackBtn'
+import html from '../../../assets/icons/grouped_logos_light.svg'
 
 const GameAll = ({ option, questao }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -13,7 +14,7 @@ const GameAll = ({ option, questao }) => {
   option = 'grouped_logos'
   const tema = 'light'
   
-  let html = require(`../../../assets/icons/${option}_${tema}.svg`)
+  // let html = require(`../../../assets/icons/${option}_${tema}.svg`)
 
   const questoes = questoesAll[currentQuestion];
 
