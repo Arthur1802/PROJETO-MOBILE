@@ -45,8 +45,10 @@ const LogIn = () => {
             return
         }
         
+        setIsLoggingIn(true)
         const result = await Login(values.email, values.senha)
         setNotifications(result)
+        setIsLoggingIn(false)
     }
 
     const LogInWithGoogle = async (e) => {
@@ -56,6 +58,7 @@ const LogIn = () => {
             setIsLoggingIn(true)
             const result = await LoginWithGoogle()
             setNotifications(result)
+            setIsLoggingIn(false)
         }
     }
 
@@ -75,7 +78,7 @@ const LogIn = () => {
             notify('Login efetuado com sucesso!', 'success')
             setIsLoggingIn(false)
             setTimeout(() => {
-                navigate('/home')
+                navigate('/main')
             }, 5000)
         }
     }, [notifications, navigate])    
@@ -128,7 +131,7 @@ const LogIn = () => {
                     </div>
                 </div>
                 <div className = "btn-cont-auth">
-                    <button className = "btns azul-claro" id = "btnLogin" type = "sumit">ENTRAR</button>
+                    <button className = "btns azul-claro" id = "btnLogin" type = "submit">ENTRAR</button>
                 </div>
 
                 <div className = "separador">
@@ -139,12 +142,12 @@ const LogIn = () => {
                     <button className = "btns btn-alternative" id = "btnGoogle" onClick = {LogInWithGoogle}>
                         {isLoggingIn ? (
                         <>
-                            <img className = "icons google-icon" src = {google_icon} alt = ""></img>
-                            GOOGLE
+                            FAZENDO LOGIN...
                         </>
                         ) : (
                         <>
-                            FAZENDO LOGIN...
+                            <img className = "icons google-icon" src = {google_icon} alt = ""></img>
+                            GOOGLE
                         </>
                         )}
                     </button>

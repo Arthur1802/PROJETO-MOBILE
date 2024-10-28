@@ -10,7 +10,9 @@ const getGoogleProvider = () => new GoogleAuthProvider()
 
 const db = getDatabase()
 
-let userLoggedIn = false
+if (localStorage.getItem('userLoggedIn') === null) {
+    localStorage.setItem('userLoggedIn', false)
+}
 
 export const Login = async (email, senha) => {
     if (!emailRegex.test(email)) {
@@ -25,16 +27,18 @@ export const Login = async (email, senha) => {
         const credencial = await signInWithEmailAndPassword(auth, email, senha)
         const user = credencial.user
 
-        if (!user.emailVerified) {
-            return {errors: {login: "Email não verificado. Verifique sua caixa de entrada."}}
-        }
-
+        
         const dbRefUsuario = ref(db, `usuarios/${user.uid}`)
         const dataSnapshot = await get(query(dbRefUsuario))
-        const usuario = dataSnapshot.val()
+        
+        if (dataSnapshot.exists()) {
+            localStorage.setItem('userLoggedIn', true)
+            localStorage.setItem('userUID', user.uid)
+            
+            if (!user.emailVerified) {
+                return {warning: {login: "Email não verificado. Verifique sua caixa de entrada."}}
+            }
 
-        if (dataSnapshot.exists() && usuario === 'ALUNO') {
-            userLoggedIn = true
             return {success: {login: "Login efetuado com sucesso!"}}
         } else {
             return {errors: {login: "Usuário não registrado. Crie uma conta e tente novamente."}}
@@ -52,8 +56,14 @@ export const LoginWithGoogle = async () => {
 
         const snapshot = await get(ref(db, `usuarios/${user.uid}`))
         if (snapshot.exists()) {
-            userLoggedIn = true
-            return
+            localStorage.setItem('userLoggedIn', true)
+            localStorage.setItem('userUID', user.uid)
+
+            if (!user.emailVerified) {
+                return {warning: {loginWithGoogle: "Email não verificado. Verifique sua caixa de entrada."}}
+            }
+
+            return {success: {loginWithGoogle: "Login efetuado com Google com sucesso."}}
         } else {
             return {errors: {loginWithGoogle: "Usuário não registrado. Crie uma conta e tente novamente."}}
         }
@@ -80,8 +90,7 @@ export const Signin = async (nome, email, senha) => {
         const credencial = await createUserWithEmailAndPassword(auth, email, senha)
         const user = credencial.user
 
-        await sendEmailVerification(user)
-
+        
         const dbRefUsuario = ref(db, `usuarios/${user.uid}`)
         const objUsuario = {
             uid: user.uid,
@@ -89,9 +98,10 @@ export const Signin = async (nome, email, senha) => {
             email: user.email,
             funcao: "ALUNO"
         }
-
+        
         await set(dbRefUsuario, objUsuario)
-
+        await sendEmailVerification(user)
+        
         console.log("Conta criada com sucesso. Email de verificação enviado")
         return {success: {signin: "Conta criada com sucesso. Email de verificação enviado."}}
     } catch (erro) {
@@ -108,25 +118,34 @@ export const SigninWithGoogle = async () => {
         const snapshot = await get(ref(db, `usuarios/${user.uid}`))
 
         if (!snapshot.exists()) {
-            await set(ref(db, `usuarios/${user.uid}`), {
+            const dbRefUsuario = ref(db, `usuarios/${user.uid}`)
+            const objUsuario = {
                 uid: user.uid,
-                nome: user.displayName,
+                nome: user.displayName.split(' ')[0],
                 email: user.email,
                 funcao: "ALUNO"
-            })
+            }
+
+            await set(dbRefUsuario, objUsuario)
+            await sendEmailVerification(user)
 
             console.log("Conta criada com Google com sucesso.")
-            return {success: {sigin: "Conta criada com Google com sucesso."}}
+            return { success: { signin: "Conta criada com Google com sucesso." } }
+        } else {
+            console.log("Usuário já registrado.")
+            return { success: { signin: "Usuário já registrado." } }
         }
     } catch (erro) {
         console.error(erro)
-        return {errors: {signinWithGoogle: `Erro ao criar conta com Google\n${erro.message}`}}
+        return { errors: { signinWithGoogle: `Erro ao criar conta com Google\n${erro.message}` } }
     }
 }
 
 export const LogOut = async () => {
     try {
         await auth.signOut()
+        localStorage.setItem('userLoggedIn', false)
+        localStorage.removeItem('userUID')
         return redirect('/')
     } catch (err) {
         console.error(err)
@@ -134,5 +153,5 @@ export const LogOut = async () => {
 }
 
 export const isLoggedIn = () => {
-    return userLoggedIn
+    return JSON.parse(localStorage.getItem('userLoggedIn') || 'false')
 }

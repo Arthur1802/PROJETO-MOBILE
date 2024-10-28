@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Usuario } from '../../model/Usuario/Usuario'
+import Usuario from '../../model/Usuario/Usuario'
 
 const Profile = () => {
     const [mostrarSenha, setMostrarSenha] = useState(false)

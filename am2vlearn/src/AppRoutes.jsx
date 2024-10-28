@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
 import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
@@ -10,14 +10,8 @@ import GameHtml from './pages/Games/GameHtml/GameHtml.jsx'
 import GameCss from './pages/Games/GameCss/GameCss.jsx'
 import GameJs from './pages/Games/GameJs/GameJs.jsx'
 import GameAll from './pages/Games/GameAll/GameAll.jsx'
-import { isLoggedIn } from "./utils/authentication/auth.js"
 
-export default function AppRoutes(){
-    const navigate  = useNavigate()
-    if (!isLoggedIn()) {
-        navigate("/")
-    }
-
+export const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>

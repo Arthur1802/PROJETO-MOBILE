@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Signin, SignInWtihGoogle } from '../../utils/authentication/auth.js'
+import { Signin, SigninWithGoogle } from '../../utils/authentication/auth.js'
 import sm_logo from '../../assets/logo/sm_logo_light.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'
@@ -56,6 +56,7 @@ const SignIn = () => {
             return
         }
 
+        setIsSigningIn(true)
         const result = await Signin(values.nome, values.email, values.senha)
         setNotifications(result)
     }
@@ -65,31 +66,31 @@ const SignIn = () => {
 
         if (!isSigningIn) {
             setIsSigningIn(true)
-            const results = await SignInWtihGoogle()
+            const results = await SigninWithGoogle()
             setNotifications(results)
+            setIsSigningIn(false)
         }
     }
 
     useEffect(() => {
+        console.log("Notifications:", notifications)
         if (notifications.errors) {
             const errorMessages = []
     
             if (notifications.errors.email) errorMessages.push(notifications.errors.email)
             if (notifications.errors.senha) errorMessages.push(notifications.errors.senha)
             if (notifications.errors.login) errorMessages.push(notifications.errors.login)
-            if (notifications.errors.loginWithGoogle) errorMessages.push(notifications.errors.loginWithGoogle)
+            if (notifications.errors.signinWithGoogle) errorMessages.push(notifications.errors.signinWithGoogle)
     
             if (errorMessages.length > 0) {
-                notify(`Erro criar conta!\n${errorMessages.join('\n')}`, 'error')
+                notify(`Erro ao criar conta!\n${errorMessages.join('\n')}`, 'error')
             }
         } else if (notifications.success) {
-            notify('Login efetuado com sucesso!', 'success')
+            notify('Conta criada com sucesso!', 'success')
             setIsSigningIn(false)
-            setTimeout(() => {
-                navigate('/home')
-            }, 5000)
+            navigate('/login')
         }
-    }, [notifications, navigate])
+    }, [notifications, navigate])    
 
     const notify = (message, type) => {
         toast[type](message, {
@@ -174,7 +175,17 @@ const SignIn = () => {
                     </div>
                 </div>
                 <div className = "btn-cont-auth">
-                    <button className = "btns laranja" id = "btnCriarConta" type = "submit">CRIAR CONTA</button>
+                    <button className = "btns laranja" id = "btnCriarConta" type = "submit">
+                        {isSigningIn ? (
+                        <>
+                            CRIANDO CONTA...
+                        </>
+                        ) : (
+                        <>
+                            CRIAR CONTA
+                        </>
+                        )}
+                    </button>
                 </div>
 
                 <div className = "separador"> {/* -------------- OU -------------- */}
@@ -185,12 +196,12 @@ const SignIn = () => {
                     <button className = "btns btn-alternative" id = "btnGoogle" onClick = {SignInWitGoogle}>
                         {isSigningIn ? (
                         <>
-                            <img className = "icons google-icon" src = {google_icon} alt = "" />
-                            GOOGLE
+                            CRIANDO CONTA...
                         </>
                         ) : (
                         <>
-                            CRIANDO CONTA...
+                            <img className = "icons google-icon" src = {google_icon} alt = "" />
+                            GOOGLE
                         </>
                         )}
                     </button>

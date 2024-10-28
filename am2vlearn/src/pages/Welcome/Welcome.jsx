@@ -8,7 +8,7 @@ const Welcome = () => {
 
     return (
         <div>
-            {userLoggedIn && (<Navigate to = "/home" replace = {true}/>)}
+            {userLoggedIn && (<Navigate to = "/main" replace = {true}/>)}
             <div className = "welcome-panel" data-aos = "fade-up">
                 <div className = "img-cont">
                     <img className = "welcome-logo" src = {lg_logo} alt = "Logo"></img>
