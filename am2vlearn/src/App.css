@@ -110,3 +110,10 @@ html {
       box-shadow: none;
     }
 }
+
+@media (max-width: 480px) {
+    .App {
+      margin: 10vh auto;
+      box-shadow: none;
+    }
+}

@@ -139,3 +139,150 @@
     font-size: 14px;
     margin: 0 auto;
 }
+
+
+@media (max-width: 480px) {
+ 
+    .auth-panel {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .icons {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    
+    .auth-panel .img-cont {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10% 0 15% 0;
+    }
+    
+    .form {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-label-cont {
+        padding: 1rem;
+        width: 80%;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        background: var(--cor-fundo-input);
+    }
+    
+    .input-cont {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .input-label-cont input {
+        width: 100%;
+        padding: 5px;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 1px 2px;
+        color: var(--cor-placeholder);
+    }
+    
+    .input-label-cont input::placeholder {
+        color: var(--cor-placeholder);
+    }
+    
+    .input-label-cont img.icons {
+        fill: var(--cor-placeholder);
+    }
+    
+    .input-label-cont .input-cont .eye-cont {
+        width: 20px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .separador {
+        margin: 20px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 320px;
+    }
+    
+    .separador span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        font-size: 16px;
+        flex: .2 0 auto;
+    }
+    
+    .separador span::before, .separador span::after {
+        content: "";
+        background: #000;
+        border: 1px solid #000;
+        height: 1.5px;
+        width: 140%;
+        flex: 1 0 auto;
+        border-radius: 50px;
+        margin: 0 10px;
+    }
+    
+    .btn-cont-auth {
+        width: 60%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .btn-cont-auth .btns {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        color: black;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-cont-auth .google-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    
+    .btnGoogle {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .errors {
+        color: red;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+    
+}

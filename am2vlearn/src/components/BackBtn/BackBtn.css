@@ -5,3 +5,15 @@
     top: -5%;
     left: 25%;
 }
+
+@media screen and (max-width: 480px) {
+    .back-btn {
+        left: 5%;
+    }
+
+    .back-btn img {
+        width: 30px;
+        height: 30px;
+    }
+
+}
