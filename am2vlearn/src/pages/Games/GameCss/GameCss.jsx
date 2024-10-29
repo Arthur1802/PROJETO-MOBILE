@@ -5,6 +5,7 @@ import questoesCss from '../../../questoes/dataCss.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
 import BackBtn from '../../../components/BackBtn/BackBtn'
+import html from '../../../assets/icons/css_light.svg'
 
 const GameCss = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -13,7 +14,7 @@ const GameCss = (option) => {
   option = 'css'
   const tema = 'light'
   
-  let html = require(`../../../assets/icons/${option}_${tema}.svg`)
+  // let html = require(`../../../assets/icons/${option}_${tema}.svg`)
 
   const questoes = questoesCss[currentQuestion];
 

@@ -2,9 +2,8 @@
 
 import { getDatabase, ref, query, orderByChild, equalTo, get, set, remove } from "firebase/database"
 
-import Usuario from "/model/Usuario.js"
-import UsuarioDTO from "/model/UsuarioDTO.js"
-import ModelError from "/model/ModelError.js"
+import UsuarioDTO from "./UsuarioDTO.js"
+import Usuario from "./Usuario.js"
 
 export default class DaoUsuario {
 
