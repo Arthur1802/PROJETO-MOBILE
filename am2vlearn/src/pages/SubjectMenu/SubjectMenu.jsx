@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import './SubjectMenu.css'
 import BackBtn from '../../components/BackBtn/BackBtn'
 
-import ChangeCounter from '../../components/ChangeCounter'
+import ChangeHtmlCounter from '../../components/ChangeHtmlCounter'
 
 //Hooks
-import { useCounterContext } from '../../hooks/useCounterContext'
+import { useCounterHtmlContext } from '../../hooks/useCounterHtmlContext'
 
 const SubjectMenu = () => {
 
-    const { counter } = useCounterContext()
+    const { counter } = useCounterHtmlContext()
 
     const tema = 'light'
     const navigate = useNavigate()
@@ -41,7 +41,7 @@ const SubjectMenu = () => {
         
         <div className = "SubjectMenu">
             {`${counter}%`}
-            <ChangeCounter />
+            <ChangeHtmlCounter />
             {/* <BackBtn /> */}
 
             <img

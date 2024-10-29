@@ -2,13 +2,13 @@
 
 import { useContext } from 'react';
 
-import { CounterContext } from '../context/CounterContext';
+import { CounterHtmlContext } from '../context/CounterHtmlContext';
 
 import React from 'react'
 
-const ChangeCounter = () => {
+const ChangeHtmlCounter = () => {
 
-  const { counter, setCounter } = useContext(CounterContext)
+  const { counter, setCounter } = useContext(CounterHtmlContext)
 
   return (
     <div>
@@ -18,4 +18,4 @@ const ChangeCounter = () => {
   )
 }
 
-export default ChangeCounter
+export default ChangeHtmlCounter
