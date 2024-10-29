@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { Slide, ToastContainer, toast } from 'react-toastify'
-import UsuarioDAO from '../../model/Usuario/UsuarioDAO'
+import UsuarioDAO from '../../../model/Usuario/UsuarioDAO'
 
 const Profile = () => {
     const [usuario, setUsuario] = useState(null)
@@ -15,8 +15,8 @@ const Profile = () => {
 
             if (fetchedUsuario) {
                 setUsuario(fetchedUsuario)
-                setEmail(fetchedUsuario.email)
-                setNome(fetchedUsuario.nome)
+                setEmail(fetchedUsuario.getEmail())
+                setNome(fetchedUsuario.getNome())
             }
         }
 
@@ -58,7 +58,7 @@ const Profile = () => {
     }
 
     return (
-        <div className = "settings-section">
+        <div className = "profile-section" data-aos = "fade-up">
             <ToastContainer
                 position = "top-center"
                 autoClose = {5000}

@@ -1,20 +1,17 @@
-import React from 'react'
+import './Nav.css'
+import PropTypes from 'prop-types'
 
-import home from '../assets/icons/home.svg'
-import config from '../assets/icons/config.svg'
-import dowload from '../assets/icons/download.svg'
-
-import '../styles/components/Nav.css'
-const Nav = ( ) => {
-  return (
-    <div className='app-css'>
-      <div className='nav'>
-        <button><img src={home} alt={home} /></button>
-        <button><img src={dowload} alt={dowload} /></button>
-        <button><img src={config} alt={config} /></button>
-      </div>
-    </div>
-  )
+const Nav = ({ setSection }) => {
+    return (
+        <nav>
+            <button onClick = {() => setSection('home')}><i className = "fa-solid fa-home"></i></button>
+            <button onClick = {() => setSection('downloadcontent')}><i className = "fa-solid fa-file"></i></button>
+            <button onClick = {() => setSection('settings')}><i className = "fa-solid fa-gear"></i></button>
+        </nav>
+    )
+}
+Nav.propTypes = {
+    setSection: PropTypes.func.isRequired,
 }
 
 export default Nav

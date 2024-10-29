@@ -1,19 +1,18 @@
 .back-btn {
-    background: transparent;
-    border: none;
     position: absolute;
-    top: -5%;
-    left: 25%;
+    top: 10px;
+    left: 25px;
+    background: transparent;
 }
 
-@media screen and (max-width: 480px) {
-    .back-btn {
-        left: 5%;
-    }
+.back-btn button {
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
 
-    .back-btn img {
-        width: 30px;
-        height: 30px;
-    }
-
+.back-btn button svg {
+    font-size: 1.5rem;
 }

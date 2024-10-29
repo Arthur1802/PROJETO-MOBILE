@@ -3,6 +3,7 @@
 import { getDatabase, ref, query, orderByChild, equalTo, get, set, remove } from "firebase/database"
 
 import UsuarioDTO from "./UsuarioDTO.js"
+import ModelError from "../ModelError.js"
 import Usuario from "./Usuario.js"
 
 export default class DaoUsuario {
@@ -29,23 +30,32 @@ export default class DaoUsuario {
 
     async obterUsuarioPeloUID(uid) {
         let connectionDB = await this.obterConexao()
-        
+        console.log("Database connection established:", connectionDB)
+    
         return new Promise((resolve) => {
             let dbRefUsuario = ref(connectionDB, 'usuarios/' + uid)
             let consulta = query(dbRefUsuario)
+            console.log("Querying database for UID:", uid)
+    
             let resultPromise = get(consulta)
             
             resultPromise.then(dataSnapshot => {
                 let usr = dataSnapshot.val()
-                
+                console.log("Data retrieved from Firebase:", usr)
+    
                 if (usr != null) {
                     resolve(new Usuario(usr.email, usr.nome, usr.uid, usr.funcao))
                 } else {
+                    console.warn("No user found for UID:", uid)
                     resolve(null)
                 }
+            }).catch(error => {
+                console.error("Error retrieving data:", error)
+                resolve(null)
             })
         })
     }
+    
 
     async obterUsuarioPeloEmail(email) {
         let connectionDB = await this.obterConexao()

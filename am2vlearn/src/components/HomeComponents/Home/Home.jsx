@@ -1,16 +1,31 @@
+import { useEffect, useMemo, useState } from 'react'
+import UsuarioDAO from '../../../model/Usuario/UsuarioDAO'
 import './Home.css'
+import SubjectMenu from './SubjectMenu/SubjectMenu'
 
 const Home = () => {
-    return (
-        <div className = "home-container">
-            <h1>Bem-vindo(a), NOME</h1>
+    const [nome, setNome] = useState('')
+    const daoUsuario = useMemo(() => new UsuarioDAO(), [])
 
-            <section className = "modulo-section">
-                <div className = "modulo-containers">Módulo HTML<i className = "fa-solid fa-play"></i></div>
-                <div className = "modulo-containers">Módulo CSS<i className = "fa-solid fa-play"></i></div>
-                <div className = "modulo-containers">Módulo JavaScript<i className = "fa-solid fa-play"></i></div>
-                <div className = "modulo-containers">Módulo Todos<i className = "fa-solid fa-play"></i></div>
-            </section>
+    useEffect(() => {
+        const fetchUsuario = async () => {
+            const uid = localStorage.getItem('userUID')
+
+            const fetchedUsuario = await daoUsuario.obterUsuarioPeloUID(uid)
+
+            if (fetchedUsuario) {
+                setNome(fetchedUsuario.getNome())
+            }
+        }
+
+        fetchUsuario()
+    }, [daoUsuario])
+
+    return (
+        <div className = "home-container" data-aos = "fade-up">
+            <h1>Bem-vindo(a), {nome}</h1>
+
+            <SubjectMenu />
         </div>
     )
 }

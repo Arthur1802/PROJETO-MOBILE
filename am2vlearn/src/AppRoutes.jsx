@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
 import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
-import SubjectMenu from "./pages/SubjectMenu/SubjectMenu.jsx"
 import DownloadContent from "./pages/DownloadContent/DownloadContent.jsx"
 import Main from "./pages/Main/Main.jsx"
 import SignIn from "./pages/Login&Signin/SignIn.jsx"
@@ -19,7 +18,6 @@ export const AppRoutes = () => {
                 <Route path = "/login" element = {<LogIn />}/>
                 <Route path = "/signin" element = {<SignIn />}/>
                 <Route path = "/main" element = {<ProtectedRoute><Main /></ProtectedRoute>}/>
-                <Route path = "/subjectmenu" element = {<ProtectedRoute><SubjectMenu /></ProtectedRoute>}/>
                 <Route path = "/downloadcontent" element = {<ProtectedRoute><DownloadContent /></ProtectedRoute>}/>
                 <Route path = "/gamehtml" element = {<ProtectedRoute><GameHtml /></ProtectedRoute>}/>
                 <Route path = "/gamecss" element = {<ProtectedRoute><GameCss /></ProtectedRoute>}/>

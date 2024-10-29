@@ -1,31 +1,28 @@
 import { useState } from 'react'
 import logo from '../../assets/logo/sm_logo_light.svg'
 import Home from '../../components/HomeComponents/Home/Home'
-import Profile from '../../components/HomeComponents/Profile'
-import DownloadContent from '../../components/HomeComponents/DownloadContent'
-import Settings from '../../components/HomeComponents/Settings'
+import Profile from '../../components/HomeComponents/Profile/Profile'
+import DownloadContent from '../../components/HomeComponents/DownloadContent/DownloadContent'
+import Settings from '../../components/HomeComponents/Settings/Settings'
 import './Main.css'
+import Nav from '../../components/Nav/Nav'
 
 const Main = () => {
-    const [selectedSection, setSelectedSection] = useState('home')
+    const [section, setSection] = useState('home')
 
     return (
         <div className = "main-container" data-aos = "fade-up">
-            <nav className = "nav-top">
+            <div className = "nav-top">
                 <img src = {logo} alt = "Logo" />
-                <button value = "profile" onClick = {(e) => setSelectedSection(e.target.value)}><i className = "fa-solid fa-user"></i></button>
-            </nav> 
+                <button onClick = {() => setSection('profile')}><i className = "fa-solid fa-user"></i></button>
+            </div> 
 
-            {selectedSection === "home" && (<Home />)}
-            {selectedSection === "profile" && (<Profile />)}
-            {selectedSection === "downloadcontent" && (<DownloadContent />)}
-            {selectedSection === "settings" && (<Settings />)}
+            {section === "home" && (<Home />)}
+            {section === "profile" && (<Profile />)}
+            {section === "downloadcontent" && (<DownloadContent />)}
+            {section === "settings" && (<Settings />)}
 
-            <nav className = "nav-bottom">
-                <button value = "home" onClick = {(e) => setSelectedSection(e.target.value)}><i className = "fa-solid fa-house"></i></button>
-                <button value = "downloadcontent" onClick = {(e) => setSelectedSection(e.target.value)}><i className = "fa-solid fa-file-arrow-down"></i></button>
-                <button value = "settings" onClick = {(e) => setSelectedSection(e.target.value)}><i className = "fa-solid fa-gear"></i></button>
-            </nav>
+            <Nav setSection = {setSection}/>
             
         </div>
     )
