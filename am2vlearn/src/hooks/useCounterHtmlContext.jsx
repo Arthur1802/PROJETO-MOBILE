@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { CounterContext } from "../context/CounterContext";
+import { CounterHtmlContext } from "../context/CounterHtmlContext";
 
-export const useCounterContext = () => {
-  const context = useContext(CounterContext);
+export const useCounterHtmlContext = () => {
+  const context = useContext(CounterHtmlContext);
 
   if (!context) {
     throw new Error(

@@ -4,11 +4,11 @@ import play_icon from '../../assets/icons/play_icon.svg'
 import './DownloadContent.css'
 import BackBtn from '../../components/BackBtn/BackBtn'
 
-import { useCounterContext } from '../../hooks/useCounterContext'
+import { useCounterHtmlContext } from '../../hooks/useCounterHtmlContext'
 
 const DownloadContent = () => {
 
-    const { counter } = useCounterContext()
+    const { counter } = useCounterHtmlContext()
 
     const navigate = useNavigate()
     const location = useLocation()

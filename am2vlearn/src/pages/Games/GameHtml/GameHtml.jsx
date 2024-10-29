@@ -1,12 +1,3 @@
-import { useEffect, useState } from 'react'
-import './GameHtml.css'
-// import Answers from './Answers'
-import questoesHtml from '../../../questoes/dataHtml.json'
-import correct from '../../../assets/audio/correct.wav'
-import wrong from '../../../assets/audio/wrong.wav'
-import BackBtn from '../../../components/BackBtn/BackBtn'
-import html from '../../../assets/icons/html_light.svg'
-
 const GameHtml = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -81,4 +72,4 @@ const GameHtml = (option) => {
   )
 }
 
-export default GameHtml
+export default GameHtml;
