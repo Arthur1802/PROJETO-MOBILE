@@ -1,9 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SubjectMenu.css'
 import BackBtn from '../../components/BackBtn/BackBtn'
 
+import ChangeCounter from '../../components/ChangeCounter'
+
+//Hooks
+import { useCounterContext } from '../../hooks/useCounterContext'
+
 const SubjectMenu = () => {
+
+    const { counter } = useCounterContext()
+
     const tema = 'light'
     const navigate = useNavigate()
     
@@ -15,9 +23,12 @@ const SubjectMenu = () => {
         console.log(`Subject: ${subject}`)
     }
 
-    if (subject !== undefined)
-        navigate(`/downloadcontent`, { state: { subject } })
-
+    // Use useEffect to handle navigation after state change
+    useEffect(() => {
+        if (subject) {
+            navigate(`/downloadcontent`, { state: { subject } })
+        }
+    }, [subject, navigate])
 
     let logo = `src/assets/logo/sm_logo_${tema}.svg`
 
@@ -27,8 +38,12 @@ const SubjectMenu = () => {
     let grouped_logos = `src/assets/icons/grouped_logos_${tema}.svg`
 
     return (
+        
         <div className = "SubjectMenu">
-            <BackBtn />
+            {`${counter}%`}
+            <ChangeCounter />
+            {/* <BackBtn /> */}
+
             <img
                 className = "logo"
                 src = {logo}
@@ -60,7 +75,7 @@ const SubjectMenu = () => {
                 />
                 CSS
             </button>
-
+            
             <button 
                 className = "menu-btn poppins-semibold" 
                 onClick = {(e) => handleSubject(e.target.value)} 

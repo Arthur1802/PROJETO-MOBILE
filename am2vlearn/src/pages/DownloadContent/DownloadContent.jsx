@@ -4,7 +4,12 @@ import play_icon from '../../assets/icons/play_icon.svg'
 import './DownloadContent.css'
 import BackBtn from '../../components/BackBtn/BackBtn'
 
+import { useCounterContext } from '../../hooks/useCounterContext'
+
 const DownloadContent = () => {
+
+    const { counter } = useCounterContext()
+
     const navigate = useNavigate()
     const location = useLocation()
     const { subject } = location.state || {}
@@ -18,7 +23,12 @@ const DownloadContent = () => {
 
     return (
         <div className = "DownloadContent">
+
+            {`${counter}%`}
             <BackBtn />
+
+
+
             <img
                 src = {logo}
                 alt = "Logo"
