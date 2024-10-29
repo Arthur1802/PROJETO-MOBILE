@@ -7,8 +7,12 @@ const App = () => {
         window.scrollTo(0, 0)
     }, [])
 
+    const theme = useEffect(() => {
+        localStorage.getItem('theme')
+    }, [])
+
     return (
-        <div className = "App" data-aos = "fade-up">
+        <div className = "App" data-aos = "fade-up" data-theme = {theme}>
             <AppRoutes />
         </div>
     )

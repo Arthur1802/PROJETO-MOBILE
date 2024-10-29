@@ -4,11 +4,11 @@ import './SubjectMenu.css'
 
 // import ChangeCounter from '../../../ChangeCounter'
 
-import { useCounterContext } from '../../../../hooks/useCounterContext'
+// import { useCounterContext } from '../../../../hooks/useCounterHtmlContext'
 
 const SubjectMenu = () => {
 
-    const { counter } = useCounterContext()
+    // const { counter } = useCounterContext()
 
     const tema = 'light'
     const navigate = useNavigate()
@@ -53,7 +53,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {counter}
+                        {/* {counter} */}
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {counter}
+                        {/* {counter} */}
                     </div>
                 </div>
                 
@@ -89,7 +89,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {counter}
+                        {/* {counter} */}
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {counter}
+                        {/* {counter} */}
                     </div>
                 </div>
             </div>

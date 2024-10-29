@@ -1,10 +1,6 @@
-// 3 - Alterando o Contexto
-
 import { useContext } from 'react';
 
 import { CounterContext } from '../context/CounterContext';
-
-import React from 'react'
 
 const ChangeCounter = () => {
 

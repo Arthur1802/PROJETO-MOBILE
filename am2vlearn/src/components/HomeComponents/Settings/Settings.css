@@ -1,0 +1,70 @@
+.settings-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;   
+}
+
+.settings-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.settings-container ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 50px 0;
+}
+
+.settings-container li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cor-fundo-input);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+.settings-container ul li select {
+    width: 50%;
+    border: 1px solid 1c1c1c;
+    border-radius: 5px;
+    background: var(--cor-fundo-input);
+    color: var(--cor-texto-secundario);
+    outline: none;
+}
+
+.settings-container ul li.clickable {
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settings-container ul li.clickable:hover {
+    background: grey;
+}
+
+.settings-container footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.settings-container footer .credits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

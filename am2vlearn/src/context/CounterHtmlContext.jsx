@@ -1,6 +1,7 @@
 // 1 - Criar Context
 
 import { createContext, useState } from 'react'
+import PropTypes from 'prop-types'
 
 export const CounterHtmlContext = createContext()
 
@@ -13,4 +14,8 @@ export const CounterHtmlContextProvider = ({ children }) => {
       {children}
     </CounterHtmlContext.Provider>
   )
+}
+
+CounterHtmlContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 }

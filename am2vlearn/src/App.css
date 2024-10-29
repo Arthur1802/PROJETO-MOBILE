@@ -39,6 +39,20 @@ body {
   --code-display-color: #232323;
 }
 
+[data-theme = 'dark'] {
+  --cor-fundo: #232323;
+  --cor-texto-primaria: #f5f5f5;
+  --cor-texto-secundaria: #232323;
+  --cor-placeholder: #232323;
+  --cor-fundo-input: #232323;
+
+  --cor-fundo-alterna-tema: #232323;
+  --cor-alterna-tema: #f4f4f4;
+
+  --code-display-bg-color: #232323;
+  --code-display-color: #f5f5f5;
+}
+
 .poppins-thin {
   font-weight: 100;
 }
@@ -98,10 +112,10 @@ html {
 .App {
     background: transparent;
     width: 500px;
-    height: 700px;
+    height: 100dvh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    margin: 5dvh auto;
+    margin: 0 auto;
     padding: 20px 0;
 }
 
@@ -109,12 +123,7 @@ html {
     .App {
       margin: 10dvh auto;
       box-shadow: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .App {
-      margin: 10vh auto;
-      box-shadow: none;
+      height: 100dvh;
+      padding: 0;
     }
 }

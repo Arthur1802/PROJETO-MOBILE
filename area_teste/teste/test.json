@@ -1,0 +1,53 @@
+{
+    "rules": {
+        ".read": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+        ".write": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+        "usuarios": {
+            "$uid": {
+                ".validate": "newData.hasChildren(['uid', 'nome', 'email', 'funcao'])",
+                ".read": "$uid === auth.uid || root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                ".write": "$uid === auth.uid || root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                "funcao": {
+                    ".validate": "newData.val() == 'ADMIN' || newData.val() == 'ALUNO'"
+                }
+            }
+        },
+        "modulos": {
+            "$nome": {
+                ".validate": "newData.hasChildren(['nome', 'questoes'])",
+                ".read": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                ".write": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                "questoes": {
+                    "$questaoId": {
+                        ".validate": "newData.hasChildren(['pergunta', 'codigo', 'resposta', 'alternativas'])",
+                        "pergunta": {
+                            ".validate": "newData.val() !== '' && newData.isString()"
+                        },
+                        "codigo": {
+                            ".validate": "newData.val() !== '' && newData.isString()"
+                        },
+                        "resposta": {
+                            ".validate": "newData.val() !== '' && newData.isString()"
+                        },
+                        "alternativas": {
+                            ".validate": "newData.val() !== '' && newData.isString()"
+                        }
+                    }
+                }
+            }
+        },
+        "alternativas": {
+            "$alternativaId": {
+                ".validate": "newData.hasChildren(['texto', 'correta'])",
+                ".read": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                ".write": "root.child('usuarios').child(auth.uid).child('funcao').val() === 'ADMIN'",
+                "texto": {
+                    ".validate": "newData.val() !== '' && newData.isString()"
+                },
+                "correta": {
+                    ".validate": "newData.val() === true || newData.val() === false"
+                }
+            }
+        }
+    }
+}

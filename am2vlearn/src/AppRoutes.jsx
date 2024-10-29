@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
 import Welcome from "./pages/Welcome/Welcome.jsx"
 import LogIn from "./pages/Login&Signin/LogIn.jsx"
-import DownloadContent from "./pages/DownloadContent/DownloadContent.jsx"
+import DownloadContent from "./components/HomeComponents/DownloadContent/DownloadContent.jsx"
 import Main from "./pages/Main/Main.jsx"
 import SignIn from "./pages/Login&Signin/SignIn.jsx"
 import GameHtml from './pages/Games/GameHtml/GameHtml.jsx'
