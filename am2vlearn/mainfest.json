@@ -24,37 +24,37 @@
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/192-192.png",
             "sizes": "192x192",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/144-144.png",
             "sizes": "144x144",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/96-96.png",
             "sizes": "96x96",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/72-72.png",
             "sizes": "72x72",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/48-48.png",
             "sizes": "48x48",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/32-32.png",
             "sizes": "32x32",
-            "type": "image/jpeg"
+            "type": "image/png"
         },
         {
             "src": "https://github.com/Arthur1802/PROJETO-MOBILE/tree/main/am2vlearn/src/assets/icons/appIcons/16-16.png",
             "sizes": "16x16",
-            "type": "image/jpeg"
+            "type": "image/png"
         }
     ],
     "orientation": "portrait-primary",
