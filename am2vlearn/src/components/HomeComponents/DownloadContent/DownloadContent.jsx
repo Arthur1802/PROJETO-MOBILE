@@ -1,6 +1,8 @@
 import { Navigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import download_icon from '../../../assets/icons/download.svg'
+import logoLight from '../../../assets/logo/sm_logo_light.svg'
+import logoDark from '../../../assets/logo/sm_logo_dark.svg'
 import play_icon from '../../../assets/icons/play_icon.svg'
 import BackBtn from '../../BackBtn/BackBtn'
 import './DownloadContent.css'
@@ -9,7 +11,7 @@ const DownloadContent = ({ selectedSubject, setQuestoesConcluidas, isPlaying, se
 
     const theme = localStorage.getItem('theme')
 
-    let contentImg = import(`../../../assets/icons/${selectedSubject}_${theme}.svg`)
+    let contentImg = theme === 'light' ?  logoLight : logoDark
 
     console.log('Página para baixar conteúdo')
 
