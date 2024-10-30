@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import htmlLogoLight from '../../../../assets/icons/light/html_light.svg'
+import cssLogoLight from '../../../../assets/icons/light/css_light.svg'
+import jsLogoLight from '../../../../assets/icons/light/js_light.svg'
+import groupedLogosLight from '../../../../assets/icons/light/grouped_logos_light.svg'
+import htmlLogoDark from '../../../../assets/icons/dark/html_dark.svg'
+import cssLogoDark from '../../../../assets/icons/dark/css_dark.svg'
+import jsLogoDark from '../../../../assets/icons/dark/js_dark.svg'
+import groupedLogosDark from '../../../../assets/icons/dark/grouped_logos_dark.svg'
 import './SubjectMenu.css'
 
 // import ChangeCounter from '../../../ChangeCounter'
@@ -10,7 +18,7 @@ const SubjectMenu = () => {
 
     // const { counter } = useCounterContext()
 
-    const tema = 'light'
+    const theme = localStorage.getItem('theme')
     const navigate = useNavigate()
     
     const [subject, setSubject] = useState('')
@@ -27,10 +35,10 @@ const SubjectMenu = () => {
         }
     }, [subject, navigate])
 
-    let html_logo = `src/assets/icons/html_${tema}.svg`
-    let css_logo = `src/assets/icons/css_${tema}.svg`
-    let js_logo = `src/assets/icons/js_${tema}.svg`
-    let grouped_logos = `src/assets/icons/grouped_logos_${tema}.svg`
+    let html_logo = theme === 'light' ? htmlLogoLight : htmlLogoDark
+    let css_logo = theme === 'light' ? cssLogoLight : cssLogoDark
+    let js_logo = theme === 'light' ? jsLogoLight : jsLogoDark
+    let grouped_logos = theme === 'light' ? groupedLogosLight : groupedLogosDark
 
     return (
         

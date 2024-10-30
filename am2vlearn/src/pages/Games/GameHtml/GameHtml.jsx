@@ -1,11 +1,18 @@
+import { useState } from "react"
+import questoesHtml from "../../../questoes/dataHtml.json"
+import correct from "../../../assets/audio/correct.wav"
+import wrong from "../../../assets/audio/wrong.wav"
+import BackBtn from "../../../components/BackBtn/BackBtn"
+import { useEffect } from "react"
+
 const GameHtml = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
   option = 'html'
-  const tema = 'light'
+  const theme = localStorage.getItem('theme')
   
-  // let html = require(`../../../assets/icons/${option}_${tema}.svg`)
+  let html = import(`../../../assets/icons/${option}_${theme}.svg`)
 
   const questoes = questoesHtml[currentQuestion];
 

@@ -11,6 +11,7 @@
     cursor: pointer;
     border: none;
     outline: none;
+    color: var(--cor-texto-primaria);
 }
 
 .back-btn button svg {

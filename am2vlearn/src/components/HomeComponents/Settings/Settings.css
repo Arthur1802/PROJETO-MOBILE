@@ -1,11 +1,13 @@
 .settings-container {
     width: 80%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
+    overflow: scroll;
 }
 
 .settings-container h1 {
@@ -21,7 +23,7 @@
     gap: 25px;
     list-style-type: none;
     padding: 0;
-    margin: 0 0 50px 0;
+    margin: 0 0 25px 0;
 }
 
 .settings-container li {
@@ -30,6 +32,7 @@
     justify-content: space-between;
     align-items: center;
     background: var(--cor-fundo-input);
+    color: var(--cor-texto-primaria);
     padding: 1rem 2rem;
     border-radius: 10px;
 }
@@ -58,7 +61,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: -10px;
 }
 
 .settings-container footer .credits {
@@ -66,5 +69,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }

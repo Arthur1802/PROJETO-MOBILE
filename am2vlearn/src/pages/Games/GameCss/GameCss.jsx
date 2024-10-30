@@ -5,16 +5,15 @@ import questoesCss from '../../../questoes/dataCss.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
 import BackBtn from '../../../components/BackBtn/BackBtn'
-import html from '../../../assets/icons/css_light.svg'
 
 const GameCss = (option) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
   option = 'css'
-  const tema = 'light'
+  const theme = localStorage.getItem('theme')
   
-  // let html = require(`../../../assets/icons/${option}_${tema}.svg`)
+  let css = import(`../../../assets/icons/${option}_${theme}.svg`)
 
   const questoes = questoesCss[currentQuestion];
 
@@ -44,7 +43,7 @@ const GameCss = (option) => {
           <BackBtn />
           <img 
             className="logo"
-            src={html}
+            src={css}
             alt={option}
           />
           <div className='game-board' id="game-board">

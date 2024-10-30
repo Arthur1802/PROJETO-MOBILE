@@ -1,12 +1,14 @@
 .auth-panel {
     width: 100%;
     margin: 0 auto;
+    background: var(--cor-fundo);
 }
 
 .icons {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    fill: var(--cor-texto-primaria);
 }
 
 .auth-panel .img-cont {
@@ -76,21 +78,22 @@
     justify-content: center;
     align-items: center;
     width: 320px;
+    color: var(--cor-texto-primaria);
 }
 
 .separador span {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000;
+    color: var(--cor-texto-primaria);
     font-size: 16px;
     flex: .2 0 auto;
 }
 
 .separador span::before, .separador span::after {
     content: "";
-    background: #000;
-    border: 1px solid #000;
+    background: var(--cor-texto-primaria);
+    border: 1px solid var(--cor-texto-primaria);
     height: 1.5px;
     width: 140%;
     flex: 1 0 auto;
@@ -112,7 +115,7 @@
     width: 100%;
     padding: 5px 10px;
     border: none;
-    color: black;
+    color: var(--cor-texto-primaria);
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
@@ -133,13 +136,6 @@
     justify-content: center;
     align-items: center;
 }
-
-.errors {
-    color: red;
-    font-size: 14px;
-    margin: 0 auto;
-}
-
 
 @media (max-width: 480px) {
  
@@ -227,15 +223,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #000;
+        color: var(--cor-texto-primaria);
         font-size: 16px;
         flex: .2 0 auto;
     }
     
     .separador span::before, .separador span::after {
         content: "";
-        background: #000;
-        border: 1px solid #000;
+        background: var(--cor-texto-primaria);;
+        border: 1px solid var(--cor-texto-primaria);;
         height: 1.5px;
         width: 140%;
         flex: 1 0 auto;
@@ -257,7 +253,7 @@
         width: 100%;
         padding: 15px 10px;
         border: none;
-        color: black;
+        color: var(--cor-texto-primaria);
         cursor: pointer;
         border-radius: 5px;
         text-align: center;
@@ -278,11 +274,4 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .errors {
-        color: red;
-        font-size: 14px;
-        margin: 0 auto;
-    }
-    
 }

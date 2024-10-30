@@ -26,7 +26,7 @@
     justify-content: flex-start;
     align-items: center;
     background: var(--cor-fundo-input);
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow2);
     cursor: pointer;
     transition: all 0.15s;
     border-radius: 10px;
@@ -43,14 +43,14 @@
 
 .menu-btn:hover {
     background: darkgrey;
-    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: var(--box-shadow2);
 }
 
 .menu-btn:focus {
     transition: background 0.05s;
     outline: none;
     background: grey;
-    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: var(--box-shadow2);
 }
 
 .progress {

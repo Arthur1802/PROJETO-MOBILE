@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import './GameAll.css'
 // import Answers from './Answers'
 import questoesAll from '../../../questoes/dataAll.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
 import BackBtn from '../../../components/BackBtn/BackBtn'
-import html from '../../../assets/icons/grouped_logos_light.svg'
 
-const GameAll = ({ option, questao }) => {
+const GameAll = ({ option }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
   option = 'grouped_logos'
-  const tema = 'light'
+  const theme = localStorage.getItem('theme')
   
-  // let html = require(`../../../assets/icons/${option}_${tema}.svg`)
+  let all = import(`../../../assets/icons/${theme}/${option}_${theme}.svg`)
 
   const questoes = questoesAll[currentQuestion];
 
@@ -44,7 +44,7 @@ const GameAll = ({ option, questao }) => {
           <BackBtn />
           <img 
             className="logo"
-            src={html}
+            src={all}
             alt={option}
           />
           <div className='game-board' id="game-board">
@@ -79,6 +79,9 @@ const GameAll = ({ option, questao }) => {
       )}
     </div>
   )
+}
+GameAll.propTypes = {
+  option: PropTypes.string.isRequired,
 }
 
 export default GameAll

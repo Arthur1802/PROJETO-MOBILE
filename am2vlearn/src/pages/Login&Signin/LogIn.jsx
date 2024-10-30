@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Login, LoginWithGoogle } from '../../utils/authentication/auth.js'
-import sm_logo from '../../assets/logo/sm_logo_light.svg'
+import logoLight from '../../assets/logo/sm_logo_light.svg'
+import logoDark from '../../assets/logo/sm_logo_dark.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../../assets/icons/eye-slash-icon.svg'
@@ -11,6 +12,10 @@ import { ToastContainer, toast, Slide } from 'react-toastify'
 
 const LogIn = () => {
     const navigate = useNavigate()
+
+    const theme = localStorage.getItem('theme')
+
+    const logo = theme === 'dark' ? logoDark : logoLight
 
     const [values, setValues] = useState({
         email: '',
@@ -100,7 +105,7 @@ const LogIn = () => {
         <div className = "auth-panel" data-aos = "fade-up">
             <BackBtn link = {'/'}/>
             <div className = "img-cont">
-                <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
+                <img className = "login-logo" src = {logo} alt = "Logo"></img>
             </div>
             <form className = "form" onSubmit = {onSubmit}>
                 <div className = "input-label-cont">

@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Signin, SigninWithGoogle } from '../../utils/authentication/auth.js'
-import sm_logo from '../../assets/logo/sm_logo_light.svg'
+import logoLight from '../../assets/logo/sm_logo_light.svg'
+import logoDark from '../../assets/logo/sm_logo_dark.svg'
 import google_icon from '../../assets/icons/google-icon.svg'
 import eye_icon from '../../assets/icons/eye-icon.svg'
 import eye_slash_icon from '../../assets/icons/eye-slash-icon.svg'
 import './LogIn&SignIn.css'
 import BackBtn from '../../components/BackBtn/BackBtn.jsx'
-import { ToastContainer, toast, Slide } from 'react-toastify'
+import { Notify } from '../../components/Notifications/Notify.js'
+import NotificationContainer from '../../components/Notifications/NotificationContainer.jsx'
 
 const SignIn = () => {
     const navigate = useNavigate()
+
+    const theme = localStorage.getItem('theme')
+
+    const logo = theme === 'dark' ? logoDark : logoLight
 
     const [values, setValues] = useState({
         nome: '',
@@ -83,33 +89,24 @@ const SignIn = () => {
             if (notifications.errors.signinWithGoogle) errorMessages.push(notifications.errors.signinWithGoogle)
     
             if (errorMessages.length > 0) {
-                notify(`Erro ao criar conta!\n${errorMessages.join('\n')}`, 'error')
+                Notify(`Erro ao criar conta!\n${errorMessages.join('\n')}`, 'error', 5000, true)
             }
         } else if (notifications.success) {
-            notify('Conta criada com sucesso!', 'success')
+            Notify('Conta criada com sucesso!', 'success', 5000, true)
             setIsSigningIn(false)
             navigate('/login')
         }
     }, [notifications, navigate])    
 
-    const notify = (message, type) => {
-        toast[type](message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Slide
-        })
-    }
-
     return (
         <div className = "auth-panel" data-aos = "fade-up">
-            <BackBtn link = {'/'}/>
+            <NotificationContainer
+                autoClose = {5000}
+                hideProgressBar = {true}
+            />
+            <BackBtn />
             <div className = "img-cont">
-                <img className = "login-logo" src = {sm_logo} alt = "Logo"></img>
+                <img className = "login-logo" src = {logo} alt = "Logo"></img>
             </div>
             <form className = "form" onSubmit = {onSubmit}>
                 <div className = "input-label-cont">
@@ -208,20 +205,6 @@ const SignIn = () => {
                     <Link className = "btns azul-claro" to = "/login">ENTRAR</Link>
                 </div>
             </form>
-
-            <ToastContainer
-                position = "top-center"
-                autoClose = {5000}
-                hideProgressBar
-                newestOnTop = {false}
-                closeOnClick = {false}
-                rtl = {false}
-                pauseOnFocusLoss = {false}
-                draggable
-                pauseOnHover
-                theme = "dark"
-                transition: Slide
-            />
         </div>
     )
 }

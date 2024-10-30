@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import download_icon from '../../../assets/icons/download.svg'
 import play_icon from '../../../assets/icons/play_icon.svg'
-import './DownloadContent.css'
 import BackBtn from '../../BackBtn/BackBtn'
+import './DownloadContent.css'
 
 import { useCounterHtmlContext } from '../../../hooks/useCounterHtmlContext'
 
@@ -13,9 +13,9 @@ const DownloadContent = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const { subject } = location.state || {}
-    const tema = 'light'
+    const theme = localStorage.getItem('theme')
 
-    let imgSrc = `src/assets/icons/${subject}_${tema}.svg`
+    let contentImg = import(`../../../assets/icons/${subject}_${theme}.svg`)
 
     console.log('Página para baixar conteúdo')
 
@@ -27,7 +27,7 @@ const DownloadContent = () => {
 
             <img
                 className = "content-img"
-                src = {imgSrc}
+                src = {contentImg}
                 alt = "Content"
             />
             
