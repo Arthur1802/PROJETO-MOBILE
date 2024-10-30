@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import UsuarioDAO from '../../../../model/Usuario/UsuarioDAO'
 import htmlLogoLight from '../../../../assets/icons/light/html_light.svg'
 import cssLogoLight from '../../../../assets/icons/light/css_light.svg'
 import jsLogoLight from '../../../../assets/icons/light/js_light.svg'
@@ -10,14 +11,7 @@ import jsLogoDark from '../../../../assets/icons/dark/js_dark.svg'
 import groupedLogosDark from '../../../../assets/icons/dark/grouped_logos_dark.svg'
 import './SubjectMenu.css'
 
-// import ChangeCounter from '../../../ChangeCounter'
-
-// import { useCounterContext } from '../../../../hooks/useCounterHtmlContext'
-
 const SubjectMenu = () => {
-
-    // const { counter } = useCounterContext()
-
     const theme = localStorage.getItem('theme')
     const navigate = useNavigate()
     
@@ -40,12 +34,37 @@ const SubjectMenu = () => {
     let js_logo = theme === 'light' ? jsLogoLight : jsLogoDark
     let grouped_logos = theme === 'light' ? groupedLogosLight : groupedLogosDark
 
+    const [usuario, setUsuario] = useState(null)
+    const daoUsuario = useMemo(() => new UsuarioDAO(), [])
+
+    useEffect(() => {
+        const fetchUsuario = async () => {
+            const uid = localStorage.getItem('userUID')
+            const fetchedUsuario = await daoUsuario.obterUsuarioPeloUID(uid)
+
+            if (fetchedUsuario) {
+                setUsuario(fetchedUsuario)
+            }
+        }
+
+        fetchUsuario()
+    }, [daoUsuario])
+
+    const salvarProgresso = async () => {
+        if (usuario) {
+            try {
+                usuario.setPrct()
+                await daoUsuario.alterar(usuario)
+                Notify('Suas informações foram alteradas com sucesso!', 'success', 5000, true)
+            } catch (erro) {
+                Notify(`Ocorreu um erro ao tentar alterar suas informações. Tente novamente!\n${erro}`, 'error', 5000, true)
+            }
+        }
+    }
+
     return (
         
         <div className = "S</div>ubjectMenu">
-            {/* {`${counter}%`}
-            <ChangeCounter /> */}
-
             <div className = "btn-container">
                 <div className = "menu-btn-wrapper">
                     <button 
@@ -61,7 +80,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {/* {counter} */}
+                        {usuario.getPrct(html)}
                     </div>
                 </div>
 
@@ -79,7 +98,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {/* {counter} */}
+                        {usuario.getPrct(css)}
                     </div>
                 </div>
                 
@@ -97,7 +116,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {/* {counter} */}
+                        {usuario.getPrct(js)}
                     </div>
                 </div>
 
@@ -115,7 +134,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {/* {counter} */}
+                        {usuario.getPrct(todos)}
                     </div>
                 </div>
             </div>

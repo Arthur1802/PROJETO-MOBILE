@@ -4,8 +4,8 @@ import UsuarioDAO from '../../../model/Usuario/UsuarioDAO'
 
 const Profile = () => {
     const [usuario, setUsuario] = useState(null)
-    const [ email, setEmail ] = useState('')
-    const [ nome, setNome ] = useState('')
+    const [email, setEmail] = useState('')
+    const [nome, setNome] = useState('')
     const daoUsuario = useMemo(() => new UsuarioDAO(), [])
 
     useEffect(() => {

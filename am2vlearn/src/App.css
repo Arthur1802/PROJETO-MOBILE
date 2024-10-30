@@ -112,7 +112,6 @@ html {
     border-radius: 10px;
     margin: 0 auto;
     padding: 20px 0;
-    overflow: hidden;
 }
 
 @media (max-width: 768px) {
