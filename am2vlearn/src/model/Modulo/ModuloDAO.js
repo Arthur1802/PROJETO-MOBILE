@@ -62,7 +62,7 @@ export default class DaoModulo {
 
         return new Promise((resolve) => {
             let conjModulos = []
-            let dbRefModulos = ref(connectionDB, 'modulos')
+            let dbRefModulos = ref(connectionDB, 'modulos/')
             let paramConsulta = orderByChild('nome')
             let consulta = query(dbRefModulos, paramConsulta)
             let resultPromise = get(consulta)

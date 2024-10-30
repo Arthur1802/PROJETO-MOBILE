@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Navigate } from 'react-router-dom'
+import { Notify } from '../../../../components/Notifications/Notify'
+import NotificationContainer from '../../../../components/Notifications/NotificationContainer.jsx'
 import UsuarioDAO from '../../../../model/Usuario/UsuarioDAO'
 import ModuloDAO from '../../../../model/Modulo/ModuloDAO'
 import htmlLogoLight from '../../../../assets/icons/light/html_light.svg'
@@ -92,25 +94,33 @@ const SubjectMenu = () => {
 
     useEffect(() => {
         setProgressos({
-            {subject}: questoesConcluidas[subject] / numQuestoes[subject] * 100,
+            [subject]: (questoesConcluidas[subject] / numQuestoes[subject]) * 100,
         })
     }, [isPlaying, subject, questoesConcluidas, numQuestoes])
-
-    const salvarProgresso = async () => {
-        if (usuario) {
-            try {
-                usuario.setPrct()
-                await daoUsuario.alterar(usuario)
-                Notify('Suas informações foram alteradas com sucesso!', 'success', 5000, true)
-            } catch (erro) {
-                Notify(`Ocorreu um erro ao tentar alterar suas informações. Tente novamente!\n${erro}`, 'error', 5000, true)
+    
+    
+    useEffect(() => {
+        const salvarProgresso = async () => {
+            if (usuario) {
+                try {
+                    usuario.setPrct(subject, progressos[subject])
+                    await daoUsuario.alterar(usuario)
+                    Notify('Suas informações foram alteradas com sucesso!', 'success', 5000, true)
+                } catch (erro) {
+                    Notify(`Ocorreu um erro ao tentar alterar suas informações. Tente novamente!\n${erro}`, 'error', 5000, true)
+                }
             }
         }
-    }
+
+        salvarProgresso()
+    }, [progressos, subject, usuario, daoUsuario])
 
     return (
-        
-        <div className = "S</div>ubjectMenu">
+        <div className = "SubjectMenu">
+            <NotificationContainer
+                autoClose = {5000}
+                hideProgressBar = {false}
+            />
             <div className = "btn-container">
                 <div className = "menu-btn-wrapper">
                     <button 
