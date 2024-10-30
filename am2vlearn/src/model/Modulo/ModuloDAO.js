@@ -35,22 +35,22 @@ export default class DaoModulo {
         return new Promise((resolve) => {
             let dbRefModulo = ref(connectionDB, `modulos/${nome}`)
             let consulta = query(dbRefModulo)
-            console.log(`Querying database for UID: ${nome}`)
+            console.log(`Querying database for Módulo: ${nome}`)
     
             let resultPromise = get(consulta)
             
             resultPromise.then(dataSnapshot => {
                 let mdl = dataSnapshot.val()
-                console.log(`Data retrieved from Firebase: ${mdl}`)
+                console.log(`Dados resgatados do BD: ${mdl}`)
     
                 if (mdl != null) {
                     resolve(new Modulo(mdl.nome, mdl.questoes))
                 } else {
-                    console.warn("No user found for UID: {nome}")
+                    console.warn("Nenhum módulo encontrado para o parametro: {nome}")
                     resolve(null)
                 }
             }).catch(error => {
-                console.error(`Error retrieving data: ${error}}`)
+                console.error(`Erro na consulta: ${error}}`)
                 resolve(null)
             })
         })

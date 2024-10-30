@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import UsuarioDAO from '../../../../model/Usuario/UsuarioDAO'
+import ModuloDAO from '../../../../model/Modulo/ModuloDAO'
 import htmlLogoLight from '../../../../assets/icons/light/html_light.svg'
 import cssLogoLight from '../../../../assets/icons/light/css_light.svg'
 import jsLogoLight from '../../../../assets/icons/light/js_light.svg'
@@ -13,26 +14,32 @@ import './SubjectMenu.css'
 
 const SubjectMenu = () => {
     const theme = localStorage.getItem('theme')
-    const navigate = useNavigate()
-    
-    const [subject, setSubject] = useState('')
-    console.log(`Subject: ${subject}`)
-
-    const handleSubject = (subject) => {
-        setSubject(subject)
-        console.log(`Subject: ${subject}`)
-    }
-
-    useEffect(() => {
-        if (subject) {
-            navigate(`/downloadcontent`, { state: { subject } })
-        }
-    }, [subject, navigate])
 
     let html_logo = theme === 'light' ? htmlLogoLight : htmlLogoDark
     let css_logo = theme === 'light' ? cssLogoLight : cssLogoDark
     let js_logo = theme === 'light' ? jsLogoLight : jsLogoDark
     let grouped_logos = theme === 'light' ? groupedLogosLight : groupedLogosDark
+    
+    const [subject, setSubject] = useState('')
+
+    const [questoesConcluidas, setQuestoesConcluidas] = useState({
+        html: 0,
+        css: 0,
+        js: 0,
+        todos: 0
+    })
+
+    const handleSubject = (subject) => {
+        setSubject(subject)
+    }
+
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    useEffect(() => {
+        if (subject) {
+            {<Navigate to = {`/downloadcontent`} subject = {subject} setQuestoesConcluidas = {setQuestoesConcluidas} isPlaying = {isPlaying} setIsPlaying = {setIsPlaying} />}
+        }
+    }, [subject, isPlaying])
 
     const [usuario, setUsuario] = useState(null)
     const daoUsuario = useMemo(() => new UsuarioDAO(), [])
@@ -49,6 +56,45 @@ const SubjectMenu = () => {
 
         fetchUsuario()
     }, [daoUsuario])
+
+    const [modulo, setModulo] = useState(null)
+    const daoModulo = useMemo(() => new ModuloDAO(), [])
+
+    useEffect(() => {
+        const fetchModulo = async (nome) => {
+            const fetchedModulo = await daoModulo.obterModuloPeloNome(nome)
+
+            if (fetchedModulo) {
+                setModulo(fetchedModulo)
+                setNumQuestoes(prev => ({...prev, [nome]: fetchedModulo.questoes.length}))
+            }
+        }
+
+        fetchModulo('html')
+        fetchModulo('css')
+        fetchModulo('js')
+        fetchModulo('todos')
+    }, [daoModulo])
+
+    const [numQuestoes, setNumQuestoes] = useState({
+        html: modulo.questoes.length(),
+        css: modulo.questoes.length(),
+        js: modulo.questoes.length(),
+        todos: modulo.questoes.length(),
+    })
+
+    const [progressos, setProgressos] = useState({
+        html: 0,
+        css: 0,
+        js: 0,
+        todos: 0
+    })
+
+    useEffect(() => {
+        setProgressos({
+            {subject}: questoesConcluidas[subject] / numQuestoes[subject] * 100,
+        })
+    }, [isPlaying, subject, questoesConcluidas, numQuestoes])
 
     const salvarProgresso = async () => {
         if (usuario) {
@@ -80,7 +126,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {usuario.getPrct(html)}
+                        {`${usuario.getPrct('html')}%`}
                     </div>
                 </div>
 
@@ -98,7 +144,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {usuario.getPrct(css)}
+                        {usuario.getPrct('css')}
                     </div>
                 </div>
                 
@@ -116,7 +162,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {usuario.getPrct(js)}
+                        {usuario.getPrct('js')}
                     </div>
                 </div>
 
@@ -134,7 +180,7 @@ const SubjectMenu = () => {
                     </button>
 
                     <div className = "progress poppins-medium">
-                        {usuario.getPrct(todos)}
+                        {usuario.getPrct('todos')}
                     </div>
                 </div>
             </div>

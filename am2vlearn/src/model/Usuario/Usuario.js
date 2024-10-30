@@ -6,8 +6,9 @@ export default class Usuario {
     #nome
     #uid
     #funcao
+    #modulos
 
-    constructor(email, nome, uid, funcao) {
+    constructor(email, nome, uid, funcao, modulos) {
         this.setEmail(email)
         this.setNome(nome)
         this.setUid(uid)
@@ -15,6 +16,8 @@ export default class Usuario {
             this.setFuncao("INABILITADO")
         else
             this.setFuncao(funcao)
+
+        this.#modulos = modulos
     }
 
     getEmail() {
@@ -61,6 +64,40 @@ export default class Usuario {
         }
         
         this.#funcao = funcao
+    }
+
+    getModulos() {
+        return this.#modulos
+    } 
+
+    setModulos(modulos) {
+        this.#modulos = modulos
+    }
+
+    getPrct(modulo) {
+        if (!this.#modulos) {
+            return 0
+        }
+
+        let mod = this.#modulos.find(mod => mod.getNome() == modulo)
+        if (!mod) {
+            return 0
+        }
+
+        return mod['modulos'][modulo]['progresso']
+    }
+
+    setPrct(modulo, prct) {
+        if (!this.#modulos) {
+            return
+        }
+
+        let mod = this.#modulos.find(mod => mod.getNome() == modulo)
+        if (!mod) {
+            return
+        }
+
+        mod['modulos'][modulo]['progresso'] = prct
     }
 
     static validarEmail(email) {
