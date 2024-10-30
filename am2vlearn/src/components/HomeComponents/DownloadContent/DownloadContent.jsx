@@ -5,11 +5,7 @@ import play_icon from '../../../assets/icons/play_icon.svg'
 import BackBtn from '../../BackBtn/BackBtn'
 import './DownloadContent.css'
 
-import { useCounterHtmlContext } from '../../../hooks/useCounterHtmlContext'
-
 const DownloadContent = ({ selectedSubject, setQuestoesConcluidas, isPlaying, setIsPlaying }) => {
-
-    const { counter } = useCounterHtmlContext()
 
     const theme = localStorage.getItem('theme')
 
@@ -28,7 +24,6 @@ const DownloadContent = ({ selectedSubject, setQuestoesConcluidas, isPlaying, se
     return (
         <div className = "DownloadContent">
 
-            {`${counter}%`}
             <BackBtn />
 
             <img
