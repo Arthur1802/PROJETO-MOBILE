@@ -1,50 +1,39 @@
-import ModelError from "../ModelError.js"
+import ModelError from "../ModelError.js";
 
 export default class Modulo {
 
-    #nome
-    #questoes
+    #nome;
+    #questoes;
 
     constructor(nome, questoes) {
-        this.setNome(nome)
-        this.setQuestoes(questoes)
+        this.setNome(nome);
+        this.setQuestoes(questoes);
     }
 
     setNome(nome) {
-        if (!nome) {
-            throw new ModelError("Nome inválido: " + nome)
+        if (!nome || typeof nome !== 'string') {
+            throw new ModelError("Nome inválido: " + nome);
         }
         
-        this.#nome = nome
+        this.#nome = nome;
     }
 
     getNome() {
-        return this.#nome
-    }
-
-    getQuestoes() {
-        return this.#questoes
+        return this.#nome;
     }
 
     setQuestoes(questoes) {
-        if (!Modulo.validarQuestoes(questoes)) {
-            throw new ModelError("Função inválida: " + questoes)
-        }
-        
-        this.#questoes = questoes
+        this.#questoes = questoes;
     }
 
-    static validarQuestoes(questoes) {
-        if (questoes != 'ADMIN' && questoes != "ALUNO" && questoes != 'PROFESSOR' && questoes != "INABILITADO")
-            return false
-        return true
+    getQuestoes() {
+        return this.#questoes;
     }
 
     mostrar() {
-        let texto = "Modulo: " + this.#nome + "\n"
-        texto += "Função: " + this.#questoes + "\n"
+        let texto = "Modulo: " + this.#nome + "\n";
+        texto += "Questões: " + JSON.stringify(this.#questoes, null, 2) + "\n";
 
-        alert(texto)
-        alert(JSON.stringify(this))
+        alert(texto);
     }
 }

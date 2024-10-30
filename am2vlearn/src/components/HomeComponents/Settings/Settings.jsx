@@ -64,7 +64,6 @@ const Settings = () => {
                     </select>
                 </li>
                 <li className = "clickable" onClick = {() => navigate('/contact')}>Contact<i className = "fa-solid fa-up-right-from-square"></i></li>
-                <li className = "clickable" onClick = {() => navigate('/termsofuse')}>Terms of use<i className = "fa-solid fa-up-right-from-square"></i></li>
                 <li className = "clickable" onClick = {() => handleLogOut()}>Log Out<i className = "fa-solid fa-right-from-bracket"></i></li>
             </ul>
 
@@ -72,9 +71,9 @@ const Settings = () => {
                 <span className = "copyright">Copyright © 2024 AM2VLearn</span>
                 <span className = "credits">
                     Made by:
-                    <a href = "https://github.com/Arthur1802" target = "_blank">Arthur Quinellato</a>
-                    <a href = "https://github.com/Petrakis20" target = "_blank">Matheus Petrakis</a>
-                    <a href = "https://github.com/vitoriomuniz26" target = "_blank">Vitório Muniz</a>
+                    <a href = "https://github.com/Arthur1802" target = "_blank">Arthur Quinellato <i className = "fa-solid fa-up-right-from-square"></i></a>
+                    <a href = "https://github.com/Petrakis20" target = "_blank">Matheus Petrakis <i className = "fa-solid fa-up-right-from-square"></i></a>
+                    <a href = "https://github.com/vitoriomuniz26" target = "_blank">Vitório Muniz <i className = "fa-solid fa-up-right-from-square"></i></a>
                 </span>
             </footer>
         </div>

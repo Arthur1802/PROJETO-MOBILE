@@ -12,12 +12,8 @@ export default class Usuario {
         this.setEmail(email)
         this.setNome(nome)
         this.setUid(uid)
-        if (funcao === undefined || funcao === null)
-            this.setFuncao("INABILITADO")
-        else
-            this.setFuncao(funcao)
-
-        this.#modulos = modulos
+        this.setFuncao(funcao)
+        this.setModulos(modulos)
     }
 
     getEmail() {
@@ -79,12 +75,12 @@ export default class Usuario {
             return 0
         }
 
-        let mod = this.#modulos.find(mod => mod.getNome() == modulo)
+        let mod = this.#modulos
         if (!mod) {
             return 0
         }
 
-        return mod['modulos'][modulo]['progresso']
+        return mod[modulo]['progresso']
     }
 
     setPrct(modulo, prct) {
@@ -123,7 +119,7 @@ export default class Usuario {
     }
 
     static validarFuncao(funcao) {
-        if (funcao != 'ADMIN' && funcao != "ALUNO" && funcao != 'PROFESSOR' && funcao != "INABILITADO")
+        if (funcao != 'ADMIN' && funcao != "ALUNO")
             return false
         return true
     }
@@ -131,6 +127,8 @@ export default class Usuario {
     mostrar() {
         let texto = "Email: " + this.#email + "\n"
         texto += "UID: " + this.#uid + "\n"
+        texto += "Nome: " + this.#nome + "\n"
+        texto += "Modulos: " + JSON.stringify(this.#modulos, null, 2) + "\n"
         texto += "Função: " + this.#funcao + "\n"
 
         alert(texto)

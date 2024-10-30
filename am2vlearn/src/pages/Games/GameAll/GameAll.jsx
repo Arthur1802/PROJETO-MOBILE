@@ -1,35 +1,51 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+// import { capitalize } from '../../../utils/functions.js'
 import './GameAll.css'
 // import Answers from './Answers'
 import questoesAll from '../../../questoes/dataAll.json'
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
 import BackBtn from '../../../components/BackBtn/BackBtn'
+import logoLight from '../../../assets/icons/light/grouped_logos_light.svg'
+import logoDark from '../../../assets/icons/dark/grouped_logos_dark.svg'
 
 const GameAll = ({ option }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  // let [questoesConcluidas, setQuestoesConcluidas] = useState(0)
+
+  // useEffect(() => {
+  //   localStorage.setItem(`questoesConcluidas${capitalize(option)}`, JSON.stringify(questoesConcluidas))
+  //   window.dispatchEvent(new Event('gamePlayed'))
+  // }, [questoesConcluidas, option])
+
+  // const handleCorrectAnswer = () => {
+  //   setQuestoesConcluidas(questoesConcluidas =+ 1)
+  // }
+
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [userAnswers, setUserAnswers] = useState([])
 
   option = 'grouped_logos'
-  const theme = localStorage.getItem('theme')
   
-  let all = import(`../../../assets/icons/${theme}/${option}_${theme}.svg`)
+  const theme = localStorage.getItem('theme')
 
-  const questoes = questoesAll[currentQuestion];
+  let all = theme === 'light' ? logoLight : logoDark
+
+  const questoes = questoesAll[currentQuestion]
 
   const handleAnswer = (selectedAnswer) => {
-    const isCorrect = selectedAnswer.isCorrect;
+    const isCorrect = selectedAnswer.isCorrect
     if (isCorrect) {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(correct).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }])
+      setCurrentQuestion(currentQuestion + 1)
+      // handleCorrectAnswer()
+      new Audio(correct).play()
     } else {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(wrong).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }])
+      setCurrentQuestion(currentQuestion + 1)
+      new Audio(wrong).play()
     }
-  } 
+  }
 
   useEffect(() => {
     const gameBoard = document.getElementById('game-board')
@@ -42,7 +58,7 @@ const GameAll = ({ option }) => {
       {currentQuestion < questoesAll.length ? (
         <div className='game-display'>
           <BackBtn />
-          <img 
+          <img
             className="logo"
             src={all}
             alt={option}
@@ -61,8 +77,8 @@ const GameAll = ({ option }) => {
             </div>
             {questoes.respostas.map((resposta) => (
               // <Answers key = {resposta.id} resposta = {resposta.resposta}/>
-              <button 
-                key={resposta.id} 
+              <button
+                key={resposta.id}
                 className='game-answer-btns poppins-semibold'
                 onClick={() => handleAnswer(resposta)}
               >

@@ -1,32 +1,56 @@
 import { useEffect, useState } from 'react'
+
+// import { capitalize } from '../../../utils/functions.js'
+
+import PropTypes from 'prop-types'
+
 import './GameJs.css'
 // import Answers from './Answers'
+
 import questoesJs from '../../../questoes/dataJs.json'
+
 import correct from '../../../assets/audio/correct.wav'
 import wrong from '../../../assets/audio/wrong.wav'
-import BackBtn from '../../../components/BackBtn/BackBtn'
 
-const GameJs = (option) => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+import BackBtn from '../../../components/BackBtn/BackBtn'
+import logoLight from '../../../assets/icons/light/js_light.svg'
+import logoDark from '../../../assets/icons/dark/js_dark.svg'
+
+const GameJs = ({ option }) => {
+
+  // let [questoesConcluidas, setQuestoesConcluidas] = useState(0)
+
+  // useEffect(() => {
+  //   localStorage.setItem(`questoesConcluidas${capitalize(option)}`, JSON.stringify(questoesConcluidas))
+  //   window.dispatchEvent(new Event('gamePlayed'))
+  // }, [questoesConcluidas, option])
+
+  // const handleCorrectAnswer = () => {
+  //   setQuestoesConcluidas(questoesConcluidas =+ 1)
+  // }
+
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [userAnswers, setUserAnswers] = useState([])
+
+  const theme = localStorage.getItem('theme')
 
   option = 'js'
-  const theme = localStorage.getItem('theme')
   
-  let js = import(`../../../assets/icons/${option}_${theme}.svg`)
+  let js = theme === 'light' ? logoLight : logoDark
 
-  const questoes = questoesJs[currentQuestion];
+  const questoes = questoesJs[currentQuestion]
 
   const handleAnswer = (selectedAnswer) => {
-    const isCorrect = selectedAnswer.isCorrect;
+    const isCorrect = selectedAnswer.isCorrect
     if (isCorrect) {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(correct).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }])
+      setCurrentQuestion(currentQuestion + 1)
+      // handleCorrectAnswer()
+      new Audio(correct).play()
     } else {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(wrong).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }])
+      setCurrentQuestion(currentQuestion + 1)
+      new Audio(wrong).play()
     }
   } 
 
@@ -78,6 +102,9 @@ const GameJs = (option) => {
       )}
     </div>
   )
+}
+GameJs.propTypes = {
+  option: PropTypes.string.isRequired,
 }
 
 export default GameJs

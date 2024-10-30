@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Slide, ToastContainer, toast } from 'react-toastify'
 import UsuarioDAO from '../../../model/Usuario/UsuarioDAO'
+import './Profile.css'
 
 const Profile = () => {
     const [usuario, setUsuario] = useState(null)
@@ -58,7 +59,7 @@ const Profile = () => {
     }
 
     return (
-        <div className = "profile-section" data-aos = "fade-up">
+        <div className = "profile-container" data-aos = "fade-up">
             <ToastContainer
                 position = "top-center"
                 autoClose = {5000}
@@ -72,24 +73,26 @@ const Profile = () => {
                 theme = "dark"
                 transition = {Slide}
             />
-            <input 
-                type = "text" 
-                placeholder = "Redefinir nome" 
-                name = "nome" 
-                value = {nome} 
-                onChange = {(e) => setNovoNome(e.target.value)} 
-            />
-            <input 
-                type = "email" 
-                placeholder = "Redefinir e-mail" 
-                name = "email" 
-                value = {email} 
-                onChange = {(e) => setNovoEmail(e.target.value)} 
-            />
+            <form>
+                <input 
+                    type = "text" 
+                    placeholder = "Redefinir nome" 
+                    name = "nome" 
+                    value = {nome} 
+                    onChange = {(e) => setNovoNome(e.target.value)} 
+                />
+                <input 
+                    type = "email" 
+                    placeholder = "Redefinir e-mail" 
+                    name = "email" 
+                    value = {email} 
+                    onChange = {(e) => setNovoEmail(e.target.value)} 
+                />
 
-            <button onClick = {() => alterarSenha()}>ALTERAR SENHA?</button>
+                <a href = "">Alterar senha?<i className = "fa-solid fa-up-right-from-square"></i></a>
 
-            <button onClick = {() => salvarAlteracoes()}>SALVAR</button>
+                <button className = "azul-claro" onClick = {() => salvarAlteracoes()}>SALVAR</button>
+            </form>
         </div>
     )
 }

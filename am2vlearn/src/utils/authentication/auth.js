@@ -98,10 +98,10 @@ export const Signin = async (nome, email, senha) => {
             email: user.email,
             funcao: "ALUNO",
             modulos: {
-                html: {nome: "HTML", progresso: 0},
-                css: {nome: "CSS", progresso: 0},
-                js: {nome: "JavaScript", progresso: 0},
-                todos: {nome: "Todos", progresso: 0}
+                html: {nome: "html", progresso: 0},
+                css: {nome: "css", progresso: 0},
+                js: {nome: "js", progresso: 0},
+                todos: {nome: "todos", progresso: 0}
             }
         }
 
@@ -131,10 +131,10 @@ export const SigninWithGoogle = async () => {
                 email: user.email,
                 funcao: "ALUNO",
                 modulos: {
-                    html: {nome: "HTML", progresso: 0},
-                    css: {nome: "CSS", progresso: 0},
-                    js: {nome: "JavaScript", progresso: 0},
-                    todos: {nome: "Todos", progresso: 0}
+                    html: {nome: "html", progresso: 0},
+                    css: {nome: "css", progresso: 0},
+                    js: {nome: "js", progresso: 0},
+                    todos: {nome: "todos", progresso: 0}
                 }
             }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Notify } from '../../../../components/Notifications/Notify'
 import NotificationContainer from '../../../../components/Notifications/NotificationContainer.jsx'
 import UsuarioDAO from '../../../../model/Usuario/UsuarioDAO'
@@ -13,186 +13,139 @@ import cssLogoDark from '../../../../assets/icons/dark/css_dark.svg'
 import jsLogoDark from '../../../../assets/icons/dark/js_dark.svg'
 import groupedLogosDark from '../../../../assets/icons/dark/grouped_logos_dark.svg'
 import './SubjectMenu.css'
+import { capitalize } from '../../../../utils/functions.js'
 
 const SubjectMenu = () => {
     const theme = localStorage.getItem('theme')
+    const navigate = useNavigate()
 
-    let html_logo = theme === 'light' ? htmlLogoLight : htmlLogoDark
-    let css_logo = theme === 'light' ? cssLogoLight : cssLogoDark
-    let js_logo = theme === 'light' ? jsLogoLight : jsLogoDark
-    let grouped_logos = theme === 'light' ? groupedLogosLight : groupedLogosDark
-    
+    const html_logo = theme === 'light' ? htmlLogoLight : htmlLogoDark
+    const css_logo = theme === 'light' ? cssLogoLight : cssLogoDark
+    const js_logo = theme === 'light' ? jsLogoLight : jsLogoDark
+    const grouped_logos = theme === 'light' ? groupedLogosLight : groupedLogosDark
+
     const [subject, setSubject] = useState('')
+    // const [questoesConcluidas, setQuestoesConcluidas] = useState(localStorage.getItem(`questoesConcluidas${capitalize(subject)}`))
 
-    const [questoesConcluidas, setQuestoesConcluidas] = useState({
-        html: 0,
-        css: 0,
-        js: 0,
-        todos: 0
-    })
+    // useEffect(() => {
+    //     const handleStorageChange = () => {
+    //         setQuestoesConcluidas(localStorage.getItem(`questoesConcluidas${capitalize(subject)}`))
+    //     }
 
-    const handleSubject = (subject) => {
-        setSubject(subject)
-    }
+    //     window.addEventListener('gamePlayed', handleStorageChange)
 
-    const [isPlaying, setIsPlaying] = useState(false)
-
-    useEffect(() => {
-        if (subject) {
-            {<Navigate to = {`/downloadcontent`} subject = {subject} setQuestoesConcluidas = {setQuestoesConcluidas} isPlaying = {isPlaying} setIsPlaying = {setIsPlaying} />}
-        }
-    }, [subject, isPlaying])
+    //     return () => {
+    //         window.removeEventListener('gamePlayed', handleStorageChange)
+    //     }
+    // }, [subject])
 
     const [usuario, setUsuario] = useState(null)
     const daoUsuario = useMemo(() => new UsuarioDAO(), [])
 
+    const handleSubject = (selectedSubject) => {
+        setSubject(selectedSubject)
+        navigate(`/game${selectedSubject === 'grouped_logos' ? 'all' : selectedSubject}`, { state: { subject: selectedSubject } })
+    }
+
+    // Carregar informações do usuário ao montar o componente
     useEffect(() => {
         const fetchUsuario = async () => {
             const uid = localStorage.getItem('userUID')
-            const fetchedUsuario = await daoUsuario.obterUsuarioPeloUID(uid)
-
-            if (fetchedUsuario) {
-                setUsuario(fetchedUsuario)
-            }
-        }
-
-        fetchUsuario()
-    }, [daoUsuario])
-
-    const [modulo, setModulo] = useState(null)
-    const daoModulo = useMemo(() => new ModuloDAO(), [])
-
-    useEffect(() => {
-        const fetchModulo = async (nome) => {
-            const fetchedModulo = await daoModulo.obterModuloPeloNome(nome)
-
-            if (fetchedModulo) {
-                setModulo(fetchedModulo)
-                setNumQuestoes(prev => ({...prev, [nome]: fetchedModulo.questoes.length}))
-            }
-        }
-
-        fetchModulo('html')
-        fetchModulo('css')
-        fetchModulo('js')
-        fetchModulo('todos')
-    }, [daoModulo])
-
-    const [numQuestoes, setNumQuestoes] = useState({
-        html: modulo.questoes.length(),
-        css: modulo.questoes.length(),
-        js: modulo.questoes.length(),
-        todos: modulo.questoes.length(),
-    })
-
-    const [progressos, setProgressos] = useState({
-        html: 0,
-        css: 0,
-        js: 0,
-        todos: 0
-    })
-
-    useEffect(() => {
-        setProgressos({
-            [subject]: (questoesConcluidas[subject] / numQuestoes[subject]) * 100,
-        })
-    }, [isPlaying, subject, questoesConcluidas, numQuestoes])
-    
-    
-    useEffect(() => {
-        const salvarProgresso = async () => {
-            if (usuario) {
-                try {
-                    usuario.setPrct(subject, progressos[subject])
-                    await daoUsuario.alterar(usuario)
-                    Notify('Suas informações foram alteradas com sucesso!', 'success', 5000, true)
-                } catch (erro) {
-                    Notify(`Ocorreu um erro ao tentar alterar suas informações. Tente novamente!\n${erro}`, 'error', 5000, true)
+            if (uid) {
+                const fetchedUsuario = await daoUsuario.obterUsuarioPeloUID(uid)
+                if (fetchedUsuario) {
+                    setUsuario(fetchedUsuario)
                 }
             }
         }
+        fetchUsuario()
+    }, [daoUsuario])
 
-        salvarProgresso()
-    }, [progressos, subject, usuario, daoUsuario])
+    const [numQuestoes, setNumQuestoes] = useState({})
+    const daoModulo = useMemo(() => new ModuloDAO(), [])
+
+    useEffect(() => {
+        const fetchModulos = async () => {
+            const modulosNomes = ['html', 'css', 'js', 'todos']
+            const newNumQuestoes = {}
+            for (const nome of modulosNomes) {
+                try{
+                    const fetchedModulo = await daoModulo.obterModuloPeloNome(nome)
+                    console.log(fetchedModulo.getQuestoes().length)
+                    newNumQuestoes[nome] = fetchedModulo.getQuestoes().length
+                } catch (erro) {
+                    Notify(`Ocorreu um erro ao tentar obter o módulo ${nome}. Tente novamente!\n${erro}`, 'error', 5000, true)
+                }
+            }
+            setNumQuestoes(newNumQuestoes)
+        }
+    
+        fetchModulos()
+    }, [daoModulo])
+    console.log(numQuestoes)
+    
+
+    // const [progressos, setProgressos] = useState({
+    //     html: 0,
+    //     css: 0,
+    //     js: 0,
+    //     todos: 0,
+    // })
+
+    // useEffect(() => {
+    //     if (subject && numQuestoes[subject] > 0) {
+    //         const progress = (questoesConcluidas / numQuestoes[subject]) * 100;
+    //         setProgressos((prev) => ({
+    //             ...prev,
+    //             [subject]: progress,
+    //         }));
+    //     } else {
+    //         setProgressos((prev) => ({
+    //             ...prev,
+    //             [subject]: 0,
+    //         }));
+    //     }
+    // }, [subject, questoesConcluidas, numQuestoes])
+
+    // useEffect(() => {
+    //     const salvarProgresso = async () => {
+    //         if (usuario && progressos[subject] != null) {
+    //             try {
+    //                 usuario.setPrct(subject, progressos[subject])
+    //                 await daoUsuario.alterar(usuario)
+    //                 Notify('Suas informações foram alteradas com sucesso!', 'success', 5000, true)
+    //             } catch (erro) {
+    //                 Notify(`Ocorreu um erro ao tentar alterar suas informações. Tente novamente!\n${erro}`, 'error', 5000, true)
+    //             }
+    //         }
+    //     }
+
+    //     salvarProgresso()
+    // }, [progressos, subject, usuario, daoUsuario])
 
     return (
         <div className = "SubjectMenu">
-            <NotificationContainer
-                autoClose = {5000}
-                hideProgressBar = {false}
-            />
+            <NotificationContainer autoClose = {5000} hideProgressBar = {false} />
             <div className = "btn-container">
-                <div className = "menu-btn-wrapper">
-                    <button 
-                        className = "menu-btn poppins-semibold" 
-                        onClick = {(e) => handleSubject(e.target.value)} 
-                        value = 'html'
-                    >
-                        <img 
-                            src = {html_logo} 
-                            alt = "HTML" 
-                        />
-                        HTML
-                    </button>
-
-                    <div className = "progress poppins-medium">
-                        {`${usuario.getPrct('html')}%`}
+                {['html', 'css', 'js', 'html, css e js'].map((subj) => (
+                    <div key = {subj} className = "menu-btn-wrapper">
+                        <button
+                            className = "menu-btn poppins-semibold"
+                            onClick = {() => handleSubject(subj === 'html, css e js' ? 'grouped_logos' : subj)}
+                            value = {subj}
+                        >
+                            <img
+                                src = {subj === 'html' ? html_logo : subj === 'css' ? css_logo : subj === 'js' ? js_logo : grouped_logos}
+                                alt = {subj.toUpperCase()}
+                            />
+                            {subj.toUpperCase()}
+                        </button>
+                        <div className = "progress poppins-medium">
+                            {/* {progressos[subj === 'html, css e js' ? 'todos' : subj]}% */}
+                            0%
+                        </div>
                     </div>
-                </div>
-
-                <div className = "menu-btn-wrapper">
-                    <button 
-                        className = "menu-btn poppins-semibold" 
-                        onClick = {(e) => handleSubject(e.target.value)} 
-                        value = 'css'
-                    >
-                        <img
-                            src = {css_logo} 
-                            alt = "CSS" 
-                        />
-                        CSS
-                    </button>
-
-                    <div className = "progress poppins-medium">
-                        {usuario.getPrct('css')}
-                    </div>
-                </div>
-                
-                <div className = "menu-btn-wrapper">
-                    <button 
-                        className = "menu-btn poppins-semibold" 
-                        onClick = {(e) => handleSubject(e.target.value)} 
-                        value = 'js'
-                    >
-                        <img
-                            src = {js_logo} 
-                            alt = "JS" 
-                        />
-                        JS
-                    </button>
-
-                    <div className = "progress poppins-medium">
-                        {usuario.getPrct('js')}
-                    </div>
-                </div>
-
-                <div className = "menu-btn-wrapper">
-                    <button
-                        className = "menu-btn poppins-semibold" 
-                        onClick = {(e) => handleSubject(e.target.value)} 
-                        value = 'grouped_logos'
-                    >
-                        <img
-                            src = {grouped_logos}
-                            alt = "TODOS" 
-                        />
-                        HTML, CSS E JS
-                    </button>
-
-                    <div className = "progress poppins-medium">
-                        {usuario.getPrct('todos')}
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )

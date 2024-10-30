@@ -44,7 +44,7 @@ export default class DaoUsuario {
                 console.log("Data retrieved from Firebase:", usr)
     
                 if (usr != null) {
-                    resolve(new Usuario(usr.email, usr.nome, usr.uid, usr.funcao))
+                    resolve(new Usuario(usr.email, usr.nome, usr.uid, usr.funcao, usr.modulos))
                 } else {
                     console.warn("No user found for UID:", uid)
                     resolve(null)
@@ -71,7 +71,8 @@ export default class DaoUsuario {
                 let usr = dataSnapshot.val()
                 
                 if (usr != null) {
-                    resolve(new Usuario(usr.email, usr.uid, usr.funcao))
+                    
+                    resolve(new Usuario(usr.email, usr.nome, usr.uid, usr.funcao, usr.modulos))
                 } else {
                     resolve(null)
                 }

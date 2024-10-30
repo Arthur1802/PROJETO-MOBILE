@@ -1,31 +1,54 @@
 import { useState } from "react"
-import questoesHtml from "../../../questoes/dataHtml.json"
-import correct from "../../../assets/audio/correct.wav"
-import wrong from "../../../assets/audio/wrong.wav"
-import BackBtn from "../../../components/BackBtn/BackBtn"
 import { useEffect } from "react"
 
-const GameHtml = (option) => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+// import { capitalize } from '../../../utils/functions.js'
+
+import PropTypes from 'prop-types'
+
+import questoesHtml from "../../../questoes/dataHtml.json"
+
+import correct from "../../../assets/audio/correct.wav"
+import wrong from "../../../assets/audio/wrong.wav"
+
+import BackBtn from "../../../components/BackBtn/BackBtn"
+import logoLight from "../../../assets/icons/light/html_light.svg"
+import logoDark from "../../../assets/icons/dark/html_dark.svg"
+
+const GameHtml = ({ option }) => {
+  
+  // let [questoesConcluidas, setQuestoesConcluidas] = useState(localStorage.getItem(`questoesConcluidas${capitalize(option)}`) || 0)
+
+  // useEffect(() => {
+  //   localStorage.setItem(`questoesConcluidas${capitalize(option)}`, questoesConcluidas)
+  //   window.dispatchEvent(new Event('gamePlayed'))
+  // }, [questoesConcluidas, option])
+
+  // const handleCorrectAnswer = () => {
+  //   setQuestoesConcluidas(questoesConcluidas =+ 1)
+  // }
+
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [userAnswers, setUserAnswers] = useState([])
+
+  const theme = localStorage.getItem('theme')
 
   option = 'html'
-  const theme = localStorage.getItem('theme')
   
-  let html = import(`../../../assets/icons/${option}_${theme}.svg`)
+  let html = theme === 'light' ? logoLight : logoDark
 
-  const questoes = questoesHtml[currentQuestion];
+  const questoes = questoesHtml[currentQuestion]
 
   const handleAnswer = (selectedAnswer) => {
-    const isCorrect = selectedAnswer.isCorrect;
+    const isCorrect = selectedAnswer.isCorrect
     if (isCorrect) {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(correct).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: true }])
+      setCurrentQuestion(currentQuestion + 1)
+      // handleCorrectAnswer()
+      new Audio(correct).play()
     } else {
-      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }]);
-      setCurrentQuestion(currentQuestion + 1);
-      new Audio(wrong).play();
+      setUserAnswers([...userAnswers, { question: currentQuestion, answer: selectedAnswer.resposta, correct: false }])
+      setCurrentQuestion(currentQuestion + 1)
+      new Audio(wrong).play()
     }
   } 
 
@@ -78,5 +101,8 @@ const GameHtml = (option) => {
     </div>
   )
 }
+GameHtml.propTypes = {
+  option: PropTypes.string.isRequired,
+}
 
-export default GameHtml;
+export default GameHtml
