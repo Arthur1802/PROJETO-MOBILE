@@ -96,7 +96,13 @@ export const Signin = async (nome, email, senha) => {
             uid: user.uid,
             nome: nome,
             email: user.email,
-            funcao: "ALUNO"
+            funcao: "ALUNO",
+            modulos: {
+                html: {nome: "HTML", progresso: 0},
+                css: {nome: "CSS", progresso: 0},
+                js: {nome: "JavaScript", progresso: 0},
+                todos: {nome: "Todos", progresso: 0}
+            }
         }
 
         await set(dbRefUsuario, objUsuario)
@@ -123,7 +129,13 @@ export const SigninWithGoogle = async () => {
                 uid: user.uid,
                 nome: user.displayName.split(' ')[0],
                 email: user.email,
-                funcao: "ALUNO"
+                funcao: "ALUNO",
+                modulos: {
+                    html: {nome: "HTML", progresso: 0},
+                    css: {nome: "CSS", progresso: 0},
+                    js: {nome: "JavaScript", progresso: 0},
+                    todos: {nome: "Todos", progresso: 0}
+                }
             }
 
             await set(dbRefUsuario, objUsuario)
