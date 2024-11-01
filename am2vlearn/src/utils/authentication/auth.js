@@ -169,7 +169,7 @@ export const isLoggedIn = () => {
 }
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+    navigator.serviceWorker.register('../../../public/service-worker.js', { scope: '/' })
         .then(function (reg) {
             console.log('Registro do Service Worker bem sucedido. O escopo de uso é ' + reg.scope)
         }).catch(function (error) {
