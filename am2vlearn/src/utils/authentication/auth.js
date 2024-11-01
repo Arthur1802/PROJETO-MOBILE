@@ -167,12 +167,3 @@ export const LogOut = async () => {
 export const isLoggedIn = () => {
     return JSON.parse(localStorage.getItem('userLoggedIn') || 'false')
 }
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../../../public/service-worker.js', { scope: '/' })
-        .then(function (reg) {
-            console.log('Registro do Service Worker bem sucedido. O escopo de uso é ' + reg.scope)
-        }).catch(function (error) {
-            console.log('Registro do Service Worker com ' + error)
-        })
-}
