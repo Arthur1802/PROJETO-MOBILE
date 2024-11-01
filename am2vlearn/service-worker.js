@@ -22,6 +22,7 @@ const urlsToCache = [
     "/src/components/BackBtn/BackBtn.jsx"
 ]
 
+// Install Event
 self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
@@ -31,18 +32,22 @@ self.addEventListener("install", event => {
     )
 })
 
+// Fetch Event
 self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request).then(cachedResponse => {
             return cachedResponse || fetch(event.request).catch(() => {
                 if (event.request.mode === "navigate") {
                     return caches.match("/offline.html")
+                } else if (event.request.destination === "image") {
+                    return caches.match("/src/assets/icons/appIcons/512x512.png")
                 }
             })
         })
     )
 })
 
+// Activate Event
 self.addEventListener("activate", event => {
     const cacheWhitelist = [CACHE_NAME]
     event.waitUntil(

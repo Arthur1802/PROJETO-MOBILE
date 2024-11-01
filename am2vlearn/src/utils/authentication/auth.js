@@ -98,10 +98,10 @@ export const Signin = async (nome, email, senha) => {
             email: user.email,
             funcao: "ALUNO",
             modulos: {
-                html: {nome: "html", progresso: 0},
-                css: {nome: "css", progresso: 0},
-                js: {nome: "js", progresso: 0},
-                todos: {nome: "todos", progresso: 0}
+                html: { nome: "html", progresso: 0 },
+                css: { nome: "css", progresso: 0 },
+                js: { nome: "js", progresso: 0 },
+                todos: { nome: "todos", progresso: 0 }
             }
         }
 
@@ -131,10 +131,10 @@ export const SigninWithGoogle = async () => {
                 email: user.email,
                 funcao: "ALUNO",
                 modulos: {
-                    html: {nome: "html", progresso: 0},
-                    css: {nome: "css", progresso: 0},
-                    js: {nome: "js", progresso: 0},
-                    todos: {nome: "todos", progresso: 0}
+                    html: { nome: "html", progresso: 0 },
+                    css: { nome: "css", progresso: 0 },
+                    js: { nome: "js", progresso: 0 },
+                    todos: { nome: "todos", progresso: 0 }
                 }
             }
 
@@ -166,4 +166,13 @@ export const LogOut = async () => {
 
 export const isLoggedIn = () => {
     return JSON.parse(localStorage.getItem('userLoggedIn') || 'false')
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../../../service-worker.js', { scope: '/' })
+        .then(function (reg) {
+            console.log('Registro do Service Worker bem-sucedido. O escopo de uso é ' + reg.scope)
+        }).catch(function (error) {
+            console.log('Falha no registro do Service Worker: ' + error)
+        })
 }
