@@ -1,20 +1,15 @@
-import { StyleSheet, useColorScheme } from 'react-native'
+import { StyleSheet, useColorScheme, View } from 'react-native'
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollViewOffset,
 } from 'react-native-reanimated'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { ThemedView } from '@/components/ThemedView'
+const HEADER_HEIGHT = 50
 
-const HEADER_HEIGHT = 250
-
-export default function ParallaxScrollView({
-  children,
-  headerImage,
-  headerBackgroundColor,
-}) {
+export default function ParallaxScrollView({ children, headerImage, headerHeight, headerBackgroundColor, style, ...otherProps }) {
   const colorScheme = useColorScheme() ?? 'light'
   const scrollRef = useAnimatedRef()
   const scrollOffset = useScrollViewOffset(scrollRef)
@@ -37,19 +32,19 @@ export default function ParallaxScrollView({
   })
 
   return (
-    <ThemedView style={styles.container}>
-      <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
+    <SafeAreaView style = {[styles.container, {style}]}>
+      <Animated.ScrollView ref = {scrollRef} scrollEventThrottle = {16}>
         <Animated.View
-          style={[
+          style = {[
             styles.header,
             { backgroundColor: headerBackgroundColor[colorScheme] },
             headerAnimatedStyle,
           ]}>
           {headerImage}
         </Animated.View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
+        <View style = {[styles.content, {style}]}>{children}</View>
       </Animated.ScrollView>
-    </ThemedView>
+    </SafeAreaView>
   )
 }
 
@@ -58,13 +53,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 250,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
     overflow: 'hidden',
   },
   content: {
-    flex: 1,
-    padding: 32,
-    gap: 16,
-    overflow: 'hidden',
+    padding: 20,
   },
 })
