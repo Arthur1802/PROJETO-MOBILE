@@ -1,11 +1,11 @@
-import { StyleSheet, View, Text, useColorScheme } from 'react-native'
+import { StyleSheet, View, Text, useColorScheme, TouchableOpacity } from 'react-native'
 
 import ParallaxScrollView from '../../components/ParallaxScrollView'
 import { ThemedLogo } from '../../components/ThemedLogo'
 import { ThemedText } from '../../components/ThemedText'
 
 export default function HomeScreen() {
-  const colorTheme = useColorScheme() ?? 'light'
+  const theme = useColorScheme() ?? 'light'
 
   return (
     <ParallaxScrollView
@@ -13,37 +13,48 @@ export default function HomeScreen() {
       headerImage = {
         <ThemedLogo source = {"sm_logo"} type = {"logo"} />
       }>
-      <View style = {styles.titleContainer}>
-        <ThemedText type = "title">Welcome user_name</ThemedText>
-      </View>
 
       <View style = {styles.mainContainer}>
+        <ThemedText type = "title">Welcome user_name</ThemedText>
+
         <View style = {styles.moduleContainer}>
-          <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[colorTheme]}]}>
-            <ThemedLogo source = {"html_logo"} />
-            <Text style = {{color: styles.moduleBoxTextColor[colorTheme]}}>HTML</Text></View>
-          <ThemedText>0%</ThemedText>
+          <TouchableOpacity style = {styles.containers}>
+            <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[theme]}]}>
+              <ThemedLogo source = {"html_logo"} />
+              <Text style = {{color: styles.moduleBoxTextColor[theme]}}>HTML</Text>
+            </View>
+          </TouchableOpacity>
+          <ThemedText style = {styles.percentage}>0%</ThemedText>
         </View>
         
         <View style = {styles.moduleContainer}>
-          <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[colorTheme]}]}>
-            <ThemedLogo source = {"css_logo"} />
-            <Text style = {{color: styles.moduleBoxTextColor[colorTheme]}}>CSS</Text></View>
-          <ThemedText>0%</ThemedText>
+          <TouchableOpacity style = {styles.containers}>
+            <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[theme]}]}>
+              <ThemedLogo source = {"css_logo"} />
+              <Text style = {{color: styles.moduleBoxTextColor[theme]}}>CSS</Text>
+            </View>
+          </TouchableOpacity>
+          <ThemedText style = {styles.percentage}>0%</ThemedText>
         </View>
-        
+
         <View style = {styles.moduleContainer}>
-          <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[colorTheme]}]}>
-            <ThemedLogo source = {"js_logo"} />
-            <Text style = {{color: styles.moduleBoxTextColor[colorTheme]}}>JS</Text></View>
-          <ThemedText>0%</ThemedText>
+          <TouchableOpacity style = {styles.containers}>
+            <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[theme]}]}>
+              <ThemedLogo source = {"js_logo"} />
+              <Text style = {{color: styles.moduleBoxTextColor[theme]}}>JavaScript</Text>
+            </View>
+          </TouchableOpacity>
+          <ThemedText style = {styles.percentage}>0%</ThemedText>
         </View>
-        
+
         <View style = {styles.moduleContainer}>
-          <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[colorTheme]}]}>
-            <ThemedLogo source = {"html_css_js_logo"} />
-            <Text style = {{color: styles.moduleBoxTextColor[colorTheme]}}>HTML, CSS E JS</Text></View>
-          <ThemedText>0%</ThemedText>
+          <TouchableOpacity style = {styles.containers}>
+            <View style = {[styles.moduleBox, {backgroundColor: styles.moduleBoxBackgroundColor[theme]}]}>
+              <ThemedLogo source = {"html_css_js_logo"} />
+              <Text style = {{color: styles.moduleBoxTextColor[theme]}}>HTML, CSS E JS</Text>
+            </View>
+          </TouchableOpacity>
+          <ThemedText style = {styles.percentage}>0%</ThemedText>
         </View>
       
       </View>
@@ -52,23 +63,23 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 20,
-    marginBottom: 20,
-    padding: 10,
-  },
   mainContainer: {
     flexDirection: 'column',
     gap: 20,
     padding: 10,
   },
   moduleContainer: {
+    width: "100%",
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     gap: "50%",
+  },
+  containers: {
+    width: "50%",
+    padding: 0,
+    margin: 0,
   },
   moduleBox: {
     display: 'flex',
@@ -78,15 +89,21 @@ const styles = StyleSheet.create({
     gap: 15,
     padding: 10,
     borderRadius: 5,
-    width: "55%",
-    boxShadow: "0 8px 5px 0 rgba(255, 255, 255, .25)",
+    width: "100%",
   },
   moduleBoxBackgroundColor: {
-    light: "#232323",
+    light: "#454545",
     dark: "#515151",
   },
   moduleBoxTextColor: {
     light: "white",
     dark: "white",
+  },
+  percentage: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: "max-content",
   },
 })

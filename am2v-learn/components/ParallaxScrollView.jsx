@@ -1,4 +1,5 @@
-import { StyleSheet, useColorScheme, View } from 'react-native'
+import { useCallback, useState } from 'react'
+import { ScrollView, StyleSheet, useColorScheme, View, RefreshControl } from 'react-native'
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -6,6 +7,7 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { ThemedLogo } from './ThemedLogo'
 
 const HEADER_HEIGHT = 50
 
@@ -31,19 +33,22 @@ export default function ParallaxScrollView({ children, headerImage, headerHeight
     }
   })
 
+  const [refreshing, setRefreshing] = useState(false)
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true)
+    setTimeout(() => setRefreshing(false), 2000)
+  }, [])
+
   return (
     <SafeAreaView style = {[styles.container, {style}]}>
-      <Animated.ScrollView ref = {scrollRef} scrollEventThrottle = {16}>
-        <Animated.View
-          style = {[
-            styles.header,
-            { backgroundColor: headerBackgroundColor[colorScheme] },
-            headerAnimatedStyle,
-          ]}>
-          {headerImage}
-        </Animated.View>
+      <ScrollView ref = {scrollRef} scrollEventThrottle = {16}>
+        <RefreshControl />
+          <View style = {styles.header}>
+            <ThemedLogo source = {"sm_logo"} type = {"logo"} />
+          </View>
         <View style = {[styles.content, {style}]}>{children}</View>
-      </Animated.ScrollView>
+      </ScrollView>
     </SafeAreaView>
   )
 }

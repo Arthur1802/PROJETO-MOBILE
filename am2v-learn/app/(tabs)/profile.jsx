@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { StyleSheet, Animated, View, Text, TextInput, Button } from 'react-native'
+import { StyleSheet, Animated, View, Text, TextInput, TouchableOpacity, useColorScheme, InputAccessoryView, Button } from 'react-native'
 
 import { ExternalLink } from '../../components/ExternalLink'
 import ParallaxScrollView from '../../components/ParallaxScrollView'
@@ -9,9 +9,13 @@ import { useState } from 'react'
 import { ThemedText } from '../../components/ThemedText'
 
 export default function ProfileScreen() {
+  const theme  = useColorScheme() ?? 'light'
+  
+  const initialText = ""
+
   const [values, setValues] = useState({
-    nome: "",
-    email: "",
+    nome: {initialText},
+    email: {initialText},
   })
 
   return (
@@ -27,10 +31,26 @@ export default function ProfileScreen() {
 
         {/* <FloatingLabelInput label = "Nome" style = {styles.input} value = {values.nome} onChangeText = {setValues.nome} />
         <FloatingLabelInput label = "Email" style = {styles.input} value = {values.email} onChangeText = {setValues.email} /> */}
-        <TextInput style = {[styles.input, {borderColor: styles.inputBorderColor}]} placeholder = "Nome" value = {values.nome} onChangeText = {setValues.nome} />
-        <TextInput style = {[styles.input, {borderColor: styles.inputBorderColor}]} placeholder = "Email" value = {values.email} onChangeText = {setValues.email} />
+
+        <TextInput
+          style = {[styles.input, {borderColor: styles.inputBorderColor[theme]}]}
+          placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
+          placeholder = "Nome"
+          value = {values.nome}
+          onChangeText = {setValues.nome}
+        />
+        
+        <TextInput
+          style = {[styles.input, {borderColor: styles.inputBorderColor[theme]}]}
+          placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
+          placeholder = "Email"
+          value = {values.email}
+          onChangeText = {setValues.email}
+        />
+        
         <ExternalLink href = "#" style = {styles.link}>Altera Senha?</ExternalLink>
-        <Button title = "Submit" onPress = {() => {}}></Button>
+        
+        <TouchableOpacity style = {styles.button} onPress = {() => {}}><ThemedText>Save</ThemedText></TouchableOpacity>
       </View>
     </ParallaxScrollView>
   )
@@ -54,12 +74,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   inputBorderColor: {
-    light: '#ccc',
-    dark: '#333',
+    light: '#333',
+    dark: '#ccc',
+  },
+  inputPlaceholderTextColor: {
+    light: '#333',
+    dark: '#ccc',
   },
   link: {
     color: '#007bff',
     textDecorationLine: 'underline',
     fontSize: 16,
+  },
+  button: {
+    backgroundColor: '#0fc3e8',
+    padding: 10,
+    borderRadius: 5,
+    width: '80%',
+    alignItems: 'center',
   }
 })
