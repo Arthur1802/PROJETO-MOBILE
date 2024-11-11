@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import ParallaxScrollView from '../../components/ParallaxScrollView'
+import ParallaxScrollView from '../../../components/ParallaxScrollView'
 
 export default function WelcomePage() {
     <ParallaxScrollView>

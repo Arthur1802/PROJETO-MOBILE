@@ -1,8 +1,10 @@
-import { StyleSheet, View, Text, useColorScheme, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, useColorScheme, TouchableOpacity, Linking } from 'react-native'
 
 import ParallaxScrollView from '../../components/ParallaxScrollView'
 import { ThemedLogo } from '../../components/ThemedLogo'
 import { ThemedText } from '../../components/ThemedText'
+
+import { Link } from 'expo-router'
 
 export default function HomeScreen() {
   const theme = useColorScheme() ?? 'light'
@@ -16,6 +18,8 @@ export default function HomeScreen() {
 
       <View style = {styles.mainContainer}>
         <ThemedText type = "title">Welcome user_name</ThemedText>
+
+        <Link href = {"/welcome.jsx"} > Ir para o Perfil</Link>
 
         <View style = {styles.moduleContainer}>
           <TouchableOpacity style = {styles.containers}>
