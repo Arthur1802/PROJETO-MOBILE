@@ -4,9 +4,7 @@ import ParallaxScrollView from '../../components/ParallaxScrollView'
 import { ThemedLogo } from '../../components/ThemedLogo'
 import { ThemedText } from '../../components/ThemedText'
 
-import { Link } from 'expo-router'
-
-export default function HomeScreen() {
+export default function Home() {
   const theme = useColorScheme() ?? 'light'
 
   return (
@@ -18,8 +16,6 @@ export default function HomeScreen() {
 
       <View style = {styles.mainContainer}>
         <ThemedText type = "title">Welcome user_name</ThemedText>
-
-        <Link href = {"/welcome.jsx"} > Ir para o Perfil</Link>
 
         <View style = {styles.moduleContainer}>
           <TouchableOpacity style = {styles.containers}>
