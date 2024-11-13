@@ -9,29 +9,13 @@ import Animated, {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ThemedLogo } from './ThemedLogo'
 
-const HEADER_HEIGHT = 50
-
-export default function ParallaxScrollView({ children, headerImage, headerHeight, headerBackgroundColor, style, ...otherProps }) {
+export default function ParallaxScrollView({ children, headerImageSrc, headerHeight, headerBackgroundColor, style, ...otherProps }) {
   const colorScheme = useColorScheme() ?? 'light'
+
+  const headerImage = headerImageSrc
+  
   const scrollRef = useAnimatedRef()
   const scrollOffset = useScrollViewOffset(scrollRef)
-
-  const headerAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: interpolate(
-            scrollOffset.value,
-            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
-          ),
-        },
-        {
-          scale: interpolate(scrollOffset.value, [-HEADER_HEIGHT, 0, HEADER_HEIGHT], [2, 1, 1]),
-        },
-      ],
-    }
-  })
 
   const [refreshing, setRefreshing] = useState(false)
 
@@ -45,7 +29,7 @@ export default function ParallaxScrollView({ children, headerImage, headerHeight
       <ScrollView ref = {scrollRef} scrollEventThrottle = {16}>
         <RefreshControl />
           <View style = {styles.header}>
-            <ThemedLogo source = {"sm_logo"} type = {"logo"} />
+            <ThemedLogo src = {`${headerImage}`} type = {"logo"} />
           </View>
         <View style = {[styles.content, {style}]}>{children}</View>
       </ScrollView>
@@ -59,9 +43,9 @@ const styles = StyleSheet.create({
   },
   header: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 50,
+    height: 100,
     overflow: 'hidden',
   },
   content: {

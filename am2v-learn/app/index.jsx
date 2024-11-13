@@ -1,24 +1,34 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { ThemedText } from '../components/ThemedText'
-import { ThemedLogo } from '../components/ThemedLogo'
 import ParallaxScrollView from '../components/ParallaxScrollView'
-import { Link } from 'expo-router'
+import { useNavigation } from 'expo-router'
 
 export default function Welcome() {
+    const navigation = useNavigation()
+
+    const handleLogin = () => {
+        navigation.navigate('auth/login') 
+    }
+
+    const handleSignIn = () => {
+        navigation.navigate('auth/signin')
+    }
+
     return (
         <ParallaxScrollView
             headerBackgroundColor = {{ light: 'transparent', dark: 'transparent' }}
-            headerImage = {
-                <ThemedLogo source = {"lg_logo"} type = {"logo"} />
-            }
+            headerImage = "lg_logo"
         >
             <View style = {styles.container}>
-                <ThemedText style = {StyleSheet.title}>Welcome to AM2V Learn</ThemedText>
+                <ThemedText style = {styles.title}>Welcome to AM2V Learn</ThemedText>
 
-                <Link href = "login">Login</Link>
-                <Link href = "signin">Sign In</Link>
-                <Link href = "(tabs)">Tabs</Link>
+                <TouchableOpacity style = {[styles.buttons, {backgroundColor: "#0fc3e8"}]} onPress = {handleLogin}>
+                    <ThemedText style = {styles.buttonsText}>Login</ThemedText>
+                </TouchableOpacity>
+                <TouchableOpacity style = {[styles.buttons, {backgroundColor: "#f07e13"}]} onPress = {handleSignIn}>
+                    <ThemedText style = {styles.buttonsText}>Sign In</ThemedText>
+                </TouchableOpacity>
             </View>
         </ParallaxScrollView>
     )
@@ -35,7 +45,20 @@ const styles = StyleSheet.create({
 
     },  
     title: {
-        fontSize: 24,
+        fontSize: 25,
         fontWeight: 'bold',
+        marginBottom: "50%"
     },
+    buttons: {
+        width: '50%',
+        padding: 10,
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonsText: {
+        width: 'max-content',
+        fontSize: 16,
+    }
 })

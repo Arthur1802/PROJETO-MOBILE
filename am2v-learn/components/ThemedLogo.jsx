@@ -17,9 +17,11 @@ import jsLogoLight from '../assets/moduleIcons/dark/js_dark.png'
 import htmlCssJsLogoDark from '../assets/moduleIcons/light/html_css_js_light.png'
 import htmlCssJsLogoLight from '../assets/moduleIcons/dark/html_css_js_dark.png'
 
-export function ThemedLogo({ source, type, style, ...otherProps }) {
+export function ThemedLogo({ src, type, style, ...otherProps }) {
     const theme = useColorScheme() ?? 'light'
-    switch (source) {
+    let logo
+
+    switch (src) {
         case 'lg_logo':
             logo = theme === 'light' ? lgLightLogo : lgDarkLogo
             break
@@ -41,7 +43,7 @@ export function ThemedLogo({ source, type, style, ...otherProps }) {
     }
 
     if (type === 'logo') {
-        return <Image source = {logo} style = {[styles.logo, {style}]} {...otherProps} />
+        return <Image source = {logo} style = {[src === "lg_logo" ? styles.lgLogo : styles.smLogo, {style}]} {...otherProps} />
     } else if (type === 'background') {
         return <ImageBackground source = {logo} style = {[styles.background, {style}]} {...otherProps} />
     } else {
@@ -51,7 +53,13 @@ export function ThemedLogo({ source, type, style, ...otherProps }) {
 }
 
 const styles = StyleSheet.create({
-    logo: {
+    lgLogo: {
+        width: 150,
+        objectFit: 'contain',
+    },
+    smLogo: {
+        width: 150,
+        objectFit: 'cover',
     },
     icon: {
         width: 35,
