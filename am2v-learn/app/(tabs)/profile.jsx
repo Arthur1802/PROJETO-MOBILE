@@ -9,88 +9,85 @@ import { useState } from 'react'
 import { ThemedText } from '../../components/ThemedText'
 
 export default function ProfileScreen() {
-  const theme  = useColorScheme() ?? 'light'
-  
-  const initialText = ""
+    const theme = useColorScheme() ?? 'light'
 
-  const [values, setValues] = useState({
-    nome: {initialText},
-    email: {initialText},
-  })
+    const initialText = ""
 
-  return (
-    <ParallaxScrollView
-      headerImage = {
-        <ThemedLogo source = "sm_logo" type = {"logo"} />
-      }
-      headerBackgroundColor = {styles.headerBackgroundColor}
-    >
-      <View style = {styles.profile_container}>
+    const [values, setValues] = useState({
+        nome: { initialText },
+        email: { initialText },
+    })
 
-        <ThemedText type = "title">Profile</ThemedText>
+    return (
+        <ParallaxScrollView
+            headerImage = {
+                <ThemedLogo source = "sm_logo" type = {"logo"} />
+            }
+            headerBackgroundColor = {styles.headerBackgroundColor}
+        >
+            <View style = {styles.profile_container}>
 
-        {/* <FloatingLabelInput label = "Nome" style = {styles.input} value = {values.nome} onChangeText = {setValues.nome} />
-        <FloatingLabelInput label = "Email" style = {styles.input} value = {values.email} onChangeText = {setValues.email} /> */}
+                <ThemedText type = "title">Profile</ThemedText>
 
-        <TextInput
-          style = {[styles.input, {borderColor: styles.inputBorderColor[theme]}]}
-          placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
-          placeholder = "Nome"
-          value = {values.nome}
-          onChangeText = {setValues.nome}
-        />
-        
-        <TextInput
-          style = {[styles.input, {borderColor: styles.inputBorderColor[theme]}]}
-          placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
-          placeholder = "Email"
-          value = {values.email}
-          onChangeText = {setValues.email}
-        />
-        
-        <ExternalLink href = "#" style = {styles.link}>Altera Senha?</ExternalLink>
-        
-        <TouchableOpacity style = {styles.button} onPress = {() => {}}><ThemedText>Save</ThemedText></TouchableOpacity>
-      </View>
-    </ParallaxScrollView>
-  )
+                <TextInput
+                    style = {[styles.input, { borderColor: styles.inputBorderColor[theme] }]}
+                    placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
+                    placeholder = "Nome"
+                    value = {values.nome}
+                    onChangeText = {setValues.nome}
+                />
+
+                <TextInput
+                    style = {[styles.input, { borderColor: styles.inputBorderColor[theme] }]}
+                    placeholderTextColor = {styles.inputPlaceholderTextColor[theme]}
+                    placeholder = "Email"
+                    value = {values.email}
+                    onChangeText = {setValues.email}
+                />
+
+                <ExternalLink href = "#" style = {styles.link}>Altera Senha?</ExternalLink>
+
+                <TouchableOpacity style = {styles.button} onPress = {() => { }}><ThemedText>Save</ThemedText></TouchableOpacity>
+            </View>
+        </ParallaxScrollView>
+    )
 }
 
 const styles = StyleSheet.create({
-  headerBackgroundColor: {
-    light: 'transparent',
-    dark: 'transparent',
-  },
-  profile_container: {
-    padding: 20,
-    alignItems: 'center',
-    gap: 20,
-  },
-  input: {
-    width: '80%',
-    marginVertical: 10,
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-  },
-  inputBorderColor: {
-    light: '#333',
-    dark: '#ccc',
-  },
-  inputPlaceholderTextColor: {
-    light: '#333',
-    dark: '#ccc',
-  },
-  link: {
-    color: '#007bff',
-    textDecorationLine: 'underline',
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: '#0fc3e8',
-    padding: 10,
-    borderRadius: 5,
-    width: '80%',
-    alignItems: 'center',
-  }
+    headerBackgroundColor: {
+        light: 'transparent',
+        dark: 'transparent',
+    },
+    profile_container: {
+        padding: 20,
+        alignItems: 'center',
+        gap: 20,
+    },
+    input: {
+        width: '80%',
+        marginVertical: 10,
+        padding: 10,
+        borderRadius: 5,
+        borderWidth: 1,
+    },
+    inputBorderColor: {
+        light: '#333',
+        dark: '#ccc',
+    },
+    inputPlaceholderTextColor: {
+        light: '#333',
+        dark: '#ccc',
+    },
+    link: {
+        color: '#007bff',
+        textDecorationLine: 'underline',
+        fontSize: 16,
+    },
+    button: {
+        backgroundColor: '#0fc3e8',
+        padding: 10,
+        borderRadius: 5,
+        width: '80%',
+        alignItems: 'center',
+    }
 })
