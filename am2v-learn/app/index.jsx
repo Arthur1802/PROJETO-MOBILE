@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { ThemedText } from '../components/ThemedText'
 import ParallaxScrollView from '../components/ParallaxScrollView'
 import { useNavigation } from 'expo-router'
+import boxShadow from './GlobalStyles'
 
 export default function Welcome() {
     const navigation = useNavigation()
@@ -23,7 +24,7 @@ export default function Welcome() {
             <View style = {styles.container}>
                 <ThemedText style = {styles.title}>Welcome to AM2V Learn</ThemedText>
 
-                <TouchableOpacity style = {[styles.buttons, {backgroundColor: "#0fc3e8"}]} onPress = {handleLogin}>
+                <TouchableOpacity style = {[styles.buttons, {backgroundColor: "#0fc3e8"}, boxShadow(0, 0, 10, 10, "rgba(0, 0, 0, 0.25")]} onPress = {handleLogin}>
                     <ThemedText style = {styles.buttonsText}>Login</ThemedText>
                 </TouchableOpacity>
                 <TouchableOpacity style = {[styles.buttons, {backgroundColor: "#f07e13"}]} onPress = {handleSignIn}>
