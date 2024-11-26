@@ -18,7 +18,6 @@ export default function Welcome() {
 
     return (
         <ParallaxScrollView
-            headerBackgroundColor = {{ light: 'transparent', dark: 'transparent' }}
             headerImage = "lg_logo"
         >
             <View style = {styles.container}>

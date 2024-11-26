@@ -23,7 +23,6 @@ export default function Login() {
 
     return (
         <ParallaxScrollView
-            headerBackgroundColor = {{ light: 'transparent', dark: 'transparent' }}
             headerImage = "sm_logo"
         >
             <View style = {styles.container}>

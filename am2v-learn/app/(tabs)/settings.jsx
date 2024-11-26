@@ -11,10 +11,7 @@ export default function SettingsScreen() {
     const colorTheme = useColorScheme() ?? 'light'
     return (
         <ParallaxScrollView
-            headerImage = {
-                <ThemedLogo source = "sm_logo" type = {"logo"} />
-            }
-            headerBackgroundColor = {styles.headerBackgroundColor}
+            headerImage = "lg_logo"
         >
             <View style = {[styles.titleContainer, styles.container]}>
 

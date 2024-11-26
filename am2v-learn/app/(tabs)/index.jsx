@@ -9,10 +9,8 @@ export default function Home() {
 
     return (
         <ParallaxScrollView
-            headerBackgroundColor = {{ light: 'transparent', dark: 'transparent' }}
-            headerImage = {
-                <ThemedLogo source = {"sm_logo"} type = {"logo"} />
-            }>
+            headerImage = "lg_logo"
+        >
 
             <View style = {styles.mainContainer}>
                 <ThemedText type = "title">Welcome user_name</ThemedText>

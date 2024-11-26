@@ -20,10 +20,7 @@ export default function ProfileScreen() {
 
     return (
         <ParallaxScrollView
-            headerImage = {
-                <ThemedLogo source = "sm_logo" type = {"logo"} />
-            }
-            headerBackgroundColor = {styles.headerBackgroundColor}
+            headerImage = "lg_logo"
         >
             <View style = {styles.profile_container}>
 

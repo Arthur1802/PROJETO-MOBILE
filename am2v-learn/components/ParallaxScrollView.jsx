@@ -9,7 +9,7 @@ import Animated, {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ThemedLogo } from './ThemedLogo'
 
-export default function ParallaxScrollView({ children, headerImageSrc, headerHeight, headerBackgroundColor, style, ...otherProps }) {
+export default function ParallaxScrollView({ children, headerImageSrc, headerHeight, style, ...otherProps }) {
   const colorScheme = useColorScheme() ?? 'light'
 
   const headerImage = headerImageSrc
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
     overflow: 'hidden',
+    background: 'transparent',
   },
   content: {
     padding: 20,

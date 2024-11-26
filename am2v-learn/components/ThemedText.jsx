@@ -13,7 +13,7 @@ export function ThemedText({
 
   return (
     <Text
-      style={[
+      style = {[
         { color },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
@@ -29,22 +29,25 @@ export function ThemedText({
 
 const styles = StyleSheet.create({
   default: {
+    fontFamily: require('../assets/fonts/Poppins-Regular.ttf'),
     fontSize: 16,
     lineHeight: 24,
   },
   defaultSemiBold: {
     fontSize: 16,
-    lineHeight: 24,
     fontWeight: '600',
+    fontFamily: require('../assets/fonts/Poppins-SemiBold.ttf'),
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     lineHeight: 32,
+    fontFamily: require('../assets/fonts/Poppins-Bold.ttf'),
   },
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: require('../assets/fonts/Poppins-SemiBold.ttf'),
   },
   link: {
     lineHeight: 30,
