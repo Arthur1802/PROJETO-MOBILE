@@ -1,4 +1,4 @@
-import { TouchableOpacity, View} from 'react-native'
+import { StyleSheet, TouchableOpacity, View} from 'react-native'
 import { ParallaxScrollView } from '../../components/ParallaxScrollView'
 import { ThemedText } from '../../components/ThemedText'
 

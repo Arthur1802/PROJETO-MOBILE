@@ -46,6 +46,7 @@ export default function Layout() {
                 <Stack.Screen name = "auth/login" options = {{ headerShown: false }} />
                 <Stack.Screen name = "auth/signin" options = {{ headerShown: false }} />
                 <Stack.Screen name = "(tabs)" options = {{ headerShown: false }} />
+                <Stack.Screen name = "(game)" options = {{ headerShown: true }} />
             </Stack>
         </ThemeProvider>
     )
