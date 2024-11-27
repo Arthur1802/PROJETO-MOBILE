@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
     overflow: 'hidden',
-    background: 'transparent',
+    backgroundColor: 'transparent',
   },
   content: {
     padding: 20,
